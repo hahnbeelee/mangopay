@@ -1,0 +1,52 @@
+---
+title: 'View a Banking Alias for a Wallet'  
+api: 'GET /v2.01/{ClientId}/wallets/{WalletId}/bankingaliases'  
+---
+import WalletId from '/snippets/p-path/WalletId.mdx';
+import Array_BankingAliasResponse from '/snippets/p-response/Array_BankingAliasResponse.mdx';
+
+import NodeViewBankingAliasWallet from '/snippets/code/node-view-banking-alias-wallet.mdx';
+import JavaViewBankingAliasWallet from '/snippets/code/java-view-banking-alias-wallet.mdx';
+
+### Path parameters  
+
+<WalletId />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<Array_BankingAliasResponse />  
+
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+[
+    {
+        "OwnerName": "Alex Smith",
+        "IBAN": "FR7674521100005657670994474",
+        "BIC": "MPAYFRP1PIN",
+        "CreditedUserId": "user_m_01HSB23417BFG7YXR7E371JSEA",
+        "Country": "FR",
+        "Tag": "Created using Mangopay API Postman Collection",
+        "CreationDate": 1710846581,
+        "Active": true,
+        "Type": "IBAN",
+        "Id": "wltbank_m_01HSB6E769Y3ZBYDJACSP3THGA",
+        "WalletId": "wlt_m_01HSB6DE1YT1EMTH0K7ASYPG96"
+    }
+]
+```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <NodeViewBankingAliasWallet />
+  <JavaViewBankingAliasWallet />
+</RequestExample>

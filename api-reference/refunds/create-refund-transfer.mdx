@@ -1,0 +1,162 @@
+---
+title: 'Create a Refund for a Transfer'  
+api: 'POST /v2.01/{ClientId}/transfers/{TransferId}/refunds'  
+---
+
+import RefundReasonResponse from '/snippets/p-response/RefundReasonResponse.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import DebitedWalletIdResponse from '/snippets/p-response/DebitedWalletIdResponse.mdx';
+import InitialTransactionNature1Response from '/snippets/p-response/InitialTransactionNature1Response.mdx';
+import InitialTransactionType1Response from '/snippets/p-response/InitialTransactionType1Response.mdx';
+import InitialTransactionId1Response from '/snippets/p-response/InitialTransactionId1Response.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees9Response from '/snippets/p-response/Fees9Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedFunds5Response from '/snippets/p-response/DebitedFunds5Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorId3Response from '/snippets/p-response/AuthorId3Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Fees6 from '/snippets/p-body/Fees6.mdx';
+import DebitedFunds7 from '/snippets/p-body/DebitedFunds7.mdx';
+import AuthorId3 from '/snippets/p-body/AuthorId3.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+import TransferId from '/snippets/p-path/TransferId.mdx';
+
+import RestCreateRefundTransfer from '/snippets/code/rest-create-refund-transfer.mdx';
+import PhpCreateRefundTransfer from '/snippets/code/php-create-refund-transfer.mdx';
+import NodeCreateRefundTransfer from '/snippets/code/node-create-refund-transfer.mdx';
+import RubyCreateRefundTransfer from '/snippets/code/ruby-create-refund-transfer.mdx';
+import PythonCreateRefundTransfer from '/snippets/code/python-create-refund-transfer.mdx'; 
+
+You can do a partial refund by providing a debited funds `Amount` value lower than the initial transaction amount. The debited funds amount must be 1 or more, if it is included.  
+
+### Path parameters  
+
+<TransferId />  
+
+### Body parameters  
+
+<Tag />  
+
+<AuthorId3 />  
+
+<DebitedFunds7 />  
+
+<Fees6 />  
+
+### Responses  
+
+<Accordion title="200">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorId3Response />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds5Response />  
+
+<CreditedFunds5Response />  
+
+<Fees9Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<InitialTransactionId1Response />  
+
+<InitialTransactionType1Response />  
+
+<InitialTransactionNature1Response />  
+
+<DebitedWalletIdResponse />  
+
+<CreditedWalletIdResponse />  
+
+<RefundReasonResponse />
+
+</Accordion><Accordion title="400 - Incorrect AuthorId">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "7daa662f-0fe0-4ddf-8865-450fe0217798",
+    "Date": 1690287917.0,
+    "errors": {
+        "AuthorId": "Author of the refund is not the author of the initial transfer"
+    }
+}  
+ ``` 
+</Accordion> 
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id":"155586343",
+    "Tag":"custom meta",
+    "CreationDate":1667916816,
+    "AuthorId":"146476890",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":1100
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":1120
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":-20
+    },
+    "Status":"SUCCEEDED",
+    "ResultCode":"000000",
+    "ResultMessage":"Success",
+    "ExecutionDate":1667916816,
+    "Type":"TRANSFER",
+    "Nature":"REFUND",
+    "InitialTransactionId":"155585643",
+    "InitialTransactionType":"TRANSFER",
+    "InitialTransactionNature":"REGULAR",
+    "DebitedWalletId":"152161320",
+    "CreditedWalletId":"148968396",
+    "RefundReason":{
+        "RefundReasonMessage":null,
+        "RefundReasonType":"OTHER"
+    }
+}  
+ ```  
+
+ 
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateRefundTransfer />
+    <PhpCreateRefundTransfer />
+    <NodeCreateRefundTransfer />
+    <RubyCreateRefundTransfer />
+    <PythonCreateRefundTransfer />
+</RequestExample>

@@ -1,0 +1,94 @@
+---
+title: Overview
+sidebarTitle: Overview
+'og:title': '7-day card preauthorization - Mangopay docs'
+"og:description": "Find out about Mangopay’s preauthorization features to reserve funds on a card to be captured later, with 7-day or 30-day options."
+---
+
+import Issuer from "/snippets/glossary/issuer.mdx";
+
+## Introduction
+
+**Availability:** 
+- `CB_VISA_MASTERCARD` – Partial and multple captures
+- `AMEX` – Single capture only (partial but not multiple)
+- `MAESTRO` – Full capture only (not partial or multiple)
+
+### What is a preauthorization?
+
+The preauthorization feature allows you to reserve funds on a card so they can be captured later. It’s a two-step process:
+
+-   Preauthorize the funds to hold them for a defined period
+-   Make the capture of the funds before the end of the hold period
+
+Alternatively, you can cancel the preauthorization manually or let it reach its expiration date, at which point it is canceled automatically.
+
+At Mangopay, two separate preauthorization holds are available:
+
+-   7 days (which also supports multiple captures)
+-   30 days
+
+### When is preauthorization useful?
+
+Preauthorization is the perfect process to manage delayed payments while making sure the funds will still be available at the end of the hold period.
+
+It’s a great tool for platforms to seamlessly handle a lot of uses cases, such as:
+
+-   Platforms can wait until the service is provided or the order sent to charge the customer.
+-   Renters can secure a deposit for the duration of the rental.
+
+### Important notes
+
+#### End users charged prior to capture in some countries
+
+In **Italy**, **Greece**, and **Spain**, the secured funds are directly debited from the end user’s bank account and held by their bank until they are captured or released.
+
+This behavior is specific to some banks (of which an exhaustive list is not available). We strongly recommend you communicate this information clearly with your end users or avoid using the preauthorization feature for large amounts in these countries.
+
+#### Partial captures not possible with Maestro
+
+With the Maestro card, you cannot make a capture for less than the preauthorized amount.
+
+#### Amount limits for some issuers
+
+Some card <Issuer content="issuers" /> have different limits for preauthorizations as compared to other payments - some users may even need to contact their bank prior to preauthorizing very large amounts.
+
+## 7-day preauthorization
+
+Mangopay’s 7-day preauthorization works as follows:
+
+-   Secure the funds with the Create a Preauthorization endpoint
+-   Capture the funds (partially or all at once) with the Card Preauthorized PayIn
+
+<a href="/guides/payment-methods/card/preauthorization/how-to" target="_blank">How to process a 7-day preauthorization &rarr;</a>
+
+### Multiple partial captures
+
+The multi-capture functionality allows you to make several partial captures of preauthorized funds.
+
+<Note>
+    **Note** Multi-capture is only possible with CB, Visa, and Mastercard
+    payment methods.
+</Note>
+
+Let’s take the example of a marketplace where buyers tend to have articles from multiple vendors in their baskets.
+
+-   Customers will make one single payment for all these articles (preauthorization)
+-   However, from the platform standpoint, you will make one partial capture (preauthorized pay-in) per vendor when the order is validated or shipped. If the order is not fulfilled, the remaining funds can be released.
+
+Transferring the funds to the right seller and handling potential refunds becomes a lot easier this way.
+
+<Warning>
+    **Caution - Idempotency key required for multi-capture** Unless accompanied
+    by an idempotency key, two pay-ins are considered as duplicate if they are
+    made: Within 24 hours For the same amount and currency With the same
+    `CardId`
+</Warning>
+
+## Related resources  
+
+<CardGroup col={2}> 
+    <Card title="How to" href="/guides/payment-methods/card/preauthorization/how-to">Learn how to process a 7-day card preauthorization</Card>
+
+    <Card title="Endpoint" href="/api-reference/preauthorizations/preauthorization-object">The Preauthorization object</Card>  
+</CardGroup>

@@ -1,0 +1,97 @@
+---
+title: 'Create a KYC Document Page'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/kyc/documents/{KycDocumentId}/pages'  
+---
+
+import File from '/snippets/p-body/File.mdx';
+import KycDocumentId from '/snippets/p-path/KycDocumentId.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import RestCreateKycPage from '/snippets/code/rest-create-kyc-page.mdx';
+import PhpCreateKycPage from '/snippets/code/php-create-kyc-page.mdx';
+import NodeCreateKycPage from '/snippets/code/node-create-kyc-page.mdx';
+import RubyCreateKycPage from '/snippets/code/ruby-create-kyc-page.mdx';
+import PythonCreateKycPage from '/snippets/code/python-create-kyc-page.mdx';
+
+[Read more about the KYC Document object →](/api-reference/kyc-documents/kyc-document-object)
+
+The KYC Document Page is a file attached to the KYC Document for Mangopay's teams to review.  
+
+To be able to create a KYC Document Page:  
+- The corresponding KYC Document `Status` must be `CREATED`  
+- The `File` must be Base64 encoded and abide by the format and size constraints.  
+
+Only 5 KYC Document Pages can be created for a KYC Document.  
+
+### Path parameters  
+
+<UserId />  
+
+<KycDocumentId />  
+
+### Body parameters  
+
+<File />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="204 - No content (upload successful)">
+_No response body parameters_
+</Accordion>
+
+</AccordionGroup>  
+<AccordionGroup>  
+
+    <Accordion title="400 - Base64 file invalid length">
+    ```json
+    {
+        "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+        "Type": "param_error",
+        "Id": "ddcfad41-cd82-432d-91c2-f6486fd40334#1671865352",
+        "Date": 1671865353.0,
+        "errors": {
+            "File": "Invalid length for a Base-64 char array or string."
+        }
+    }  
+    ```  
+    </Accordion>
+    <Accordion title="400 - Maximum of 5 files (KYC document pages) per KYC document">
+    ```json 
+    {
+        "Message": "Maximum number of pages exceeded. You can only add up to 5 pages to this document",
+        "Type": "max_page_number",
+        "Id": "7a69563a-c528-4428-91f5-d63cbf5855a4",
+        "Date": 1697101828.0,
+        "errors": null
+    }  
+    ```
+    </Accordion>
+    <Accordion title="400 - File size too small">
+    ```json 
+    {
+        "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+        "Type": "param_error",
+        "Id": "716c09fa-6a3b-41ad-87b9-dd8781394192",
+        "Date": 1715773848,
+        "errors": {
+            "File": "The file is too small to be readable"
+        }
+    }
+    ```
+    </Accordion>
+
+</AccordionGroup>  
+
+{/* <ResponseExample></ResponseExample>   */}
+
+<RequestExample>  
+  
+    <RestCreateKycPage />
+    <PhpCreateKycPage />
+    <NodeCreateKycPage />
+    <RubyCreateKycPage />
+    <PythonCreateKycPage />
+
+</RequestExample>

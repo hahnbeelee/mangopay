@@ -1,0 +1,190 @@
+---
+title: 'Create an IBAN Banking Alias'  
+api: 'POST /v2.01/{ClientId}/wallets/{WalletId}/bankingaliases/iban'  
+---
+
+import LocalAccountDetailsResponse from '/snippets/p-response/LocalAccountDetailsResponse.mdx';
+import WalletId1Response from '/snippets/p-response/WalletId1Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type10Response from '/snippets/p-response/Type10Response.mdx';
+import Active1Response from '/snippets/p-response/Active1Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import Country5Response from '/snippets/p-response/Country5Response.mdx';
+import CreditedUserId3Response from '/snippets/p-response/CreditedUserId3Response.mdx';
+import BIC2Response from '/snippets/p-response/BIC2Response.mdx';
+import IBAN2Response from '/snippets/p-response/IBAN2Response.mdx';
+import OwnerName1Response from '/snippets/p-response/OwnerName1Response.mdx';
+import Tag3 from '/snippets/p-body/Tag3.mdx';
+import Country4 from '/snippets/p-body/Country4.mdx';
+import OwnerName1 from '/snippets/p-body/OwnerName1.mdx';
+import WalletId from '/snippets/p-path/WalletId.mdx';
+
+import RestCreateIbanBankingAlias from '/snippets/code/rest-create-iban-banking-alias.mdx';
+import PhpCreateBankingAlias from '/snippets/code/php-create-banking-alias.mdx';
+import NodeCreateIbanBankingAlias from '/snippets/code/node-create-iban-banking-alias.mdx';
+import RubyCreateIbanBankingAlias from '/snippets/code/ruby-create-iban-banking-alias.mdx';
+import JavaCreateIbanBankingAlias from '/snippets/code/java-create-iban-banking-alias.mdx';
+import PythonCreateIbanBankingAlias from '/snippets/code/python-create-iban-banking-alias.mdx';
+
+### Path parameters  
+
+<WalletId />  
+
+### Body parameters  
+
+<OwnerName1 />  
+
+<Country4 />  
+
+<Tag3 />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200 - FR">  
+
+<OwnerName1Response />  
+
+<IBAN2Response />  
+
+<BIC2Response />  
+
+<CreditedUserId3Response />  
+
+<Country5Response />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<Active1Response />  
+
+<Type10Response />  
+
+<IdResponse />  
+
+<WalletId1Response />
+
+</Accordion>
+
+<Accordion title="200 - GB">  
+
+<OwnerName1Response />  
+
+<IBAN2Response />  
+
+<BIC2Response />
+
+<LocalAccountDetailsResponse />
+
+<CreditedUserId3Response />  
+
+<Country5Response />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<Active1Response />  
+
+<Type10Response />  
+
+<IdResponse />  
+
+<WalletId1Response />
+
+</Accordion>
+
+</AccordionGroup>  
+
+<AccordionGroup>  
+
+<Accordion title="400 - Country not supported">
+```json 
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "fd020620-8e5c-4b64-925c-aa980e42c237#1670340996",
+    "Date": 1670340997.0,
+    "errors": {
+        "Country": "The requested country is not supported"
+    }
+}
+ ```  
+</Accordion>
+
+<Accordion title="400 - Wallet already has a Banking Alias">
+```json 
+{
+    "Message": "There is already a wallet banking alias existing for this criteria",
+    "Type": "wallet_banking_alias_already_exists",
+    "Id": "7227ab60-2c18-42db-be46-e9169aaeb64a",
+    "Date": 1689155544.0,
+    "errors": null
+}  
+ ```  
+ </Accordion>
+
+</AccordionGroup>  
+
+<AccordionGroup>
+<Accordion title="403 - Feature not activated">
+```json
+{
+    "Message": "This endpoint is not available for your account",
+    "Type": "forbidden_ressource",
+    "Id": "441d156a-ebd1-421e-851b-460a25c6a53f#1670262779",
+    "Date": 1670262780.0,
+    "errors": null
+}  
+ ``` 
+</Accordion>
+</AccordionGroup>
+
+<ResponseExample>  
+```json 200 - FR 
+{
+    "OwnerName": "Alex Smith",
+    "IBAN": "FR7674521100005657670994474",
+    "BIC": "MPAYFRP1PIN",
+    "CreditedUserId": "user_m_01HSB23417BFG7YXR7E371JSEA",
+    "Country": "FR",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1710846581,
+    "Active": true,
+    "Type": "IBAN",
+    "Id": "wltbank_m_01HSB6E769Y3ZBYDJACSP3THGA",
+    "WalletId": "wlt_m_01HSB6DE1YT1EMTH0K7ASYPG96"
+}
+```   
+```json 200 - GB
+{
+    "OwnerName": "Alex Smith",
+    "IBAN": "GB31SAPY60838220867460",
+    "BIC": null,
+    "LocalAccountDetails": {
+        "SortCode": "608382",
+        "AccountNumber": "20867460"
+    },
+    "CreditedUserId": "user_m_01HSB23417BFG7YXR7E371JSEA",
+    "Country": "GB",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1710846887,
+    "Active": true,
+    "Type": "IBAN",
+    "Id": "wltbank_m_01HSB6QHHC7GCY43EDX5EBSJCT",
+    "WalletId": "wlt_m_01HSB4RBCEN0T7ER16A8BKBSH8"
+}
+```
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateIbanBankingAlias />
+    <PhpCreateBankingAlias />
+    <NodeCreateIbanBankingAlias />
+    <RubyCreateIbanBankingAlias />
+    <JavaCreateIbanBankingAlias />
+    <PythonCreateIbanBankingAlias />
+</RequestExample>

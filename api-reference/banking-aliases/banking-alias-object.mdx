@@ -1,0 +1,64 @@
+---
+title: 'The Banking Alias object'
+
+---
+
+import WalletId from '/snippets/object-attributes/WalletId.mdx';
+import Id from '/snippets/object-attributes/Id.mdx';
+import Type8 from '/snippets/object-attributes/Type8.mdx';
+import Active3 from '/snippets/object-attributes/Active3.mdx';
+import CreationDate from '/snippets/object-attributes/CreationDate.mdx';
+import Tag1 from '/snippets/object-attributes/Tag1.mdx';
+import Country8 from '/snippets/object-attributes/Country8.mdx';
+import CreditedUserId2 from '/snippets/object-attributes/CreditedUserId2.mdx';
+import BIC3 from '/snippets/object-attributes/BIC3.mdx';
+import IBAN2 from '/snippets/object-attributes/IBAN2.mdx';
+import OwnerName1 from '/snippets/object-attributes/OwnerName1.mdx';
+import LocalAccountDetails from '/snippets/object-attributes/LocalAccountDetails.mdx';
+  
+### Description
+Mangopay relies on the Banking Alias object to create a virtual IBAN or account number attached to a wallet. Once attached, the IBAN can be used by end users to wire funds directly to the wallet.
+<Note>  
+**Note – Regulated feature** 
+  
+The virtual IBAN feature is regulated and has the following constraints:
+- Activation is required, including in Sandbox (contact our teams <a href="https://hub.mangopay.com/" target="_blank">via the Hub</a>)
+- A contract amendment is needed to specify the BIC to use for your platform
+- Only one banking alias can be created per wallet
+- Fees cannot be taken on pay-ins to banking aliases
+
+</Note>  
+
+### Attributes  
+
+<OwnerName1 />  
+
+<IBAN2 />  
+
+<BIC3 />  
+
+<LocalAccountDetails />  
+
+<CreditedUserId2 />  
+
+<Country8 />  
+
+<Tag1 />  
+
+<CreationDate />  
+
+<Active3 />  
+
+<Type8 />  
+
+<Id />  
+
+<WalletId />
+
+### Related resources
+
+<CardGroup col={2}> 
+    <Card title="Guide" href="/guides/payment-methods/banking/virtual-iban">Learn more about virtual IBAN</Card>
+    
+    <Card title="How to" href="/guides/payment-methods/banking/virtual-iban/how-to">Learn how to attach a virtual IBAN to a wallet</Card>
+</CardGroup>

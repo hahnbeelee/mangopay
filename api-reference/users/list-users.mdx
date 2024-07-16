@@ -1,0 +1,86 @@
+---
+title: 'List all Users'  
+api: 'GET /v2.01/{ClientId}/users'  
+---
+
+import Array_UsersResponse from '/snippets/p-response/Array_UsersResponse.mdx';
+import Sort from '/snippets/p-query/Sort.mdx';
+import per_page from '/snippets/p-query/per_page.mdx';
+import page from '/snippets/p-query/page.mdx';
+  
+import PhpListUsers from '/snippets/code/php-list-users.mdx';
+import NodeListUser from '/snippets/code/node-list-user.mdx';
+import RubyListKycDocuments1 from '/snippets/code/ruby-list-kyc-documents1.mdx';
+import PythonListUsers from '/snippets/code/python-list-users.mdx';
+import JavaListUsers from '/snippets/code/java-list-users.mdx';
+
+This endpoint returns key information for each user created by the platform.  
+
+### Query parameters  
+
+<page />  
+
+<per_page />  
+
+<Sort />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_UsersResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[ 
+   {
+       "Id": "158026537",
+       "Tag": "Created using MANGOPAY API Collection Postman",
+       "CreationDate": 1670863988,
+       "PersonType": "LEGAL",
+       "Email": "richard.moulin@email.com",
+       "KYCLevel": "LIGHT",
+       "TermsAndConditionsAccepted": false,
+       "TermsAndConditionsAcceptedDate": null,
+       "UserCategory": "PAYER",
+       "UserStatus": "ACTIVE"
+   },
+   {
+       "Id": "158025445",
+       "Tag": "Created using MANGOPAY API Collection Postman",
+       "CreationDate": 1670862022,
+       "PersonType": "NATURAL",
+       "Email": "email@test.com",
+       "KYCLevel": "LIGHT",
+       "TermsAndConditionsAccepted": true,
+       "TermsAndConditionsAcceptedDate": 1670862022,
+       "UserCategory": "OWNER",
+       "UserStatus": "ACTIVE"
+   },
+   {
+       "Id": "158026721",
+       "Tag": "Created using MANGOPAY API Collection Postman",
+       "CreationDate": 1670864174,
+       "PersonType": "LEGAL",
+       "Email": "cortney_douglas@yahoo.com",
+       "KYCLevel": "REGULAR",
+       "TermsAndConditionsAccepted": true,
+       "TermsAndConditionsAcceptedDate": 1670864174,
+       "UserCategory": "OWNER",
+       "UserStatus": "ACTIVE"
+   }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListUsers />
+    <NodeListUser />
+    <RubyListKycDocuments1 />
+    <PythonListUsers />
+    <JavaListUsers />
+</RequestExample>

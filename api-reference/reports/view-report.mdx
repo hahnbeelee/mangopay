@@ -1,0 +1,136 @@
+---
+title: 'View a Report'  
+api: 'GET /v2.01/{ClientId}/reports/{ReportId}'  
+---
+
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCode2Response from '/snippets/p-response/ResultCode2Response.mdx';
+import ColumnsResponse from '/snippets/p-response/ColumnsResponse.mdx';
+import FiltersResponse from '/snippets/p-response/FiltersResponse.mdx';
+import PreviewResponse from '/snippets/p-response/PreviewResponse.mdx';
+import SortResponse from '/snippets/p-response/SortResponse.mdx';
+import ReportTypeResponse from '/snippets/p-response/ReportTypeResponse.mdx';
+import CallbackURLResponse from '/snippets/p-response/CallbackURLResponse.mdx';
+import DownloadURLResponse from '/snippets/p-response/DownloadURLResponse.mdx';
+import DownloadFormatResponse from '/snippets/p-response/DownloadFormatResponse.mdx';
+import Status4Response from '/snippets/p-response/Status4Response.mdx';
+import ReportDateResponse from '/snippets/p-response/ReportDateResponse.mdx';
+import Tag3Response from '/snippets/p-response/Tag3Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ReportId from '/snippets/p-path/ReportId.mdx';
+
+import PhpViewReport from '/snippets/code/php-view-report.mdx';
+import NodeViewReport from '/snippets/code/node-view-report.mdx';
+import RubyViewReport from '/snippets/code/ruby-view-report.mdx';
+import ViewReportPython from '/snippets/code/view-report-python.mdx';
+
+
+### Path parameters  
+
+<ReportId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<CreationDateResponse />  
+
+<Tag3Response />  
+
+<ReportDateResponse />  
+
+<Status4Response />  
+
+<DownloadFormatResponse />  
+
+<DownloadURLResponse />  
+
+<CallbackURLResponse />  
+
+<ReportTypeResponse />  
+
+<SortResponse />  
+
+<PreviewResponse />  
+
+<FiltersResponse />  
+
+<ColumnsResponse />  
+
+<ResultCode2Response />  
+
+<ResultMessageResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "146642145",
+    "CreationDate": 1658317704,
+    "Tag": "test doc july 2022",
+    "ReportDate": null,
+    "Status": "PENDING",
+    "DownloadFormat": "CSV",
+    "DownloadURL": null,
+    "CallbackURL": null,
+    "ReportType": "TRANSACTIONS",
+    "Sort": "CreationDate:ASC",
+    "Preview": false,
+    "Filters": {
+        "BeforeDate": 1658317644,
+        "AfterDate": 1655725644,
+        "Type": [],
+        "ResultCode": [],
+        "Status": [],
+        "Nature": [],
+        "WalletId": null,
+        "AuthorId": null,
+        "MinDebitedFundsAmount": null,
+        "MinDebitedFundsCurrency": null,
+        "MaxDebitedFundsAmount": null,
+        "MaxDebitedFundsCurrency": null,
+        "MinFeesAmount": null,
+        "MinFeesCurrency": null,
+        "MaxFeesAmount": null,
+        "MaxFeesCurrency": null
+   },
+    "Columns": [
+        "Id",
+        "Tag",
+        "CreationDate",
+        "ExecutionDate",
+        "AuthorId",
+        "CreditedUserId",
+        "DebitedFundsAmount",
+        "DebitedFundsCurrency",
+        "CreditedFundsAmount",
+        "CreditedFundsCurrency",
+        "FeesAmount",
+        "FeesCurrency",
+        "Status",
+        "ResultCode",
+        "ResultMessage",
+        "Type",
+        "Nature",
+        "CreditedWalletId",
+        "DebitedWalletId"
+    ],
+    "ResultCode": null,
+    "ResultMessage": null
+}
+  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <PhpViewReport />
+  <NodeViewReport />
+  <RubyViewReport />
+  <ViewReportPython />
+</RequestExample>

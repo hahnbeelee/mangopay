@@ -1,0 +1,65 @@
+---
+title: '121012'  
+description: '<small>&#8249; [All error codes](/errors/codes#payouts)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Inapproriate bank account type used</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The payout has been rejected by Mangopay’s team because the bank account is not of the correct type.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error occurs when the bank account of the payout's `BankAccountId` parameter is not of the appropriate type. For example, the bank account has been registered has OTHER when then country uses IBAN.   
+
+#### What to do  
+
+Register the bank account using the correct type as described in the Bank Account object.  
+
+#### Example  
+```json API Response
+{
+    "Id":"91819333",
+    "Tag":"Custom meta",
+    "CreationDate":1583920340,
+    "AuthorId":"852DDD",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":10000
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":10000
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"FAILED",
+    "ResultCode":"121012",
+    "ResultMessage":"Inapproriate bank account type used",
+    "ExecutionDate":null,
+    "Type":"PAYOUT",
+    "Nature":"REGULAR",
+    "CreditedWalletId":null,
+    "DebitedWalletId":"8521333411",
+    "PaymentType":"BANK_WIRE",
+    "BankAccountId":"91813335",
+    "BankWireRef":"Ref"
+}
+```

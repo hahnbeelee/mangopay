@@ -1,0 +1,87 @@
+---
+title: 'List Preauthorizations for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/preauthorizations'  
+---
+
+import Array_PreauthorizationsResponse from '/snippets/p-response/Array_PreauthorizationsResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+  
+import PhpListPreauthorizationsUser from '/snippets/code/php-list-preauthorizations-user.mdx';
+import NodeListPreauthorizationUser from '/snippets/code/node-list-preauthorization-user.mdx';
+import RubyListPreauthorizationsUser from '/snippets/code/ruby-list-preauthorizations-user.mdx';
+import PythonListUserPreauthorizations from '/snippets/code/python-list-user-preauthorizations.mdx';
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_PreauthorizationsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+   {
+       "Id": "156686696",
+       "Tag": null,
+       "CreationDate": 1669116896,
+       "AuthorId": "156671912",
+       "DebitedFunds": {
+           "Currency": "EUR",
+           "Amount": 500
+       },
+       "RemainingFunds": {
+           "Currency": "EUR",
+           "Amount": 0
+       },
+       "AuthorizationDate": 1669116904,
+       "Status": "SUCCEEDED",
+       "PaymentStatus": "VALIDATED",
+       "ExpirationDate": 1669678504,
+       "PayInId": "156686722",
+       "ResultCode": "000000",
+       "ResultMessage": "Success",
+       "SecureMode": "FORCE",
+       "CardId": "156674899",
+       "SecureModeReturnURL": null,
+       "SecureModeRedirectURL": null,
+       "SecureModeNeeded": false,
+       "PaymentType": "CARD",
+       "ExecutionType": "DIRECT",
+       "StatementDescriptor": null,
+       "Culture": "EN",
+       "SecurityInfo": null,
+       "MultiCapture": true,
+       "BrowserInfo": null,
+       "IpAddress": null,
+       "Billing": null,
+       "Shipping": null,
+       "Requested3DSVersion": null,
+       "Applied3DSVersion": null,
+       "PreferredCardNetwork": null,
+       "CardInfo": {
+           "BIN": "497010",
+           "IssuingBank": "LA BANQUE POSTALE",
+           "IssuerCountryCode": "MA",
+           "Type": "CREDIT",
+           "Brand": "VISA",
+           "SubType": null
+       }
+   }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListPreauthorizationsUser />
+    <NodeListPreauthorizationUser />
+    <RubyListPreauthorizationsUser />
+    <PythonListUserPreauthorizations />
+</RequestExample>

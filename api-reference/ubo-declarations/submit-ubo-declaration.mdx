@@ -1,0 +1,110 @@
+---
+title: 'Submit a UBO Declaration'  
+api: 'PUT /v2.01/{ClientId}/users/{UserId}/kyc/ubodeclarations/{UboDeclarationId}'  
+---
+
+import UbosResponse from '/snippets/p-response/UbosResponse.mdx';
+import MessageResponse from '/snippets/p-response/MessageResponse.mdx';
+import ReasonResponse from '/snippets/p-response/ReasonResponse.mdx';
+import Status11Response from '/snippets/p-response/Status11Response.mdx';
+import ProcessDateResponse from '/snippets/p-response/ProcessDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Status5 from '/snippets/p-body/Status5.mdx';
+import UboDeclarationId from '/snippets/p-path/UboDeclarationId.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+  
+import RestSubmitUboDeclaration from '/snippets/code/rest-submit-ubo-declaration.mdx';
+import PhpSubmitUboDeclaration from '/snippets/code/php-submit-ubo-declaration.mdx';
+import NodeSubmitUboDeclaration from '/snippets/code/node-submit-ubo-declaration.mdx';
+import RubySubmitUboDeclaration from '/snippets/code/ruby-submit-ubo-declaration.mdx';
+import SubmitUboDeclaractionJava from '/snippets/code/submit-ubo-declaraction-java.mdx';
+import PythonSubmitUboDeclaration from '/snippets/code/python-submit-ubo-declaration.mdx';
+
+[Read more about the UBO Declaration object →](/api-reference/ubo-declarations/ubo-declaration-object)
+
+Submitting a UBO Declaration consists in updating the object `Status` parameter value to `VALIDATION_ASKED`.  
+
+From there, Mangopay Compliance team will validate, indicate as incomplete, or reject the declaration.  
+
+### Path parameters  
+
+<UserId />  
+
+<UboDeclarationId />  
+
+### Body parameters  
+
+<Status5 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<UserId2Response />  
+
+<CreationDateResponse />  
+
+<ProcessDateResponse />  
+
+<Status11Response />  
+
+<ReasonResponse />  
+
+<MessageResponse />  
+
+<UbosResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "158947737",
+    "UserId": "158947634",
+    "CreationDate": 1672153298,
+    "ProcessedDate": null,
+    "Status": "VALIDATION_ASKED",
+    "Reason": null,
+    "Message": null,
+    "Ubos": [
+        {
+            "Id": "158947898",
+            "CreationDate": 1672153693,
+            "LastName": "Wiza",
+            "FirstName": "Jess",
+            "Birthday": 652117514,
+            "Nationality": "FR",
+            "Address": {
+                "AddressLine1": "669 Ratke Forge",
+                "AddressLine2": "Schamberger Walk",
+                "City": "Paris",
+                "Region": "Ile-de-France",
+                "PostalCode": "75001",
+                "Country": "FR"
+            },
+            "Birthplace": {
+                "City": "Paris",
+                "Country": "FR"
+            },
+            "IsActive": true
+        }
+    ]
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <RestSubmitUboDeclaration />
+    <PhpSubmitUboDeclaration />
+    <NodeSubmitUboDeclaration />
+    <RubySubmitUboDeclaration />
+    <SubmitUboDeclaractionJava />
+    <PythonSubmitUboDeclaration />
+  
+</RequestExample>

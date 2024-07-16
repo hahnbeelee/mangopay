@@ -1,0 +1,71 @@
+---
+title: 'View User EMoney'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/emoney/{Year}/{Month}'  
+---
+
+import DebitedEMoneyResponse from '/snippets/p-response/DebitedEMoneyResponse.mdx';
+import CreditedEMoneyResponse from '/snippets/p-response/CreditedEMoneyResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import Currency13 from '/snippets/p-body/Currency13.mdx';
+import Month from '/snippets/p-path/Month.mdx';
+import Year from '/snippets/p-path/Year.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+  
+import PhpViewUserEmoney from '/snippets/code/php-view-user-emoney.mdx';
+import NodeViewUserEmoney from '/snippets/code/node-view-user-emoney.mdx';
+import RubyViewUserEmoney from '/snippets/code/ruby-view-user-emoney.mdx';
+import ViewUserEmoneyJava from '/snippets/code/view-user-emoney-java.mdx';
+import PythonViewUserEmoney from '/snippets/code/python-view-user-emoney.mdx';
+
+The path parameters `Month` and `Year` are optional. If not given, this call returns all the credited and debited e-money since the user was created.  
+
+### Path parameters  
+
+<UserId />  
+
+<Year />  
+
+<Month />  
+
+### Body parameters  
+
+<Currency13 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<UserId2Response />  
+
+<CreditedEMoneyResponse />  
+
+<DebitedEMoneyResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "UserId": "156671912",
+    "CreditedEMoney": {
+        "Currency": "EUR",
+        "Amount": 2900
+    },
+    "DebitedEMoney": {
+        "Currency": "EUR",
+        "Amount": 1000
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+ 
+    <PhpViewUserEmoney />
+    <NodeViewUserEmoney />
+    <RubyViewUserEmoney />
+    <ViewUserEmoneyJava />
+    <PythonViewUserEmoney />
+  
+</RequestExample>

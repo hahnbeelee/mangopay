@@ -1,0 +1,79 @@
+---
+title: 'Satispay'  
+'og:description': 'How users can pay with the Satispay mobile app, a popular payment method in Italy.'  
+---
+
+## About
+
+Satispay is a popular payment method in Italy which allows users to pay online using their mobile phone.  
+
+<table>
+    <tbody>
+        <tr>
+            <th class="header">Region</th>
+            <td class="table-content">
+                Italy
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Currencies</th>
+            <td class="table-content">
+                EUR
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Refunds](/guides/refunds)</th>
+            <td class="table-content">
+                Yes
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Disputes</th>
+            <td class="table-content">
+                Users authenticate directly with their bank, so there is no dispute process and a low risk of unrecognized or fraudulent payments
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Preauthorization</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Recurring payments</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+## User prerequisites
+
+To use this payment method, users must:  
+- Download the Satispay app and sign up, thereby registering their phone number  
+- Connect their bank account in the app  
+
+## How it works  
+- On your app or website, the user selects Satispay as the payment method during checkout  
+- The user is redirected to the `RedirectURL`  
+- The user scans a QR code or enters their phone number  
+- The QR code or a push notification prompts the user to open the Satispay app and authenticate themselves  
+- The user validates the amount to pay  
+- The user is returned to your app or website on the `ReturnURL`  
+
+### Outcome
+
+The transaction is complete when the pay-in status changed from `CREATED` to `SUCCEEDED` or `FAILED`, indicating the outcome.  
+
+You should also set up [hook notifications](/webhooks) for the relevant [event types](/webhooks/event-types):
+-   PAYIN_NORMAL_SUCCEEDED
+-   PAYIN_NORMAL_FAILED 
+
+## Related resources  
+
+<CardGroup col={2}> 
+    <Card title="Endpoint" href="/api-reference/satispay/satispay-payin-object">The Satispay PayIn object</Card>  
+
+    <Card title="Testing" href="/testing/payment-methods#satispay">Learn about testing Satispay</Card>
+</CardGroup>

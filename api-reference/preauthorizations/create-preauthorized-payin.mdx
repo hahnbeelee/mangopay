@@ -1,0 +1,245 @@
+---
+title: 'Create a Preauthorized PayIn'  
+api: 'POST /v2.01/{ClientId}/payins/preauthorized/direct'  
+---
+
+import DebitedWalletIdResponse from '/snippets/p-response/DebitedWalletIdResponse.mdx';
+import PreauthorizationIdResponse from '/snippets/p-response/PreauthorizationIdResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees12Response from '/snippets/p-response/Fees12Response.mdx';
+import CreditedFunds9Response from '/snippets/p-response/CreditedFunds9Response.mdx';
+import DebitedFunds11Response from '/snippets/p-response/DebitedFunds11Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import PreauthorizationId from '/snippets/p-body/PreauthorizationId.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import Fees9 from '/snippets/p-body/Fees9.mdx';
+import DebitedFunds9 from '/snippets/p-body/DebitedFunds9.mdx';
+import CreditedUserId from '/snippets/p-body/CreditedUserId.mdx';
+import AuthorId2 from '/snippets/p-body/AuthorId2.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+
+import RestCreatePreauthorizedPayin from '/snippets/code/rest-create-preauthorized-payin.mdx';
+import NodeCreatePreauthorizedPayin from '/snippets/code/node-create-preauthorized-payin.mdx';
+import RubyCreatePreauthorizedPayin from '/snippets/code/ruby-create-preauthorized-payin.mdx';
+import PythonCreatePreauthorizedPayin from '/snippets/code/python-create-preauthorized-payin.mdx';
+
+### Body parameters  
+
+<Tag />  
+
+<AuthorId2 />  
+
+<CreditedUserId />  
+
+<DebitedFunds9 />  
+
+<Fees9 />  
+
+<CreditedWalletId />  
+
+<PreauthorizationId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Successful capture">  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds11Response />  
+
+<CreditedFunds9Response />  
+
+<Fees12Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<PreauthorizationIdResponse /></Accordion><Accordion title="200 - Failed: Amount greater than remaining funds">  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds11Response />  
+
+<CreditedFunds9Response />  
+
+<Fees12Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletIdResponse />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<PreauthorizationIdResponse />
+
+</Accordion>
+</AccordionGroup>  
+
+<AccordionGroup>  
+
+<Accordion title="400 - Failed: Preauthorization Status must be SUCCEEDED">
+```json
+{
+   "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+   "Type": "param_error",
+   "Id": "b6a5ae0d-7dc9-479a-86bd-55b0d40dccec#1669116785",
+   "Date": 1669116786,
+   "errors": {
+       "Status": "The PreAuthorization Status value has to be up to SUCCEEDED"
+   }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - Failed: Preauthorization PaymentStatus must be WAITING">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "2a6b5503-551b-4a66-a7f4-3ae4d6efc91f",
+    "Date": 1716385561.0,
+    "errors": {
+        "PaymentStatus": "The PreAuthorization PaymentStatus value has to be WAITING"
+    }
+}
+ ```  
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Successful capture  
+{
+    "Id": "payin_m_01HYG8DRT5FHT1FV44MV9KR1BS",
+    "Tag": null,
+    "CreationDate": 1716385145,
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "AuthorId": "user_m_01HSDQD2RPPQ8NMM36EDGYBMEY",
+    "CreditedUserId": "204068024",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 2000
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1800
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 200
+    },
+    "Status": "SUCCEEDED",
+    "ExecutionDate": 1716385146,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "204089031",
+    "DebitedWalletId": null,
+    "PaymentType": "PREAUTHORIZED",
+    "ExecutionType": "DIRECT",
+    "PreauthorizationId": "preauth_m_01HYG88W1QWJNNBGJJG0KQGX42"
+}
+ ```  
+
+```json 200 - Failed: Amount greater than remaining funds  
+{
+   "Id": "5ca9a5a3-8db0-4184-9322-acf521a4e210",
+   "Tag": "capture attempt",
+   "CreationDate": 1669115134,
+   "ResultCode": "001505",
+   "ResultMessage": "The PayIn DebitedFunds can't be higher than the PreAuthorization remaining amount",
+   "AuthorId": "user_m_01HQK25M6KVHKDV0S36JY9NRKR",
+   "CreditedUserId": "user_m_01HQK25M6KVHKDV0S36JY9NRKR",
+   "DebitedFunds": {
+       "Currency": "EUR",
+       "Amount": 700
+   },
+   "CreditedFunds": {
+       "Currency": "EUR",
+       "Amount": 700
+   },
+   "Fees": {
+       "Currency": "EUR",
+       "Amount": 0
+   },
+   "Status": "FAILED",
+   "ExecutionDate": null,
+   "Type": "PAYIN",
+   "Nature": "REGULAR",
+   "CreditedWalletId": "wlt_m_01HT2J9Q2M6GMFW4Z7GYBAFJ4T",
+   "DebitedWalletId": null,
+   "PaymentType": "PREAUTHORIZED",
+   "ExecutionType": "DIRECT",
+   "PreauthorizationId": "preauth_m_01HYG88W1QWJNNBGJJG0KQGX42"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreatePreauthorizedPayin />
+    <NodeCreatePreauthorizedPayin />
+    <RubyCreatePreauthorizedPayin />
+    <PythonCreatePreauthorizedPayin />
+</RequestExample>

@@ -1,0 +1,95 @@
+---
+title: 'Deactivate a Bank Account'  
+api: 'PUT /v2.01/{ClientId}/users/{UserId}/bankaccounts/{BankAccountId}'  
+---
+
+import ActiveResponse from '/snippets/p-response/ActiveResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag4Response from '/snippets/p-response/Tag4Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type5Response from '/snippets/p-response/Type5Response.mdx';
+import OwnerNameResponse from '/snippets/p-response/OwnerNameResponse.mdx';
+import UserId1Response from '/snippets/p-response/UserId1Response.mdx';
+import BICResponse from '/snippets/p-response/BICResponse.mdx';
+import IBANResponse from '/snippets/p-response/IBANResponse.mdx';
+import OwnerAddressResponse from '/snippets/p-response/OwnerAddressResponse.mdx';
+import Active from '/snippets/p-body/Active.mdx';
+import BankAccountId from '/snippets/p-path/BankAccountId.mdx';
+import UserId1 from '/snippets/p-path/UserId1.mdx';
+  
+import RestDeactivateBankAccount from '/snippets/code/rest-deactivate-bank-account.mdx';
+import NodeDeactivateBankAccount from '/snippets/code/node-deactivate-bank-account.mdx';
+import RubyDeactivateBankAccount from '/snippets/code/ruby-deactivate-bank-account.mdx';
+import JavaDeactivateBankAccount from '/snippets/code/java-deactivate-bank-account.mdx';
+import PythonDeactivateBankAccount from '/snippets/code/python-deactivate-bank-account.mdx';
+
+### Path parameters  
+
+<UserId1 />  
+
+<BankAccountId />  
+
+### Body parameters  
+
+<Active />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - IBAN-type Bank Account example">  
+
+<OwnerAddressResponse />  
+
+<IBANResponse />  
+
+<BICResponse />  
+
+<UserId1Response />  
+
+<OwnerNameResponse />  
+
+<Type5Response />  
+
+<IdResponse />  
+
+<Tag4Response />  
+
+<CreationDateResponse />  
+
+<ActiveResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - IBAN-type Bank Account example  
+
+{
+    "OwnerAddress":{
+        "AddressLine1":"The Oasis",
+        "AddressLine2":"Rue des plantes",
+        "City":"Paris",
+        "Region":"Ile de France",
+        "PostalCode":"75010",
+        "Country":"FR"
+    },
+    "IBAN":"FR7630004000031234567890143",
+    "BIC":"CRLYFRPP",
+    "UserId":"142036728",
+    "OwnerName":"John Doe",
+    "Type":"IBAN",
+    "Id":"142036878",
+    "Tag":"Custom meta",
+    "CreationDate":1654073079,
+    "Active":false
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+  <RestDeactivateBankAccount />
+  <NodeDeactivateBankAccount />
+  <RubyDeactivateBankAccount />
+  <JavaDeactivateBankAccount />
+  <PythonDeactivateBankAccount />
+  
+</RequestExample>

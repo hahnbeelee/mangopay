@@ -1,0 +1,81 @@
+---
+title: '009101'  
+description: '<small>&#8249; [All error codes](/errors/codes#pay-ins)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">PSP timeout please try later</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">PSP timeout please try later.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Pay-in</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Example  
+```json API Response
+{
+    "Id":"333781255",
+    "Tag":"Custom meta",
+    "CreationDate":1677833965,
+    "AuthorId":"333395534",
+    "CreditedUserId":"333355434",
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":3600
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":3000
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":600
+    },
+    "Status":"FAILED",
+    "ResultCode":"009101",
+    "ResultMessage":"PSP timeout please try later",
+    "ExecutionDate":null,
+    "Type":"PAYIN",
+    "Nature":"REGULAR",
+    "CreditedWalletId":"3333955441",
+    "DebitedWalletId":null,
+    "PaymentType":"CARD",
+    "ExecutionType":"DIRECT",
+    "SecureMode":"DEFAULT",
+    "CardId":"3554009403",
+    "SecureModeReturnURL":null,
+    "SecureModeRedirectURL":null,
+    "SecureModeNeeded":false,
+    "Culture":"EN",
+    "SecurityInfo":{
+        "AVSResult":"NO_CHECK"
+    },
+    "StatementDescriptor":"Yoojo",
+    "BrowserInfo":{
+        "AcceptHeader":"application/json, text/plain, */*",
+        "JavaEnabled":true,
+        "Language":"fr",
+        "ColorDepth":24,
+        "ScreenHeight":844,
+        "ScreenWidth":390,
+        "TimeZoneOffset":-60,
+        "UserAgent":"AutoChrome",
+        "JavascriptEnabled":true
+    },
+    "IpAddress":"92.184.97.254",
+    "Requested3DSVersion":"V2_1",
+    "Applied3DSVersion":null,
+    "RecurringPayinRegistrationId":null
+}
+```

@@ -1,0 +1,296 @@
+---
+title: 'Create a Klarna PayIn'  
+api: 'POST /v2.01/{ClientId}/payins/payment-methods/klarna'  
+---
+
+import ReferenceResponse from '/snippets/p-response/ReferenceResponse.mdx';
+import AdditionalDataResponse from '/snippets/p-response/AdditionalDataResponse.mdx';
+import PhoneResponse from '/snippets/p-response/PhoneResponse.mdx';
+import EmailResponse from '/snippets/p-response/EmailResponse.mdx';
+import CultureResponse from '/snippets/p-response/CultureResponse.mdx';
+import CountryResponse from '/snippets/p-response/CountryResponse.mdx';
+import LineItemsResponse from '/snippets/p-response/LineItemsResponse.mdx';
+import ShippingResponse from '/snippets/p-response/ShippingResponse.mdx';
+import BillingResponse from '/snippets/p-response/BillingResponse.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import RedirectURLResponse from '/snippets/p-response/RedirectURLResponse.mdx';
+import ReturnURLResponse from '/snippets/p-response/ReturnURLResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentTypeResponse from '/snippets/p-response/PaymentTypeResponse.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import FeesResponse from '/snippets/p-response/FeesResponse.mdx';
+import CreditedFunds1Response from '/snippets/p-response/CreditedFunds1Response.mdx';
+import DebitedFunds1Response from '/snippets/p-response/DebitedFunds1Response.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ProfilingAttemptReference from '/snippets/p-body/ProfilingAttemptReference.mdx';
+import Reference from '/snippets/p-body/Reference.mdx';
+import AdditionalData from '/snippets/p-body/AdditionalData.mdx';
+import Phone from '/snippets/p-body/Phone.mdx';
+import Email from '/snippets/p-body/Email.mdx';
+import Culture from '/snippets/p-body/Culture.mdx';
+import Country from '/snippets/p-body/Country.mdx';
+import LineItems from '/snippets/p-body/LineItems.mdx';
+import Shipping from '/snippets/p-body/Shipping.mdx';
+import Billing_KlarnaBilling from '/snippets/p-body/Billing_KlarnaBilling.mdx';
+import StatementDescriptor from '/snippets/p-body/StatementDescriptor.mdx';
+import ReturnURL from '/snippets/p-body/ReturnURL.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import Fees from '/snippets/p-body/Fees.mdx';
+import DebitedFunds1 from '/snippets/p-body/DebitedFunds1.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+
+import CreateKlarnaPayinRest from '/snippets/code/create-klarna-payin-rest.mdx';
+import CreateKlarnaPayinPhp from '/snippets/code/create-klarna-payin-php.mdx';
+import CreateKlarnaPayinNode from '/snippets/code/create-klarna-payin-node.mdx';
+import CreateKlarnaPayinRuby from '/snippets/code/create-klarna-payin-ruby.mdx';
+import CreateKlarnaPayinJava from '/snippets/code/create-klarna-payin-java.mdx';
+import CreateKlarnaPayinPython from '/snippets/code/create-klarna-payin-python.mdx';
+import CreateKlarnaPayinNet from '/snippets/code/create-klarna-payin-net.mdx';
+
+<Note>  
+**Note – Timeout after 48 hours** 
+  
+The Klarna payment session lasts 48 hours, at which point the pay-in fails automatically if no action has been taken by the user.  
+</Note>  
+
+<Note>  
+**Note – Minimum amount in Production** 
+  
+In Production, the minimum accepted `DebitedFunds` amount for Klarna is `1` (regardless of currency).  
+</Note>  
+
+### Body parameters  
+
+<Tag />  
+
+<AuthorId />  
+
+<DebitedFunds1 />  
+
+<Fees />  
+
+<CreditedWalletId />  
+
+<ReturnURL />  
+
+<StatementDescriptor />  
+
+<Billing_KlarnaBilling />  
+
+<Shipping />  
+
+<LineItems />  
+
+<Country />  
+
+<Culture />  
+
+<Email />  
+
+<Phone />  
+
+<AdditionalData />  
+
+<Reference />  
+
+<ProfilingAttemptReference />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Created">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<DebitedFunds1Response />  
+
+<CreditedFunds1Response />  
+
+<FeesResponse />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<PaymentTypeResponse />  
+
+<ExecutionTypeResponse />  
+
+<ReturnURLResponse />  
+
+<RedirectURLResponse />  
+
+<StatementDescriptorResponse />  
+
+<BillingResponse />  
+
+<ShippingResponse />  
+
+<LineItemsResponse />  
+
+<CountryResponse />  
+
+<CultureResponse />  
+
+<EmailResponse />  
+
+<PhoneResponse />  
+
+<AdditionalDataResponse />  
+
+<ReferenceResponse /></Accordion>
+</AccordionGroup> 
+
+<AccordionGroup>  
+
+<Accordion title="400 - Billing address country doesn't match Country">
+```json  
+{
+    "message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "id": "5c1bd99e-3af9-4ac2-997a-daec27b8a255",
+    "date": 1710162995,
+    "type": "param_error",
+    "errors": {
+        "billing.Country": "The field should equal Country"
+    }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - AdditionalData JSON format error">
+```json
+{
+    "message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "id": "34554ec3-e46e-49f2-b29c-12db3e7e1c90",
+    "date": 1706798154,
+    "type": "param_error",
+    "errors": {
+        "additionalData": "The value is not a valid JSON format"
+    }
+}  
+ ```  
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Created
+{
+    "Id": "wt_5a175522-04c3-4115-88ef-3b1b3446c4c6",
+    "Tag": "Created using the Mangopay API Postman collection",
+    "CreationDate": 1706797249,
+    "AuthorId": "213407540",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1500
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1200
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 300
+    },
+    "Status": "CREATED",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "ExecutionDate": null,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "213407543",
+    "CreditedUserId": "213407540",
+    "PaymentType": "KLARNA",
+    "ExecutionType": "WEB",
+    "ReturnURL": "http://www.mangopay.com/docs/please-ignore?transactionId=wt_5a175522-04c3-4115-88ef-3b1b3446c4c6",
+    "RedirectURL": "https://pay.playground.klarna.com/eu/hpp/payments/2fuacUE",
+    "StatementDescriptor": "Mangopay",
+    "Billing": {
+        "FirstName": "Alex",
+        "LastName": "Smith",
+        "Address": {
+            "AddressLine1": "6 rue de la Cité",
+            "AddressLine2": "Appartement 3",
+            "City": "Paris",
+            "Region": "île-de-france",
+            "PostalCode": "75003",
+            "Country": "FR"
+        }
+    },
+    "Shipping": {
+        "FirstName": "Alex",
+        "LastName": "Smith",
+        "Address": {
+            "AddressLine1": "Rue de la Fourche 26",
+            "AddressLine2": "Appartement 3",
+            "City": "Bruxelles",
+            "Region": "Bruxelles-Capitale",
+            "PostalCode": "75003",
+            "Country": "BE"
+        }
+    },
+    "LineItems": [
+        {
+            "Name": "Running shoes",
+            "Quantity": 2,
+            "UnitAmount": 400,
+            "TaxAmount": 100,
+            "Description": "ID of Seller 1"
+        },
+        {
+            "Name": "Walking shoes",
+            "Quantity": 1,
+            "UnitAmount": 400,
+            "TaxAmount": 100,
+            "Description": "ID of Seller 2"
+        }
+    ],
+    "Country": "FR",
+    "Culture": "FR",
+    "Email": "alex.smith@example.com",
+    "Phone": "[+33][689854321]",
+    "AdditionalData": "{\"customer_account_info\": [{\"unique_account_identifier\": \"382f5a69-c51c-45af-9707-6991eb08f7bf\",\"app_id\": \"81363501-3540-494a-8627-33bc6112035d\",\"loyalty_level\": \"high\",\"customer_email\": \"customer@email.com\",\"customer_phone\": \"0611223344\",\"customer_ranking\": 2,\"customer_reviews\": 5,\"last_login_time\": \"2023-10-21T19:11:34Z\",\"account_security\": {\"last_verification_method\": \"2FA TOTP\",\"last_verification_time\": \"2023-10-21T19:11:34Z\",\"device_id\": \"772af5a5-2d55-4a5e-bb79-85969f683810\",\"fraud_behavior\": false,\"devices_linked\": 2,\"phone_verified\": true,\"email_verified\": true,\"failed_transactions_attempts\": 0},\"account_registration_date\": \"2020-06-10T12:02:21Z\",\"account_last_modified\": \"2022-12-22T18:45:44Z\"}],\"marketplace_seller_info\": [{\"sub_merchant_id\": \"615a0e87-4941-45dc-978d-e6efcbd90ba0\",\"sub_merchant_name\": \"Marketbrick Ltd.\",\"sub_merchant_postal_code\": \"75010\",\"product_category\": \"Computers\",\"product_name\": \"Asus Zenbook 14\",\"account_registration_date\": \"2020-06-10T12:02:21Z\",\"account_last_modified\": {\"password\": \"2020-06-10T12:02:21Z\",\"email\": \"2020-06-10T12:02:21Z\",\"listing\": \"2020-06-10T12:02:21Z\",\"login\": \"2020-06-10T12:02:21Z\",\"address\": \"2020-06-10T12:02:21Z\"},\"digital_download\": false,\"seller_rating\": 4.5,\"number_of_trades\": 34,\"volume_of_trades\": 4500}],\"payment_history_full\": [{\"unique_account_identifier\": \"382f5a69-c51c-45af-9707-6991eb08f7bf\",\"number_paid_purchases\": 10,\"payment_option\": \"card\",\"total_amount_paid_purchases\": 1000.10,\"date_of_first_paid_purchase\": \"2020-06-10T12:12:34Z\",\"date_of_last_paid_purchase\": \"2023-10-26T18:52:38Z\"},{\"unique_account_identifier\": \"382f5a69-c51c-45af-9707-6991eb08f7bf\",\"number_paid_purchases\": 14,\"payment_option\": \"non klarna credit\",\"total_amount_paid_purchases\": 2322.10,\"date_of_first_paid_purchase\": \"2021-10-11T20:31:15Z\",\"date_of_last_paid_purchase\": \"2023-09-22T14:59:22Z\"}],\"marketplace_winner_info\": [{\"account_registration_date\": \"2020-06-10T12:02:21Z\",\"account_last_modified\": {\"password\": \"2022-12-22T18:45:44Z\",\"email\": \"2020-06-10T12:02:21Z\",\"listing\": \"2023-08-14T08:23:34Z\",\"login\": \"2020-06-10T12:02:21Z\",\"address\": \"2020-06-10T12:02:21Z\"},\"number_of_trades\": 24,\"volume_of_trades\": 3322}],\"other_delivery_address\": [{\"shipping_method\": \"pick-up point\",\"shipping_type\": \"express\",\"first_name\": \"Test\",\"last_name\": \"Person\",\"street_address\": \"Rue La Fayette\",\"street_number\": \"33\",\"postal_code\": \"75009\",\"city\": \"Paris\",\"country\": \"FR\"}]}",
+    "Reference": "1234"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <CreateKlarnaPayinRest />
+    <CreateKlarnaPayinPhp />
+    <CreateKlarnaPayinNode />
+    <CreateKlarnaPayinRuby />
+    <CreateKlarnaPayinJava />
+    <CreateKlarnaPayinPython />
+    <CreateKlarnaPayinNet />
+</RequestExample>

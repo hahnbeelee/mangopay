@@ -1,0 +1,33 @@
+---
+title: '002701'  
+description: '<small>&#8249; [All error codes](/errors/codes#user-category)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Refused due to author’s UserCategory: PAYER</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The action was refused because the user is a Payer, not an Owner.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error occurs when a Payer user requests an action reserved for Owner users.   
+
+For more information on the actions permitted for Payers and Owners, see the [Categories](/guides/users/categories) article.
+
+#### What to do  
+
+A Payer can become an Owner by providing the necessary information and accepting Mangopay’s terms and conditions. For further guidance, see the [Categories](/guides/users/categories#integration) article.

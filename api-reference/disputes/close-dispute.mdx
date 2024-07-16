@@ -1,0 +1,121 @@
+---
+title: 'Close a Dispute'  
+api: 'PUT /v2.01/{ClientId}/disputes/{DisputeId}/close'  
+---
+
+import RepudiationIdResponse from '/snippets/p-response/RepudiationIdResponse.mdx';
+import ClosedDateResponse from '/snippets/p-response/ClosedDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCode1Response from '/snippets/p-response/ResultCode1Response.mdx';
+import DisputeReasonResponse from '/snippets/p-response/DisputeReasonResponse.mdx';
+import StatusMessageResponse from '/snippets/p-response/StatusMessageResponse.mdx';
+import Status3Response from '/snippets/p-response/Status3Response.mdx';
+import ContestedFundsResponse from '/snippets/p-response/ContestedFundsResponse.mdx';
+import DisputedFundsResponse from '/snippets/p-response/DisputedFundsResponse.mdx';
+import ContestDeadlineDateResponse from '/snippets/p-response/ContestDeadlineDateResponse.mdx';
+import DisputeTypeResponse from '/snippets/p-response/DisputeTypeResponse.mdx';
+import InitialTransactionNatureResponse from '/snippets/p-response/InitialTransactionNatureResponse.mdx';
+import InitialTransactionTypeResponse from '/snippets/p-response/InitialTransactionTypeResponse.mdx';
+import InitialTransactionIdResponse from '/snippets/p-response/InitialTransactionIdResponse.mdx';
+import DisputeId from '/snippets/p-path/DisputeId.mdx';
+
+import RestCloseDispute from '/snippets/code/rest-close-dispute.mdx';
+import PhpCloseDispute from '/snippets/code/php-close-dispute.mdx';
+import NodeResubmitDispute1 from '/snippets/code/node-resubmit-dispute1.mdx';
+import RubyCloseDispute from '/snippets/code/ruby-close-dispute.mdx';
+import CloseDisputePython from '/snippets/code/close-dispute-python.mdx';
+
+<Note>  
+**Note – Empty body required** 
+  
+For the call to be successful, you need to pass an empty body.  
+</Note>  
+
+### Path parameters  
+
+<DisputeId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<InitialTransactionIdResponse />  
+
+<InitialTransactionTypeResponse />  
+
+<InitialTransactionNatureResponse />  
+
+<DisputeTypeResponse />  
+
+<ContestDeadlineDateResponse />  
+
+<DisputedFundsResponse />  
+
+<ContestedFundsResponse />  
+
+<Status3Response />  
+
+<StatusMessageResponse />  
+
+<DisputeReasonResponse />  
+
+<ResultCode1Response />  
+
+<ResultMessageResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ClosedDateResponse />  
+
+<RepudiationIdResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "InitialTransactionId": "159196283",
+    "InitialTransactionType": "PAYIN",
+    "InitialTransactionNature": "REGULAR",
+    "DisputeType": "CONTESTABLE",
+    "ContestDeadlineDate": 1673395199,
+    "DisputedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "ContestedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "Status": "CLOSED",
+    "StatusMessage": null,
+    "DisputeReason": {
+        "DisputeReasonMessage": "This is a test dispute",
+        "DisputeReasonType": "DUPLICATE"
+    },
+    "ResultCode": "LOST",
+    "ResultMessage": null,
+    "Id": "159196329",
+    "Tag": null,
+    "CreationDate": 1672662590,
+    "ClosedDate": 1675260940,
+    "RepudiationId": "159196330"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestCloseDispute />
+  <PhpCloseDispute />
+  <NodeResubmitDispute1 />
+  <RubyCloseDispute />
+  <CloseDisputePython />
+</RequestExample>

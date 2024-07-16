@@ -1,0 +1,159 @@
+---
+title: 'Create a Direct Bank Wire PayIn to the Repudiation Wallet'  
+api: 'POST /v2.01/{ClientId}/clients/payins/bankwire/direct/'  
+---
+
+import BankAccountResponse from '/snippets/p-response/BankAccountResponse.mdx';
+import WireReferenceResponse from '/snippets/p-response/WireReferenceResponse.mdx';
+import DeclaredFeesResponse from '/snippets/p-response/DeclaredFeesResponse.mdx';
+import DeclaredDebitedFunds1Response from '/snippets/p-response/DeclaredDebitedFunds1Response.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletId4Response from '/snippets/p-response/CreditedWalletId4Response.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees7Response from '/snippets/p-response/Fees7Response.mdx';
+import CreditedFunds7Response from '/snippets/p-response/CreditedFunds7Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import CreditedUserId4Response from '/snippets/p-response/CreditedUserId4Response.mdx';
+import AuthorId6Response from '/snippets/p-response/AuthorId6Response.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import CreditedWalletId2 from '/snippets/p-body/CreditedWalletId2.mdx';
+import DeclaredDebitedFunds1 from '/snippets/p-body/DeclaredDebitedFunds1.mdx';
+
+import RestDirectBankWirePayinToRepudiationWallet from '/snippets/code/rest-direct-bank-wire-payin-to-repudiation-wallet.mdx';
+
+This endpoint allows the platform to make a Direct Bank Wire PayIn, instead of a Settlement Transfer, to their Repudiation Wallet in order to settle the negative balance due to a `LOST` dispute.  
+
+The object expires 1 month after creation if no funds are received.  
+
+<Warning>  
+**Warning – Ensure you use the correct reference and bank account** 
+  
+The direct bank wire relies on independent action from the platform. You must use the `WireReference` and wire the funds to the bank account identified by the `IBAN` and `BIC`.  
+Otherwise, the crediting of your Repudiation Wallet may be delayed or unsuccessful.  
+</Warning>  
+
+### Body parameters  
+
+<CreditedWalletId2 />  
+
+<DeclaredDebitedFunds1 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Status is CREATED">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<AuthorId6Response />  
+
+<CreditedUserId4Response />  
+
+<DebitedFunds7Response />  
+
+<CreditedFunds7Response />  
+
+<Fees7Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletId4Response />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<DeclaredDebitedFunds1Response />  
+
+<DeclaredFeesResponse />  
+
+<WireReferenceResponse />  
+
+<BankAccountResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Status is CREATED  
+{
+    "Id": "163311508",
+    "Tag": null,
+    "CreationDate": 1677579888,
+    "ResultCode": null,
+    "ResultMessage": null,
+    "AuthorId": "ClientId",
+    "CreditedUserId": "ClientId",
+    "DebitedFunds": {
+        "Currency": "XXX",
+        "Amount": 0
+    },
+    "CreditedFunds": {
+        "Currency": "XXX",
+        "Amount": 0
+    },
+    "Fees": {
+        "Currency": "XXX",
+        "Amount": 0
+    },
+    "Status": "CREATED",
+    "ExecutionDate": null,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "CREDIT_EUR",
+    "DebitedWalletId": null,
+    "PaymentType": "BANK_WIRE",
+    "ExecutionType": "DIRECT",
+    "DeclaredDebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "DeclaredFees": {
+        "Currency": "EUR",
+        "Amount": 0
+    },
+    "WireReference": "MGx5nyoxdi",
+    "BankAccount": {
+        "OwnerAddress": {
+            "AddressLine1": "2 Avenue Amélie",
+            "AddressLine2": null,
+            "City": "Luxembourg",
+            "Region": null,
+            "PostalCode": "L-1125",
+            "Country": "LU"
+        },
+        "Type": "IBAN",
+        "OwnerName": "MANGOPAY SA",
+        "IBAN": "FR7630056009271234567890182",
+        "BIC": "CCFRFRPPXXX"
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestDirectBankWirePayinToRepudiationWallet />  
+</RequestExample>

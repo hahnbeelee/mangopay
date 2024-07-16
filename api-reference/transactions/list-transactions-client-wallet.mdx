@@ -1,0 +1,71 @@
+---
+title: 'List Transactions for a Client Wallet'  
+api: 'GET /v2.01/{ClientId}/clients/wallets/{FundsType}/{Currency}/transactions'  
+---
+
+import Array_Transactions1Response from '/snippets/p-response/Array_Transactions1Response.mdx';
+import Currency from '/snippets/p-path/Currency.mdx';
+import FundsType from '/snippets/p-path/FundsType.mdx';
+  
+import NodeListTransactionsClientWallet from '/snippets/code/node-list-transactions-client-wallet.mdx';
+import ListClientWalletTransactionsJava from '/snippets/code/list-client-wallet-transactions-java.mdx';
+
+This call returns all the transactions targeting or emitted from the Client Wallet:  
+- Fees wallet – Returns all the payouts made from the wallet.  
+- Credit wallet – Returns the repudiations and settlements made from or to the wallet.  
+
+### Path parameters  
+
+<FundsType />  
+
+<Currency />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_Transactions1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+[
+    {
+        "Id": "163311508",
+        "Tag": null,
+        "CreationDate": 1677579888,
+        "AuthorId": "ClientId",
+        "CreditedUserId": "ClientId",
+        "DebitedFunds": {
+            "Currency": "XXX",
+            "Amount": 0
+        },
+        "CreditedFunds": {
+            "Currency": "XXX",
+            "Amount": 0
+        },
+        "Fees": {
+            "Currency": "XXX",
+            "Amount": 0
+        },
+        "Status": "CREATED",
+        "ResultCode": null,
+        "ResultMessage": null,
+        "ExecutionDate": null,
+        "Type": "PAYIN",
+        "Nature": "REGULAR",
+        "CreditedWalletId": "CREDIT_EUR",
+        "DebitedWalletId": null
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <NodeListTransactionsClientWallet />
+    <ListClientWalletTransactionsJava />
+
+</RequestExample>

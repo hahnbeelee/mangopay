@@ -1,0 +1,151 @@
+---
+title: 'View a PayIn'  
+api: 'GET /v2.01/{ClientId}/payins/{PayInId}'  
+---
+
+import Culture4Response from '/snippets/p-response/Culture4Response.mdx';
+import TemplateURLResponse from '/snippets/p-response/TemplateURLResponse.mdx';
+import ReturnURL2Response from '/snippets/p-response/ReturnURL2Response.mdx';
+import RedirectURLResponse from '/snippets/p-response/RedirectURLResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees4Response from '/snippets/p-response/Fees4Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import DirectDebitTypeResponse from '/snippets/p-response/DirectDebitTypeResponse.mdx';
+import PayInId from '/snippets/p-path/PayInId.mdx';
+
+import PhpViewPayin from '/snippets/code/php-view-payin.mdx';
+import NodeViewPayin from '/snippets/code/node-view-payin.mdx';
+import RubyViewPayin from '/snippets/code/ruby-view-payin.mdx';
+import JavaViewPayin from '/snippets/code/java-view-payin.mdx';
+import PythonViewPayin from '/snippets/code/view-payin-python.mdx';
+  
+<Note>
+**Note – Pay-in data retained for 13 months**
+
+An API call to retrieve a pay-in whose `CreationDate` is older than 13 months may return 404 Not Found.
+
+For more information, see the <a href="/api-reference/overview/data-availability-periods">Data availability periods</a> article.
+</Note>
+
+### Path parameters  
+
+<PayInId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<DirectDebitTypeResponse />  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds7Response />  
+
+<CreditedFunds5Response />  
+
+<Fees4Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<RedirectURLResponse />  
+
+<ReturnURL2Response />  
+
+<TemplateURLResponse />  
+
+<Culture4Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "DirectDebitType": "SOFORT",
+    "Id": "158596153",
+    "Tag": "custom meta",
+    "CreationDate": 1671609130,
+    "ResultCode": null,
+    "ResultMessage": null,
+    "AuthorId": "146476890",
+    "CreditedUserId": "146476890",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1200
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1188
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 12
+    },
+    "Status": "CREATED",
+    "ExecutionDate": null,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "148968396",
+    "DebitedWalletId": null,
+    "PaymentType": "DIRECT_DEBIT",
+    "ExecutionType": "WEB",
+    "RedirectURL": "https://api.sandbox.mangopay.com/Content/PaylineTemplateWidget?rp=7012a35bacc94224887444a6befdcabc&transactionId=158596153&token=14gpfysmDhsVLpjlL2451671609131187",
+    "ReturnURL": "http://www.my-site.com/returnURL/?transactionId=158596153",
+    "TemplateURL": "https://api.sandbox.mangopay.com/Content/PaylineTemplateWidget?rp=7012a35bacc94224887444a6befdcabc&transactionId=158596153",
+    "Culture": "EN"
+}
+  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+
+    <PhpViewPayin />
+    <NodeViewPayin />
+    <RubyViewPayin />
+    <JavaViewPayin />
+    <PythonViewPayin />
+    
+</RequestExample>

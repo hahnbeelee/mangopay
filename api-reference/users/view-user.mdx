@@ -1,0 +1,332 @@
+---
+title: 'View a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}'  
+---
+
+import Email1Response from '/snippets/p-response/Email1Response.mdx';
+import CompanyNumberResponse from '/snippets/p-response/CompanyNumberResponse.mdx';
+import LegalRepresentativeProofOfIdentityResponse from '/snippets/p-response/LegalRepresentativeProofOfIdentityResponse.mdx';
+import StatuteResponse from '/snippets/p-response/StatuteResponse.mdx';
+import ShareholderDeclarationResponse from '/snippets/p-response/ShareholderDeclarationResponse.mdx';
+import ProofOfRegistrationResponse from '/snippets/p-response/ProofOfRegistrationResponse.mdx';
+import LegalRepresentativeCountryOfResidenceResponse from '/snippets/p-response/LegalRepresentativeCountryOfResidenceResponse.mdx';
+import LegalRepresentativeNationalityResponse from '/snippets/p-response/LegalRepresentativeNationalityResponse.mdx';
+import LegalRepresentativeBirthdayResponse from '/snippets/p-response/LegalRepresentativeBirthdayResponse.mdx';
+import LegalRepresentativeEmailResponse from '/snippets/p-response/LegalRepresentativeEmailResponse.mdx';
+import LegalRepresentativeLastNameResponse from '/snippets/p-response/LegalRepresentativeLastNameResponse.mdx';
+import LegalRepresentativeFirstNameResponse from '/snippets/p-response/LegalRepresentativeFirstNameResponse.mdx';
+import LegalPersonTypeResponse from '/snippets/p-response/LegalPersonTypeResponse.mdx';
+import Name2Response from '/snippets/p-response/Name2Response.mdx';
+import LegalRepresentativeAddressResponse from '/snippets/p-response/LegalRepresentativeAddressResponse.mdx';
+import HeadquartersAddressResponse from '/snippets/p-response/HeadquartersAddressResponse.mdx';
+import UserStatusResponse from '/snippets/p-response/UserStatusResponse.mdx';
+import UserCategoryResponse from '/snippets/p-response/UserCategoryResponse.mdx';
+import TermsAndConditionsAcceptedDateResponse from '/snippets/p-response/TermsAndConditionsAcceptedDateResponse.mdx';
+import TermsAndConditionsAcceptedResponse from '/snippets/p-response/TermsAndConditionsAcceptedResponse.mdx';
+import KYCLevelResponse from '/snippets/p-response/KYCLevelResponse.mdx';
+import Email2Response from '/snippets/p-response/Email2Response.mdx';
+import PersonTypeResponse from '/snippets/p-response/PersonTypeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import CapacityResponse from '/snippets/p-response/CapacityResponse.mdx';
+import ProofOfAddressResponse from '/snippets/p-response/ProofOfAddressResponse.mdx';
+import ProofOfIdentityResponse from '/snippets/p-response/ProofOfIdentityResponse.mdx';
+import IncomeRangeResponse from '/snippets/p-response/IncomeRangeResponse.mdx';
+import OccupationResponse from '/snippets/p-response/OccupationResponse.mdx';
+import CountryOfResidenceResponse from '/snippets/p-response/CountryOfResidenceResponse.mdx';
+import NationalityResponse from '/snippets/p-response/NationalityResponse.mdx';
+import BirthdayResponse from '/snippets/p-response/BirthdayResponse.mdx';
+import LastName1Response from '/snippets/p-response/LastName1Response.mdx';
+import FirstName1Response from '/snippets/p-response/FirstName1Response.mdx';
+import Address3Response from '/snippets/p-response/Address3Response.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import PhpViewUser from '/snippets/code/php-view-user.mdx';
+import NodeViewUser from '/snippets/code/node-view-user.mdx';
+import RubyViewUser from '/snippets/code/ruby-view-user.mdx';
+import JavaViewUser from '/snippets/code/java-view-user.mdx';
+import PythonViewUser from '/snippets/code/python-view-user.mdx';
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Natural Payer">  
+
+<Address3Response />  
+
+<FirstName1Response />  
+
+<LastName1Response />  
+
+<BirthdayResponse />  
+
+<NationalityResponse />  
+
+<CountryOfResidenceResponse />  
+
+<OccupationResponse />  
+
+<IncomeRangeResponse />  
+
+<ProofOfIdentityResponse />  
+
+<ProofOfAddressResponse />  
+
+<CapacityResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<PersonTypeResponse />  
+
+<Email2Response />  
+
+<KYCLevelResponse />  
+
+<TermsAndConditionsAcceptedResponse />  
+
+<TermsAndConditionsAcceptedDateResponse />  
+
+<UserCategoryResponse />  
+
+<UserStatusResponse /></Accordion><Accordion title="200 - Legal Payer">  
+
+<HeadquartersAddressResponse />  
+
+<LegalRepresentativeAddressResponse />  
+
+<Name2Response />  
+
+<LegalPersonTypeResponse />  
+
+<LegalRepresentativeFirstNameResponse />  
+
+<LegalRepresentativeLastNameResponse />  
+
+<LegalRepresentativeEmailResponse />  
+
+<LegalRepresentativeBirthdayResponse />  
+
+<LegalRepresentativeNationalityResponse />  
+
+<LegalRepresentativeCountryOfResidenceResponse />  
+
+<ProofOfRegistrationResponse />  
+
+<ShareholderDeclarationResponse />  
+
+<StatuteResponse />  
+
+<LegalRepresentativeProofOfIdentityResponse />  
+
+<CompanyNumberResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<PersonTypeResponse />  
+
+<Email1Response />  
+
+<KYCLevelResponse />  
+
+<TermsAndConditionsAcceptedResponse />  
+
+<TermsAndConditionsAcceptedDateResponse />  
+
+<UserCategoryResponse />  
+
+<UserStatusResponse /></Accordion><Accordion title="200 - Legal Owner">  
+
+<HeadquartersAddressResponse />  
+
+<LegalRepresentativeAddressResponse />  
+
+<Name2Response />  
+
+<LegalPersonTypeResponse />  
+
+<LegalRepresentativeFirstNameResponse />  
+
+<LegalRepresentativeLastNameResponse />  
+
+<LegalRepresentativeEmailResponse />  
+
+<LegalRepresentativeBirthdayResponse />  
+
+<LegalRepresentativeNationalityResponse />  
+
+<LegalRepresentativeCountryOfResidenceResponse />  
+
+<ProofOfRegistrationResponse />  
+
+<ShareholderDeclarationResponse />  
+
+<StatuteResponse />  
+
+<LegalRepresentativeProofOfIdentityResponse />  
+
+<CompanyNumberResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<PersonTypeResponse />  
+
+<Email1Response />  
+
+<KYCLevelResponse />  
+
+<TermsAndConditionsAcceptedResponse />  
+
+<TermsAndConditionsAcceptedDateResponse />  
+
+<UserCategoryResponse />  
+
+<UserStatusResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Natural Payer  
+{
+    "Address": {
+        "AddressLine1": "3 rue des Plantes",
+        "AddressLine2": "Appartement 7",
+        "City": "Paris",
+        "Region": "Ile-de-France",
+        "PostalCode": "75001",
+        "Country": "FR"
+    },
+    "FirstName": "Sophia",
+    "LastName": "Garnier",
+    "Birthday": null,
+    "Nationality": null,
+    "CountryOfResidence": null,
+    "Occupation": null,
+    "IncomeRange": null,
+    "ProofOfIdentity": null,
+    "ProofOfAddress": null,
+    "Capacity": "NORMAL",
+    "Id": "158025383",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1670861981,
+    "PersonType": "NATURAL",
+    "Email": "sophia.garnier@test.com",
+    "KYCLevel": "LIGHT",
+    "TermsAndConditionsAccepted": false,
+    "TermsAndConditionsAcceptedDate": null,
+    "UserCategory": "PAYER",
+    "UserStatus": "ACTIVE"
+}  
+ ```  
+
+```json 200 - Legal Payer  
+{
+    "HeadquartersAddress": {
+        "AddressLine1": null,
+        "AddressLine2": null,
+        "City": null,
+        "Region": null,
+        "PostalCode": null,
+        "Country": null
+    },
+    "LegalRepresentativeAddress": {
+        "AddressLine1": "34 rue des Entreprises",
+        "AddressLine2": "Appartement 14",
+        "City": "Paris",
+        "Region": "Ile-de-France",
+        "PostalCode": "75001",
+        "Country": "FR"
+    },
+    "Name": "Best Business",
+    "LegalPersonType": "BUSINESS",
+    "LegalRepresentativeFirstName": "Richard",
+    "LegalRepresentativeLastName": "Moulin",
+    "LegalRepresentativeEmail": null,
+    "LegalRepresentativeBirthday": null,
+    "LegalRepresentativeNationality": null,
+    "LegalRepresentativeCountryOfResidence": null,
+    "ProofOfRegistration": null,
+    "ShareholderDeclaration": null,
+    "Statute": null,
+    "LegalRepresentativeProofOfIdentity": null,
+    "CompanyNumber": null,
+    "Id": "158026537",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1670863988,
+    "PersonType": "LEGAL",
+    "Email": "richard.moulin@email.com",
+    "KYCLevel": "LIGHT",
+    "TermsAndConditionsAccepted": false,
+    "TermsAndConditionsAcceptedDate": null,
+    "UserCategory": "PAYER",
+    "UserStatus": "ACTIVE"
+}  
+ ```  
+
+```json 200 - Legal Owner  
+{
+    "HeadquartersAddress": {
+        "AddressLine1": "34 rue des Entreprises",
+        "AddressLine2": "Batiment B",
+        "City": "Paris",
+        "Region": "Ile-de-France",
+        "PostalCode": "75001",
+        "Country": "FR"
+    },
+    "LegalRepresentativeAddress": {
+        "AddressLine1": "12032 Wiza Way",
+        "AddressLine2": "Mitchell Drive",
+        "City": "Paris",
+        "Region": "Ile-de-France",
+        "PostalCode": "75001",
+        "Country": "FR"
+    },
+    "Name": "Best Business",
+    "LegalPersonType": "BUSINESS",
+    "LegalRepresentativeFirstName": "Cedrick",
+    "LegalRepresentativeLastName": "Dickinson",
+    "LegalRepresentativeEmail": "Agustin.Ullrich@yahoo.com",
+    "LegalRepresentativeBirthday": 652117514,
+    "LegalRepresentativeNationality": "FR",
+    "LegalRepresentativeCountryOfResidence": "FR",
+    "ProofOfRegistration": null,
+    "ShareholderDeclaration": null,
+    "Statute": null,
+    "LegalRepresentativeProofOfIdentity": null,
+    "CompanyNumber": "123456789",
+    "Id": "158026721",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1670864174,
+    "PersonType": "LEGAL",
+    "Email": "cortney_douglas@yahoo.com",
+    "KYCLevel": "LIGHT",
+    "TermsAndConditionsAccepted": true,
+    "TermsAndConditionsAcceptedDate": 1670864174,
+    "UserCategory": "OWNER",
+    "UserStatus": "ACTIVE"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewUser />
+    <NodeViewUser />
+    <RubyViewUser />
+    <JavaViewUser />
+    <PythonViewUser />
+</RequestExample>

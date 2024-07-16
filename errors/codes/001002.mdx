@@ -1,0 +1,65 @@
+---
+title: '001002'  
+description: '<small>&#8249; [All error codes](/errors/codes#generic-transaction-errors)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Author is not the wallet owner</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The user Id used as Author has to be the wallet owner</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Transfer</div>  
+<div class="label">Wallet</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+The transfer `AuthorId` is different from the `Id` of the debited wallet `Owners`.  
+
+#### What to do  
+
+The author has to be the user being debited.  
+
+#### Example  
+
+In the example below, here is the API response when attempting to create a transfer with an `AuthorId` different from the debited wallet’s owner.  
+```json API Response
+{
+    "Id": "162740992",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1676881275,
+    "AuthorId": "145397183",
+    "CreditedUserId": "145397183",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 500
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 490
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 10
+    },
+    "Status": "FAILED",
+    "ResultCode": "001002",
+    "ResultMessage": "Author is not the wallet owner",
+    "ExecutionDate": null,
+    "Type": "TRANSFER",
+    "Nature": "REGULAR",
+    "DebitedWalletId": "145389978",
+    "CreditedWalletId": "145397873"
+}
+```

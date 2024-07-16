@@ -1,0 +1,204 @@
+---
+title: 'View a Payout'  
+api: 'GET /v2.01/{ClientId}/payouts/{PayoutId}'  
+---
+
+import BankWireRefResponse from '/snippets/p-response/BankWireRefResponse.mdx';
+import BankAccountIdResponse from '/snippets/p-response/BankAccountIdResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletIdResponse from '/snippets/p-response/DebitedWalletIdResponse.mdx';
+import CreditedWalletId1Response from '/snippets/p-response/CreditedWalletId1Response.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees2Response from '/snippets/p-response/Fees2Response.mdx';
+import CreditedFunds3Response from '/snippets/p-response/CreditedFunds3Response.mdx';
+import DebitedFunds3Response from '/snippets/p-response/DebitedFunds3Response.mdx';
+import CreditedUserId1Response from '/snippets/p-response/CreditedUserId1Response.mdx';
+import AuthorId1Response from '/snippets/p-response/AuthorId1Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import PayoutId from '/snippets/p-path/PayoutId.mdx';
+
+import PhpViewPayout from '/snippets/code/php-view-payout.mdx';
+import NodeViewPayout from '/snippets/code/node-view-payout.mdx';
+import RubyViewPayout from '/snippets/code/ruby-view-payout.mdx';
+import PythonViewPayout from '/snippets/code/python-view-payout.mdx';
+
+This call returns the information about a payout without any information about the payout mode.  
+
+<Note>
+**Note – Payout data retained for 13 months**
+
+An API call to retrieve a payout whose `CreationDate` is older than 13 months may return 404 Not Found.
+
+For more information, see the <a href="/api-reference/overview/data-availability-periods">Data availability periods</a> article.
+</Note>
+
+
+### Path parameters  
+
+<PayoutId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Standard: Succeeded">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorId1Response />  
+
+<CreditedUserId1Response />  
+
+<DebitedFunds3Response />  
+
+<CreditedFunds3Response />  
+
+<Fees2Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletId1Response />  
+
+<DebitedWalletIdResponse />  
+
+<PaymentType2Response />  
+
+<BankAccountIdResponse />  
+
+<BankWireRefResponse /></Accordion><Accordion title="200 - Standard: Succeeded 1 second after creation (GBP Faster Payment)">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorId1Response />  
+
+<CreditedUserId1Response />  
+
+<DebitedFunds3Response />  
+
+<CreditedFunds3Response />  
+
+<Fees2Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletId1Response />  
+
+<DebitedWalletIdResponse />  
+
+<PaymentType2Response />  
+
+<BankAccountIdResponse />  
+
+<BankWireRefResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Standard: Succeeded  
+
+{
+    "Id": "po_m_01HQMZSGSQPPXC51TZHDAYFAJF",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1709027672,
+    "AuthorId": "204069570",
+    "CreditedUserId": null,
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 5792
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 5213
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 579
+    },
+    "Status": "SUCCEEDED",
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "ExecutionDate": 1709027738,
+    "Type": "PAYOUT",
+    "Nature": "REGULAR",
+    "CreditedWalletId": null,
+    "DebitedWalletId": "204069727",
+    "PaymentType": "BANK_WIRE",
+    "BankAccountId": "204070675",
+    "BankWireRef": "ExampleInvoice1234"
+}  
+ ```  
+
+```json 200 - Standard: Succeeded 1 second after creation (GBP Faster Payment)  
+
+{
+    "Id": "po_b_01HPM8PX3KJV245H409Q3XD0Z7",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1707929728,
+    "AuthorId": "204069570",
+    "CreditedUserId": null,
+    "DebitedFunds": {
+        "Currency": "GBP",
+        "Amount": 4682
+    },
+    "CreditedFunds": {
+        "Currency": "GBP",
+        "Amount": 4635
+    },
+    "Fees": {
+        "Currency": "GBP",
+        "Amount": 47
+    },
+    "Status": "SUCCEEDED",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "ExecutionDate": 1707929729,
+    "Type": "PAYOUT",
+    "Nature": "REGULAR",
+    "CreditedWalletId": null,
+    "DebitedWalletId": "204079063",
+    "PaymentType": "BANK_WIRE",
+    "BankAccountId": "204073517",
+    "BankWireRef": "Created using the Mangopay API Postman collection"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewPayout />
+    <NodeViewPayout />
+    <RubyViewPayout />
+    <PythonViewPayout />
+</RequestExample>

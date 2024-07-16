@@ -1,0 +1,38 @@
+---
+title: '130004'  
+description: '<small>&#8249; [All error codes](/errors/codes#instant-payouts)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">The user is blocked by Fraud policy</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The instant payment is refused because the user has been blocked by Mangopay's anti-fraud policy.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Instant payment</div>  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Additional information  
+
+Mangopay’s teams may block users for reasons of suspected fraudulent behavior or compliance risk.  
+
+#### Causes  
+
+This error may occur when attempting to make an instant payout to a user whose outflows are blocked.  
+
+#### What to do  
+
+In such cases, the platform can take advantage of the <a href="/api-reference/user-regulatory-status/view-user-regulatory-status">View a User Regulatory Status</a> endpoint to know more about the reasons why the end user is blocked. From there, actions can be taken based on the returned `ActionCode`.  
+
+<a href="/guides/users/blocked-users" class="btn High emphasis primary normal">Learn more about blocked users</a>

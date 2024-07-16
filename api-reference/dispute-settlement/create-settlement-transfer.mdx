@@ -1,0 +1,232 @@
+---
+title: 'Create a Settlement Transfer'  
+api: 'POST /v2.01/{ClientId}/repudiations/{RepudiationId}/settlementtransfer'  
+---
+
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import RepudiationIdResponse from '/snippets/p-response/RepudiationIdResponse.mdx';
+import DebitedWalletIdResponse from '/snippets/p-response/DebitedWalletIdResponse.mdx';
+import CreditedWalletId2Response from '/snippets/p-response/CreditedWalletId2Response.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import Fees5Response from '/snippets/p-response/Fees5Response.mdx';
+import DebitedFunds6Response from '/snippets/p-response/DebitedFunds6Response.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Fees4 from '/snippets/p-body/Fees4.mdx';
+import DebitedFunds5 from '/snippets/p-body/DebitedFunds5.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+import RepudiationId from '/snippets/p-path/RepudiationId.mdx';
+
+import RestCreateSettlementTransfer from '/snippets/code/rest-create-settlement-transfer.mdx';
+import PhpCreateSettlementTransfer from '/snippets/code/php-create-settlement-transfer.mdx';
+import NodeCreateSettlementTransfer from '/snippets/code/node-create-settlement-transfer.mdx';
+import RubyCreateSettlementTransfer from '/snippets/code/ruby-create-settlement-transfer.mdx';
+import CreateSettlementTransferPython from '/snippets/code/create-settlement-transfer-python.mdx';
+
+### Path parameters  
+
+<RepudiationId />  
+
+### Body parameters  
+
+<AuthorId />  
+
+<DebitedFunds5 />  
+
+<Fees4 />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<DebitedFunds6Response />  
+
+<Fees5Response />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<CreditedFunds5Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletId2Response />  
+
+<DebitedWalletIdResponse />  
+
+<RepudiationIdResponse />
+
+</Accordion>
+
+<Accordion title="200 - Failed">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<DebitedFunds6Response />  
+
+<Fees5Response />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<CreditedFunds5Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletIdResponse />  
+
+<RepudiationIdResponse />
+
+</Accordion>
+
+</AccordionGroup>
+
+<AccordionGroup>
+
+<Accordion title="400 - Settlement DebitedFunds exceed the initial transaction DebitedFunds">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "7da1f9f4-8c9f-4f9f-ba1c-babf394131ca#1673358577",
+    "Date": 1673358578.0,
+    "errors": {
+        "DebitedFunds": "The settlement DebitedFunds cannot exceed the initial transaction DebitedFunds"
+    }
+}  
+ ```  
+</Accordion>
+<Accordion title="400 - Settlement Fees exceed the initial transaction Fees">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "084e42e2-7523-4e28-99eb-79300d0dc37b#1672678394",
+    "Date": 1672678395.0,
+    "errors": {
+        "Fees": "The settlement Fees cannot exceed the initial transaction Fees"
+    }
+}  
+ ```  
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Id": "159220385",
+    "Tag": null,
+    "CreationDate": 1672677972,
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 999
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 0
+    },
+    "AuthorId": "146476890",
+    "CreditedUserId": null,
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 999
+    },
+    "Status": "SUCCEEDED",
+    "ExecutionDate": 1672677972,
+    "Type": "TRANSFER",
+    "Nature": "SETTLEMENT",
+    "CreditedWalletId": "CREDIT_EUR",
+    "DebitedWalletId": "148968396",
+    "RepudiationId": "159196330"
+}  
+ ```  
+
+```json 200 - Failed  
+{
+    "Id": "159220127",
+    "Tag": null,
+    "CreationDate": 1672677824,
+    "ResultCode": "003010",
+    "ResultMessage": "The total DebitedFunds settled cannot exceed the initial transaction DebitedFunds available for settlement",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 1
+    },
+    "AuthorId": "146476890",
+    "CreditedUserId": null,
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 999
+    },
+    "Status": "FAILED",
+    "ExecutionDate": null,
+    "Type": "TRANSFER",
+    "Nature": "SETTLEMENT",
+    "CreditedWalletId": "CREDIT_EUR",
+    "DebitedWalletId": "148968396",
+    "RepudiationId": "159196330"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateSettlementTransfer />
+    <PhpCreateSettlementTransfer />
+    <NodeCreateSettlementTransfer />
+    <RubyCreateSettlementTransfer />
+    <CreateSettlementTransferPython />
+</RequestExample>

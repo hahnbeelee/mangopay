@@ -1,0 +1,80 @@
+---
+title: 'List Refunds for a Repudiation'  
+api: 'GET /v2.01/{ClientId}/repudiations/{RepudiationId}/refunds'  
+---
+
+import Array_RefundsResponse from '/snippets/p-response/Array_RefundsResponse.mdx';
+import RepudiationId from '/snippets/p-path/RepudiationId.mdx';
+import ResultCode from '/snippets/p-query/ResultCode.mdx';
+import Status from '/snippets/p-query/Status.mdx';
+
+import NodeListRefundsRepudiation from '/snippets/code/node-list-refunds-repudiation.mdx';
+import PythonListRepudiationRefunds from '/snippets/code/python-list-repudiation-refunds.mdx';
+
+Repudiations are refunded when a dispute is won.   
+
+### Query parameters  
+
+<Status />  
+
+<ResultCode />  
+
+### Path parameters  
+
+<RepudiationId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_RefundsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "Id":"155536343",
+        "Tag":"custom meta",
+        "CreationDate":1667916816,
+        "AuthorId":"146476890",
+        "CreditedUserId":null,
+        "DebitedFunds":{
+            "Currency":"EUR",
+            "Amount":1100
+        },
+        "CreditedFunds":{
+            "Currency":"EUR",
+            "Amount":1120
+        },
+        "Fees":{
+            "Currency":"EUR",
+            "Amount":-20
+        },
+        "Status":"SUCCEEDED",
+        "ResultCode":"000000",
+        "ResultMessage":"Success",
+        "ExecutionDate":1667916816,
+        "Type":"TRANSFER",
+        "Nature":"REFUND",
+        "InitialTransactionId":"155585643",
+        "InitialTransactionType":"TRANSFER",
+        "InitialTransactionNature":"REPUDIATION",
+        "DebitedWalletId":"152161320",
+        "CreditedWalletId":"148968396",
+        "RefundReason":{
+            "RefundReasonMessage":null,
+            "RefundReasonType":"OTHER"
+        }
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <NodeListRefundsRepudiation />
+    <PythonListRepudiationRefunds />
+</RequestExample>

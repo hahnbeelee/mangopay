@@ -1,0 +1,137 @@
+---
+title: 'Create a Wallet'  
+api: 'POST /v2.01/{ClientId}/wallets'  
+---
+
+import CreationDate1Response from '/snippets/p-response/CreationDate1Response.mdx';
+import Tag7Response from '/snippets/p-response/Tag7Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import FundsTypeResponse from '/snippets/p-response/FundsTypeResponse.mdx';
+import Currency23Response from '/snippets/p-response/Currency23Response.mdx';
+import BalanceResponse from '/snippets/p-response/BalanceResponse.mdx';
+import OwnersResponse from '/snippets/p-response/OwnersResponse.mdx';
+import Description1Response from '/snippets/p-response/Description1Response.mdx';
+import Tag6 from '/snippets/p-body/Tag6.mdx';
+import Currency21 from '/snippets/p-body/Currency21.mdx';
+import Owners from '/snippets/p-body/Owners.mdx';
+import Description1 from '/snippets/p-body/Description1.mdx';
+  
+import RestCreateWallet from '/snippets/code/rest-create-wallet.mdx';
+import PhpCreateWallet from '/snippets/code/php-create-wallet.mdx';
+import NodeCreateWallet from '/snippets/code/node-create-wallet.mdx';
+import RubyCreateWallet from '/snippets/code/ruby-create-wallet.mdx';
+import CreateWalletJava from '/snippets/code/create-wallet-java.mdx';
+import PythonCreateWallet from '/snippets/code/python-create-wallet.mdx';
+
+<Check>  
+**Best practice – Create one wallet per user and currency** 
+  
+While Mangopay authorizes you to create as many wallets as required, we recommend you create one wallet per user and currency.  
+</Check>  
+
+<Warning>  
+**Caution – Currency not updatable** 
+  
+The `Currency` of a created wallet cannot be changed.  
+</Warning>  
+
+### Body parameters  
+
+<Description1 />  
+
+<Owners />  
+
+<Currency21 />  
+
+<Tag6 />  
+
+### Responses  
+
+<AccordionGroup>
+
+    <Accordion title="200">  
+
+        <Description1Response />  
+
+        <OwnersResponse />  
+
+        <BalanceResponse />  
+
+        <Currency23Response />  
+
+        <FundsTypeResponse />  
+
+        <IdResponse />  
+
+        <Tag7Response />  
+
+        <CreationDate1Response />
+
+    </Accordion>
+
+</AccordionGroup>  
+
+<AccordionGroup>  
+
+    <Accordion title="400 - Limited to one owner per wallet">
+    ```json
+    {
+        "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+        "Type": "param_error",
+        "Id": "c09ebc81-24d6-47ef-8cef-d491209faee8",
+        "Date": 1702037849.0,
+        "errors": {
+            "Owners": "Owners doesn't support multiple values for the moment"
+        }
+    }  
+    ```  
+    </Accordion>
+
+    <Accordion title="400 - Currency not supported">
+    ```json
+    {
+        "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+        "Type": "param_error",
+        "Id": "d3370a5b-af3c-4b99-9e6e-6c7dea052e19",
+        "Date": 1690284549.0,
+        "errors": {
+            "Currency": "Currency: The currency AZN is not available"
+        }
+    }  
+    ```  
+    </Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Description": "Customer wallet",
+    "Owners": [
+        "142036728"
+    ],
+    "Balance": {
+        "Currency": "EUR",
+        "Amount": 0
+    },
+    "Currency": "EUR",
+    "FundsType": "DEFAULT",
+    "Id": "145389978",
+    "Tag": "End user: 456-TSt",
+    "CreationDate": 1657095351
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <RestCreateWallet />
+    <PhpCreateWallet />
+    <NodeCreateWallet />
+    <RubyCreateWallet />
+    <CreateWalletJava />
+    <PythonCreateWallet />
+  
+</RequestExample>

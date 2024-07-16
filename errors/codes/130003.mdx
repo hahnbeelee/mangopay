@@ -1,0 +1,35 @@
+---
+title: '130003'  
+description: '<small>&#8249; [All error codes](/errors/codes#instant-payouts)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">The user is not KYC-validated</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The Instant Payment has been refused because the user is not verified.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Payout</div>  
+<div class="label">Instant payment</div>  
+<div class="label">User verification</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error may be triggered when the end user is not verified (i.e., the `KYCLevel` is other than `REGULAR`). Only verified users are allowed to make payouts.  
+
+#### What to do  
+
+If the end user is not verified, the necessary steps need to be taken for the end user to have the relevant `KYCLevel`. See the <a href="/guides/users/verification">user verification</a> documentation for more information.  
+
+If the end user is verified, we advise you retry (in case the issue is caused by some latency on Mangopay side) and contact the Support team <a href="https://hub.mangopay.com/" target="_blank">via the Hub</a> if the issue does not resolve itself.

@@ -1,0 +1,115 @@
+---
+title: 'Create a US Bank Account'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/bankaccounts/us'  
+---
+
+import ActiveResponse from '/snippets/p-response/ActiveResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag4Response from '/snippets/p-response/Tag4Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type5Response from '/snippets/p-response/Type5Response.mdx';
+import OwnerNameResponse from '/snippets/p-response/OwnerNameResponse.mdx';
+import UserId1Response from '/snippets/p-response/UserId1Response.mdx';
+import DepositAccountTypeResponse from '/snippets/p-response/DepositAccountTypeResponse.mdx';
+import ABAResponse from '/snippets/p-response/ABAResponse.mdx';
+import AccountNumber2Response from '/snippets/p-response/AccountNumber2Response.mdx';
+import OwnerAddressResponse from '/snippets/p-response/OwnerAddressResponse.mdx';
+import Tag4 from '/snippets/p-body/Tag4.mdx';
+import OwnerName from '/snippets/p-body/OwnerName.mdx';
+import DepositAccountType from '/snippets/p-body/DepositAccountType.mdx';
+import ABA from '/snippets/p-body/ABA.mdx';
+import AccountNumber2 from '/snippets/p-body/AccountNumber2.mdx';
+import OwnerAddress from '/snippets/p-body/OwnerAddress.mdx';
+import UserId1 from '/snippets/p-path/UserId1.mdx';
+  
+import RestCreateUsBankAccount from '/snippets/code/rest-create-us-bank-account.mdx';
+import PhpCreateUsBankAccount from '/snippets/code/php-create-us-bank-account.mdx';
+import NodeCreateUsBankAccount from '/snippets/code/node-create-us-bank-account.mdx';
+import RubyCreateUsBankAccount from '/snippets/code/ruby-create-us-bank-account.mdx';
+import JavaCreateUsBankAccount from '/snippets/code/java-create-us-bank-account.mdx';
+import PythonCreateUsBankAccount from '/snippets/code/python-create-us-bank-account.mdx'; 
+
+### Path parameters  
+
+<UserId1 />  
+
+### Body parameters  
+
+<OwnerAddress />  
+
+<AccountNumber2 />  
+
+<ABA />  
+
+<DepositAccountType />  
+
+<OwnerName />  
+
+<Tag4 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<OwnerAddressResponse />  
+
+<AccountNumber2Response />  
+
+<ABAResponse />  
+
+<DepositAccountTypeResponse />  
+
+<UserId1Response />  
+
+<OwnerNameResponse />  
+
+<Type5Response />  
+
+<IdResponse />  
+
+<Tag4Response />  
+
+<CreationDateResponse />  
+
+<ActiveResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "OwnerAddress": {
+        "AddressLine1": "The Oasis",
+        "AddressLine2": "Rue des plantes",
+        "City": "Paris",
+        "Region": "Ile de France",
+        "PostalCode": "75009",
+        "Country": "FR"
+    },
+    "AccountNumber": "11696419",
+    "ABA": "071000288",
+    "DepositAccountType": "CHECKING",
+    "UserId": "142036728",
+    "OwnerName": "John Doe",
+    "Type": "US",
+    "Id": "150294885",
+    "Tag": null,
+    "CreationDate": 1661864955,
+    "Active": true
+}
+  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+  <RestCreateUsBankAccount />
+  <PhpCreateUsBankAccount />
+  <NodeCreateUsBankAccount />
+  <RubyCreateUsBankAccount />
+  <JavaCreateUsBankAccount />
+  <PythonCreateUsBankAccount />
+
+</RequestExample>

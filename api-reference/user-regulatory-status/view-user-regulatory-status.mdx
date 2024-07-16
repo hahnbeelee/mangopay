@@ -1,0 +1,51 @@
+---
+title: 'View a User Regulatory Status'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/regulatory'  
+---
+
+import Id7Response from '/snippets/p-response/Id7Response.mdx';
+import ScopeBlockedResponse from '/snippets/p-response/ScopeBlockedResponse.mdx';
+import ActionCodeResponse from '/snippets/p-response/ActionCodeResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+  
+import NodeViewUserRegulatoryStatus from '/snippets/code/node-view-user-regulatory-status.mdx';
+import ViewUserRegulatoryStatusJava from '/snippets/code/view-user-regulatory-status-java.mdx';
+import PythonViewUserRegulatoryStatus from '/snippets/code/python-view-user-regulatory-status.mdx';
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<ActionCodeResponse />  
+
+<ScopeBlockedResponse />  
+
+<Id7Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "ActionCode": "008701",
+    "ScopeBlocked": {
+        "Inflows": true,
+        "Outflows": false
+    },
+    "Id": "146476890"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <NodeViewUserRegulatoryStatus />
+    <ViewUserRegulatoryStatusJava />
+    <PythonViewUserRegulatoryStatus />
+  
+</RequestExample>

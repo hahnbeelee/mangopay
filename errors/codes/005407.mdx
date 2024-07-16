@@ -1,0 +1,75 @@
+---
+title: '005407'  
+description: '<small>&#8249; [All error codes](/errors/codes#refunds)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Duplicated operation: you cannot reimburse the same amount more than once for a transaction during the same day.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The refund failed because the same amount as already been refunded in the last 24 hours for the initial transaction.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Refund</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+### Additional information  
+
+Mangopay has safety mechanisms to avoid unwanted duplicated transactions.  
+
+### Causes  
+
+This error occurs when making two subsequent partial refunds in less than 24 hours with the same `Amount` value for the same initial transaction.  
+
+### What to do  
+
+In such cases, the platform can either wait 24 hours to make the second refund or make a refund with a different `Amount` value than the preceding one.  
+
+### Example  
+
+In the example below, the API response when attempting to make an identical partial refund (with the <a href="/api-reference/refunds/create-refund-payin">Create a Refund for a PayIn</a> endpoint) to the same pay-in twice in less than 24 hours.  
+```json API Response
+{
+    "Id": "163303686",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1677575825,
+    "AuthorId": "146476890",
+    "CreditedUserId": null,
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 3000
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 3001
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": -1
+    },
+    "Status": "FAILED",
+    "ResultCode": "005407",
+    "ResultMessage": "Duplicated operation: you cannot reimburse the same amount more than once for a transaction during the same day.",
+    "ExecutionDate": null,
+    "Type": "PAYOUT",
+    "Nature": "REFUND",
+    "InitialTransactionId": "163093582",
+    "InitialTransactionType": "PAYIN",
+    "InitialTransactionNature": "REGULAR",
+    "DebitedWalletId": "148968396",
+    "CreditedWalletId": null,
+    "RefundReason": {
+        "RefundReasonMessage": null,
+        "RefundReasonType": "INITIALIZED_BY_CLIENT"
+    }
+}
+```

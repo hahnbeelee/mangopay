@@ -1,0 +1,79 @@
+---
+title: 'Customizing bank statement references'
+sidebarTitle: "Bank statements" 
+'og:description': 'Send custom text to appear on the user’s bank statement for a payment on your platform.'  
+---
+
+The Mangopay API allows you to customize the text that appears on the bank statement of an end user.  
+
+You can do this by sending custom text in specific parameters of the API (depending on the transaction and payment method). This is entirely optional, but it can help your end users to identify a transaction made on your platform.  
+
+## Components
+
+The string of text that appears on the bank statement to describe a transaction contains, in order:  
+- A reference to Mangopay (e.g., MGP)  
+- Your platform’s trading name (as opposed to the legal registered name)  
+- Additional custom text that you can define  
+
+Because the 3 elements appear on one line of the bank statement, space is very limited and the custom text may be truncated.  
+
+It is possible for your platform to change its trading name to make it shorter, but this is controlled by Mangopay’s teams as part of its verification obligations.  
+
+<Note>  
+**Note – Banks have ultimate control of the text displayed** 
+  
+Mangopay can supply a string of text for the bank statement but ultimately it is the user’s bank that decides if and how much of that information is displayed.  
+</Note>  
+
+## Pay-ins  
+
+On pay-ins, platforms can use the `StatementDescriptor` parameter to send custom text. 
+
+The structure of the complete string sent is:
+
+> MGP* `TradingName` `StatementDescriptor`
+
+On the following endpoints, the `StatementDescriptor` length is limited to **10 alphanumeric characters or spaces**:
+
+- <a href="/api-reference/direct-card-payins/create-direct-card-payin">Create a Direct Card PayIn</a>
+- <a href="/api-reference/web-card-payins/create-web-card-payin">Create a Web Card PayIn</a>
+- <a href="/api-reference/recurring-card-payins/create-recurring-payin-cit">Create a Recurring PayIn (CIT)</a>
+- <a href="/api-reference/recurring-card-payins/create-recurring-payin-mit">Create a Recurring PayIn (MIT)</a>
+- <a href="/api-reference/preauthorizations/create-preauthorization">Create a Preauthorization</a>
+- <a href="/api-reference/deposit-preauthorizations/create-deposit-preauthorization">Create a Deposit Preauthorization</a>
+- <a href="/api-reference/apple-pay/create-apple-pay-payin">Create an Apple Pay PayIn</a>
+- <a href="/api-reference/blik/create-blik-payin-with-code">Create a BLIK PayIn</a>
+- <a href="/api-reference/giropay/create-giropay-payin">Create a Giropay PayIn</a>
+- <a href="/api-reference/google-pay/create-google-pay-payin">Create a Google Pay PayIn</a>
+- <a href="/api-reference/ideal/create-ideal-payin">Create an iDEAL PayIn</a>
+- <a href="/api-reference/klarna/create-klarna-payin">Create a Klarna PayIn</a>
+- <a href="/api-reference/mb-way/create-mb-way-payin">Create an MB WAY PayIn</a>
+- <a href="/api-reference/multibanco/create-multibanco-payin">Create a Multibanco PayIn</a>
+- <a href="/api-reference/paypal/create-paypal-payin">Create a PayPal PayIn</a>
+- <a href="/api-reference/satispay/create-satispay-payin">Create a Satispay PayIn</a>
+
+On SEPA Direct Debit, the `StatementDescriptor` length can be up to **100 alphanumeric characters or spaces**:
+
+- <a href="/api-reference/direct-debit-payins/create-direct-debit-payin">Create a Direct Direct-Debit PayIn</a> (if Mandate Scheme is SEPA)
+
+Customization of the bank statement reference is not possible with BACS Direct Debits.
+
+### Pay-in refunds
+
+For the SEPA Direct Debit payment method only, the `StatementDescriptor` is also available on pay-in refunds.
+
+The length is limited to **10 alphanumeric characters or spaces**.
+
+The structure is the same as the pay-in.
+
+## Payouts  
+
+On payouts, platforms can use the `BankWireRef` parameter to send custom text. 
+
+The structure of the complete string sent is:
+
+> MGP* `TradingName` `BankWireRef`
+
+On payouts, the recommended length is 12 characters. Strings longer than this may be truncated depending on the bank. The technical limit is 255 characters.
+
+- <a href="/api-reference/payouts/create-payout">Create a Payout</a>

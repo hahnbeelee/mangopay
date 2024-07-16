@@ -1,0 +1,101 @@
+---
+title: 'List Bank Accounts for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/bankaccounts'  
+---
+
+import Array_BankAccountsResponse from '/snippets/p-response/Array_BankAccountsResponse.mdx';
+import UserId1 from '/snippets/p-path/UserId1.mdx';
+import Active from '/snippets/p-query/Active.mdx';
+import Sort from '/snippets/p-query/Sort.mdx';
+import per_page from '/snippets/p-query/per_page.mdx';
+import page from '/snippets/p-query/page.mdx';
+
+import PhpListBankAccountUser from '/snippets/code/php-list-bank-account-user.mdx';
+import NodeListBankAccountsUser from '/snippets/code/node-list-bank-accounts-user.mdx';
+import RubyListBankAccountsUser from '/snippets/code/ruby-list-bank-accounts-user.mdx';
+import JavaListUserBankAccounts from '/snippets/code/java-list-user-bank-accounts.mdx';
+import PythonListUserBankAccounts from '/snippets/code/python-list-user-bank-accounts.mdx';
+
+<Note>  
+**Note** 
+  
+The returned parameters may vary depending on the encountered bank account types.  
+</Note>  
+
+### Query parameters  
+
+<page />  
+
+<per_page />  
+
+<Sort />  
+
+<Active />  
+
+### Path parameters  
+
+<UserId1 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_BankAccountsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "OwnerAddress":{
+            "AddressLine1":"The Oasis",
+            "AddressLine2":"Rue des plantes",
+            "City":"Paris",
+            "Region":"Ile de Frog",
+            "PostalCode":"75010",
+            "Country":"FR"
+        },
+        "IBAN":"FR7630004000031234567890143",
+        "BIC":"CRLYFRPP",
+        "UserId":"142036728",
+        "OwnerName":"John Doe",
+        "Type":"IBAN",
+        "Id":"142036878",
+        "Tag":"Postman create a bank account",
+        "CreationDate":1654073079,
+        "Active":true
+    },
+    {
+        "OwnerAddress":{
+            "AddressLine1":"77 Street",
+            "AddressLine2":"Rue des plantes",
+            "City":"Paris",
+            "Region":"Ile de France",
+            "PostalCode":"75009",
+            "Country":"FR"
+        },
+        "AccountNumber":"11696419",
+        "ABA":"071000288",
+        "DepositAccountType":"CHECKING",
+        "UserId":"142036728",
+        "OwnerName":"John Doe",
+        "Type":"US",
+        "Id":"150294885",
+        "Tag":null,
+        "CreationDate":1661864955,
+        "Active":true
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListBankAccountUser />
+    <NodeListBankAccountsUser />
+    <RubyListBankAccountsUser />
+    <JavaListUserBankAccounts />
+    <PythonListUserBankAccounts />
+</RequestExample>

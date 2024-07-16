@@ -1,0 +1,91 @@
+---
+title: 'Create a KYC Document'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/kyc/documents'  
+---
+
+import RefusedReasonMessageResponse from '/snippets/p-response/RefusedReasonMessageResponse.mdx';
+import RefusedReasonType1Response from '/snippets/p-response/RefusedReasonType1Response.mdx';
+import Status12Response from '/snippets/p-response/Status12Response.mdx';
+import ProcessedDateResponse from '/snippets/p-response/ProcessedDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import Id6Response from '/snippets/p-response/Id6Response.mdx';
+import FlagsResponse from '/snippets/p-response/FlagsResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import Type11Response from '/snippets/p-response/Type11Response.mdx';
+import Tag3 from '/snippets/p-body/Tag3.mdx';
+import Type2 from '/snippets/p-body/Type2.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import RestCreateKycDoc from '/snippets/code/rest-create-kyc-doc.mdx';
+import PhpCreateKycDoc from '/snippets/code/php-create-kyc-doc.mdx';
+import NodeCreateKycDoc from '/snippets/code/node-create-kyc-doc.mdx';
+import RubyCreateKycDocument from '/snippets/code/ruby-create-kyc-document.mdx';
+import JavaCreateKycDocument from '/snippets/code/java-create-kyc-document.mdx';
+import PythonCreateKycDocument from '/snippets/code/python-create-kyc-document.mdx';
+
+[Read more about the KYC Document object →](/api-reference/kyc-documents/kyc-document-object)
+
+### Path parameters  
+
+<UserId />  
+
+### Body parameters  
+
+<Type2 />  
+
+<Tag3 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Type11Response />  
+
+<UserId2Response />  
+
+<FlagsResponse />  
+
+<Id6Response />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ProcessedDateResponse />  
+
+<Status12Response />  
+
+<RefusedReasonType1Response />  
+
+<RefusedReasonMessageResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 
+{
+    "Type": "IDENTITY_PROOF",
+    "UserId": "151479566",
+    "Flags": [],
+    "Id": "158785224",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1671864905,
+    "ProcessedDate": null,
+    "Status": "CREATED",
+    "RefusedReasonType": null,
+    "RefusedReasonMessage": null
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+
+    <RestCreateKycDoc />
+    <PhpCreateKycDoc />
+    <NodeCreateKycDoc />
+    <RubyCreateKycDocument />
+    <JavaCreateKycDocument />
+    <PythonCreateKycDocument />
+
+</RequestExample>

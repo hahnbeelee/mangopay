@@ -1,0 +1,92 @@
+]---
+title: 'List Transactions for a Wallet'  
+api: 'GET /v2.01/{ClientId}/wallets/{WalletId}/transactions'  
+---
+
+import Array_Transactions1Response from '/snippets/p-response/Array_Transactions1Response.mdx';
+import WalletId from '/snippets/p-path/WalletId.mdx';
+import Nature from '/snippets/p-query/Nature.mdx';
+import Type from '/snippets/p-query/Type.mdx';
+import AfterDate1 from '/snippets/p-query/AfterDate1.mdx';
+import BeforeDate1 from '/snippets/p-query/BeforeDate1.mdx';
+import ResultCode from '/snippets/p-query/ResultCode.mdx';
+import Status from '/snippets/p-query/Status.mdx';
+  
+import PhpListTransactionsWallet from '/snippets/code/php-list-transactions-wallet.mdx';
+import NodeListTransactionsWallet from '/snippets/code/node-list-transactions-wallet.mdx';
+import RubyListTransactionsWallet from '/snippets/code/ruby-list-transactions-wallet.mdx';
+import ListWalletTransactionsJava from '/snippets/code/list-wallet-transactions-java.mdx';
+import PythonListWalletTransactions from '/snippets/code/python-list-wallet-transactions.mdx';
+
+This call returns all the transactions (pay-in, transfers, and payouts) of a given wallet.  
+
+### Query parameters  
+
+<Status />  
+
+<ResultCode />  
+
+<BeforeDate1 />  
+
+<AfterDate1 />  
+
+<Type />  
+
+<Nature />  
+
+### Path parameters  
+
+<WalletId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_Transactions1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+[
+    {
+        "Id":"145498191",
+        "Tag":"Custom meta",
+        "CreationDate":1657175185,
+        "AuthorId":"145494935",
+        "CreditedUserId":"145397183",
+        "DebitedFunds":{
+            "Currency":"EUR",
+            "Amount":1200
+        },
+        "CreditedFunds":{
+            "Currency":"EUR",
+            "Amount":1100
+        },
+        "Fees":{
+            "Currency":"EUR",
+            "Amount":10
+        },
+        "Status":"SUCCEEDED",
+        "ResultCode":"000000",
+        "ResultMessage":"Success",
+        "ExecutionDate":1661859994,
+        "Type":"PAYIN",
+        "Nature":"REGULAR",
+        "CreditedWalletId":"145397873",
+        "DebitedWalletId":null
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+
+    <PhpListTransactionsWallet />
+    <NodeListTransactionsWallet />
+    <RubyListTransactionsWallet />
+    <ListWalletTransactionsJava />
+    <PythonListWalletTransactions />
+
+</RequestExample>

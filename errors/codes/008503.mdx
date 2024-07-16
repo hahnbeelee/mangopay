@@ -1,0 +1,74 @@
+---
+title: '008503'  
+description: '<small>&#8249; [All error codes](/errors/codes#risk-management)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Transaction refused due to blocked BIC</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The payout cannot be performed because the target bank is not authorized.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Payout</div>  
+<div class="label">Fraud policy</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error is triggered when attempting to make a payout to a bank that has been blocked by Mangopay’s teams.  
+
+#### What to do  
+
+In such cases, the user can create a different bank account, belonging to an authorized bank.  
+
+If there seems to be no reason for the bank to be blocked, platforms can contact Mangopay’s Support team to review the situation.  
+
+#### Example  
+
+In the example below, a payout was made to a blocked bank.  
+```json API Response
+{
+    "ModeRequested":"STANDARD",
+    "ModeApplied":"STANDARD",
+    "FallbackReason":null,
+    "EndToEndId":"fa17a353a51b475e9460c30478d04814",
+    "Id":"6659632",
+    "Tag":"Custom meta",
+    "CreationDate":1677169822,
+    "AuthorId":"6659625",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":4900
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":4900
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"FAILED",
+    "ResultCode":"008503",
+    "ResultMessage":"Transaction refused due to blocked BIC",
+    "ExecutionDate":null,
+    "Type":"PAYOUT",
+    "Nature":"REGULAR",
+    "CreditedWalletId":null,
+    "DebitedWalletId":"6659626",
+    "PaymentType":"BANK_WIRE",
+    "BankAccountId":"6659631",
+    "BankWireRef":"Ref156489"
+}
+```

@@ -1,0 +1,143 @@
+---
+title: 'Create an IBAN Bank Account'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/bankaccounts/iban'  
+---
+
+import ActiveResponse from '/snippets/p-response/ActiveResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag4Response from '/snippets/p-response/Tag4Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type5Response from '/snippets/p-response/Type5Response.mdx';
+import OwnerNameResponse from '/snippets/p-response/OwnerNameResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import BICResponse from '/snippets/p-response/BICResponse.mdx';
+import IBANResponse from '/snippets/p-response/IBANResponse.mdx';
+import OwnerAddressResponse from '/snippets/p-response/OwnerAddressResponse.mdx';
+import Tag4 from '/snippets/p-body/Tag4.mdx';
+import OwnerName from '/snippets/p-body/OwnerName.mdx';
+import BIC from '/snippets/p-body/BIC.mdx';
+import IBAN from '/snippets/p-body/IBAN.mdx';
+import OwnerAddress from '/snippets/p-body/OwnerAddress.mdx';
+import UserId1 from '/snippets/p-path/UserId1.mdx';
+  
+import RestCreateIbanBankAccount from '/snippets/code/rest-create-iban-bank-account.mdx';
+import PhpCreateIbanBankAccount from '/snippets/code/php-create-iban-bank-account.mdx';
+import NodeCreateIbanBankAccount from '/snippets/code/node-create-iban-bank-account.mdx';
+import RubyCreateIbanBankAccount from '/snippets/code/ruby-create-iban-bank-account.mdx';
+import JavaCreateIbanBankAccount from '/snippets/code/java-create-iban-bank-account.mdx';
+import PythonCreateIbanBankAccount from '/snippets/code/python-create-iban-bank-account.mdx'; 
+
+<Warning>  
+**Caution – Only for countries that use IBAN** 
+  
+Only use the IBAN type for accounts registered in countries that use IBAN and aren’t GB, US, or CA (for which you should use the dedicated type).   
+</Warning>  
+
+### Path parameters  
+
+<UserId1 />  
+
+### Body parameters  
+
+<OwnerAddress />  
+
+<IBAN />  
+
+<BIC />  
+
+<OwnerName />  
+
+<Tag4 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<OwnerAddressResponse />  
+
+<IBANResponse />  
+
+<BICResponse />  
+
+<UserId2Response />  
+
+<OwnerNameResponse />  
+
+<Type5Response />  
+
+<IdResponse />  
+
+<Tag4Response />  
+
+<CreationDateResponse />  
+
+<ActiveResponse /></Accordion>
+
+</AccordionGroup>  
+<AccordionGroup>  
+
+<Accordion title="400 - Invalid BIC format ">
+```json  
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "c35b1e0b-1a21-42e4-a80f-440ad9de3c57#1662449222",
+    "Date": 1662449223.0,
+    "errors": {
+        "BIC": "The field BIC must match the regular expression '^[a-zA-Z]{6}\\w{2}(\\w{3})?$'."
+    }
+}
+ ```  
+</Accordion>
+<Accordion title="400 - Invalid IBAN">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "692b34b2-86a5-4859-a515-f8838292a56e#1662449297",
+    "Date": 1662449298.0,
+    "errors": {
+        "IBAN": "The value is not a valid IBAN"
+    }
+}  
+ ```  
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "OwnerAddress":{
+        "AddressLine1":"Rue des plantes",
+        "AddressLine2":"The Oasis",
+        "City":"Paris",
+        "Region":"Ile de France",
+        "PostalCode":"75001",
+        "Country":"FR"
+    },
+    "IBAN":"FR7630004000031234567890143",
+    "BIC":"BNPAFRPP",
+    "UserId":"142036728",
+    "OwnerName":"John Doe",
+    "Type":"IBAN",
+    "Id":"150287803",
+    "Tag":"custom meta",
+    "CreationDate":1661859994,
+    "Active":true
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <RestCreateIbanBankAccount />
+    <PhpCreateIbanBankAccount />
+    <NodeCreateIbanBankAccount />
+    <RubyCreateIbanBankAccount />
+    <JavaCreateIbanBankAccount />
+    <PythonCreateIbanBankAccount />
+  
+</RequestExample>

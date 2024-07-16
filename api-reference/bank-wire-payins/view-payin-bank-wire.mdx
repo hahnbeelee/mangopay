@@ -1,0 +1,165 @@
+---
+title: 'View a PayIn (Bank Wire)'  
+api: 'GET /v2.01/{ClientId}/payins/{PayInId}'  
+---
+
+import BankAccountResponse from '/snippets/p-response/BankAccountResponse.mdx';
+import WireReferenceResponse from '/snippets/p-response/WireReferenceResponse.mdx';
+import DeclaredFeesResponse from '/snippets/p-response/DeclaredFeesResponse.mdx';
+import DeclaredDebitedFundsResponse from '/snippets/p-response/DeclaredDebitedFundsResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees7Response from '/snippets/p-response/Fees7Response.mdx';
+import CreditedFunds7Response from '/snippets/p-response/CreditedFunds7Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import PayInId from '/snippets/p-path/PayInId.mdx';
+
+import PhpViewPayin from '/snippets/code/php-view-payin.mdx';
+import NodeViewPayin from '/snippets/code/node-view-payin.mdx';
+import RubyViewPayin from '/snippets/code/ruby-view-payin.mdx';
+import JavaViewPayin from '/snippets/code/java-view-payin.mdx';
+import PythonViewPayin from '/snippets/code/view-payin-python.mdx';
+
+<Note>
+**Note – Pay-in data retained for 13 months**
+
+An API call to retrieve a pay-in whose `CreationDate` is older than 13 months may return 404 Not Found.
+
+For more information, see the <a href="/api-reference/overview/data-availability-periods">Data availability periods</a> article.
+</Note>
+
+
+### Path parameters  
+
+<PayInId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Status is SUCCEEDED">  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds7Response />  
+
+<CreditedFunds7Response />  
+
+<Fees7Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<DeclaredDebitedFundsResponse />  
+
+<DeclaredFeesResponse />  
+
+<WireReferenceResponse />  
+
+<BankAccountResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Status is SUCCEEDED  
+
+{
+    "Id":"157579682",
+    "Tag":null,
+    "CreationDate":1670249107,
+    "ResultCode":"000000",
+    "ResultMessage":"Success",
+    "AuthorId":"156671912",
+    "CreditedUserId":"156671912",
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":1000
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":1000
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"SUCCEEDED",
+    "ExecutionDate":1670249208,
+    "Type":"PAYIN",
+    "Nature":"REGULAR",
+    "CreditedWalletId":"156683554",
+    "DebitedWalletId":null,
+    "PaymentType":"BANK_WIRE",
+    "ExecutionType":"DIRECT",
+    "DeclaredDebitedFunds":{
+        "Currency":"EUR",
+        "Amount":1000
+    },
+    "DeclaredFees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "WireReference":"MGi3dy0q42",
+    "BankAccount":{
+        "OwnerAddress":{
+            "AddressLine1":"2 Avenue Amélie",
+            "AddressLine2":null,
+            "City":"Luxembourg",
+            "Region":null,
+            "PostalCode":"L-1125",
+            "Country":"LU"
+        },
+        "Type":"IBAN",
+        "OwnerName":"MANGOPAY SA",
+        "IBAN":"FR7630056009271234567890182",
+        "BIC":"CCFRFRPPXXX"
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpViewPayin />
+    <NodeViewPayin />
+    <RubyViewPayin />
+    <JavaViewPayin />
+    <PythonViewPayin />
+
+</RequestExample>

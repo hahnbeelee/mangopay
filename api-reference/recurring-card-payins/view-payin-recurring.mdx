@@ -1,0 +1,225 @@
+---
+title: 'View a PayIn (Recurring Card)'  
+api: 'GET /v2.01/{ClientId}/payins/{PayInId}'  
+---
+
+import CardInfoResponse from '/snippets/p-response/CardInfoResponse.mdx';
+import PreferredCardNetworkResponse from '/snippets/p-response/PreferredCardNetworkResponse.mdx';
+import RecurringPayinRegistrationIdResponse from '/snippets/p-response/RecurringPayinRegistrationIdResponse.mdx';
+import Applied3DSVersionResponse from '/snippets/p-response/Applied3DSVersionResponse.mdx';
+import Requested3DSVersionResponse from '/snippets/p-response/Requested3DSVersionResponse.mdx';
+import Shipping2Response from '/snippets/p-response/Shipping2Response.mdx';
+import Billing1Response from '/snippets/p-response/Billing1Response.mdx';
+import IpAddressResponse from '/snippets/p-response/IpAddressResponse.mdx';
+import BrowserInfoResponse from '/snippets/p-response/BrowserInfoResponse.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import SecurityInfoResponse from '/snippets/p-response/SecurityInfoResponse.mdx';
+import Culture2Response from '/snippets/p-response/Culture2Response.mdx';
+import SecureModeNeededResponse from '/snippets/p-response/SecureModeNeededResponse.mdx';
+import SecureModeRedirectURLResponse from '/snippets/p-response/SecureModeRedirectURLResponse.mdx';
+import SecureModeReturnURLResponse from '/snippets/p-response/SecureModeReturnURLResponse.mdx';
+import CardId1Response from '/snippets/p-response/CardId1Response.mdx';
+import SecureModeResponse from '/snippets/p-response/SecureModeResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees4Response from '/snippets/p-response/Fees4Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import PayInId from '/snippets/p-path/PayInId.mdx';
+
+import PhpViewPayin from '/snippets/code/php-view-payin.mdx';
+import NodeViewPayin from '/snippets/code/node-view-payin.mdx';
+import RubyViewPayin from '/snippets/code/ruby-view-payin.mdx';
+import ViewPayinPython from '/snippets/code/view-payin-python.mdx';
+  
+<Note>
+**Note – Pay-in data retained for 13 months**
+
+An API call to retrieve a pay-in whose `CreationDate` is older than 13 months may return 404 Not Found.
+
+For more information, see the <a href="/api-reference/overview/data-availability-periods">Data availability periods</a> article.
+</Note>
+
+
+### Path parameters  
+
+<PayInId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds7Response />  
+
+<CreditedFunds5Response />  
+
+<Fees4Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<SecureModeResponse />  
+
+<CardId1Response />  
+
+<SecureModeReturnURLResponse />  
+
+<SecureModeRedirectURLResponse />  
+
+<SecureModeNeededResponse />  
+
+<Culture2Response />  
+
+<SecurityInfoResponse />  
+
+<StatementDescriptorResponse />  
+
+<BrowserInfoResponse />  
+
+<IpAddressResponse />  
+
+<Billing1Response />  
+
+<Shipping2Response />  
+
+<Requested3DSVersionResponse />  
+
+<Applied3DSVersionResponse />  
+
+<RecurringPayinRegistrationIdResponse />  
+
+<PreferredCardNetworkResponse />  
+
+<CardInfoResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id":"156288494",
+    "Tag":"Created using MANGOPAY API Collection Postman",
+    "CreationDate":1668603610,
+    "AuthorId":"146476890",
+    "CreditedUserId":"146476890",
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":900
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":890
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":10
+    },
+    "Status":"SUCCEEDED",
+    "ResultCode":"000000",
+    "ResultMessage":"Success",
+    "ExecutionDate":1668603612,
+    "Type":"PAYIN",
+    "Nature":"REGULAR",
+    "CreditedWalletId":"148968396",
+    "DebitedWalletId":null,
+    "PaymentType":"CARD",
+    "ExecutionType":"DIRECT",
+    "SecureMode":null,
+    "CardId":"156285393",
+    "SecureModeReturnURL":null,
+    "SecureModeRedirectURL":null,
+    "SecureModeNeeded":false,
+    "Culture":"EN",
+    "SecurityInfo":{
+        "AVSResult":"NO_CHECK"
+    },
+    "StatementDescriptor":"POSTMAN",
+    "BrowserInfo":null,
+    "IpAddress":null,
+    "Billing":{
+        "FirstName":"John",
+        "LastName":"Doe",
+        "Address":{
+            "AddressLine1":"The Oasis",
+            "AddressLine2":"Rue des Plantes",
+            "City":"Paris",
+            "Region":"Ile de France",
+            "PostalCode":"75001",
+            "Country":"FR"
+        }
+    },
+    "Shipping":{
+        "FirstName":"John",
+        "LastName":"Doe",
+        "Address":{
+            "AddressLine1":"The Oasis",
+            "AddressLine2":"Rue des Plantes",
+            "City":"Paris",
+            "Region":"Ile de France",
+            "PostalCode":"75001",
+            "Country":"FR"
+        }
+    },
+    "Requested3DSVersion":null,
+    "Applied3DSVersion":null,
+    "RecurringPayinRegistrationId":"156285527",
+    "PreferredCardNetwork":"MASTERCARD",
+    "CardInfo": {
+        "BIN": "497010",
+        "IssuingBank": "LA BANQUE POSTALE",
+        "IssuerCountryCode": "MA",
+        "Type": "CREDIT",
+        "Brand": "MASTERCARD",
+        "SubType": null
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewPayin />
+    <NodeViewPayin />
+    <RubyViewPayin />
+    <ViewPayinPython />
+</RequestExample>

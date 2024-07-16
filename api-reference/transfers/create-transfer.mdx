@@ -1,0 +1,140 @@
+---
+title: 'Create a Transfer'  
+api: 'POST /v2.01/{ClientId}/transfers'
+---
+
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import DebitedWalletIdResponse from '/snippets/p-response/DebitedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees4Response from '/snippets/p-response/Fees4Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Tag3 from '/snippets/p-body/Tag3.mdx';
+import DebitedWalletId from '/snippets/p-body/DebitedWalletId.mdx';
+import Fees10 from '/snippets/p-body/Fees10.mdx';
+import DebitedFunds11 from '/snippets/p-body/DebitedFunds11.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import CreditedUserId from '/snippets/p-body/CreditedUserId.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+
+import RestCreateTransfer from '/snippets/code/rest-create-transfer.mdx';
+import PhpCreateTransfer from '/snippets/code/php-create-transfer.mdx';
+import NodeCreateTransfer from '/snippets/code/node-create-transfer.mdx';
+import RubyCreateTransfer from '/snippets/code/ruby-create-transfer.mdx';
+import JavaCreateTransfer from '/snippets/code/java-create-transfer.mdx'
+import PythonCreateTransfer from '/snippets/code/python-create-transfer.mdx';
+
+### Body parameters  
+
+<AuthorId />  
+
+<CreditedUserId />  
+
+<CreditedWalletId />  
+
+<DebitedFunds11 />  
+
+<Fees10 />  
+
+<CreditedWalletId />  
+
+<DebitedWalletId />  
+
+<Tag3 />  
+
+### Responses  
+
+<Accordion title="200">  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<DebitedFunds7Response />  
+
+<CreditedFunds5Response />  
+
+<Fees4Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<DebitedWalletIdResponse />  
+
+<CreditedWalletIdResponse /></Accordion>
+
+<Accordion title="400 - Currency incompatibility">
+```json
+{
+    "Message": "Error: multi-currency usage is not authorized",
+    "Type": "currency_incompatibility",
+    "Id": "0c23333c-a0ef-468a-8d33-7bd7ced6e7d4#1661495038",
+    "Date": 1661495039.0,
+    "errors": {
+        "currency": "The Debited Wallet's currency EUR and the Credited Wallet's currency GBP must be the same"
+    }
+}  
+ ```  
+</Accordion>
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "147418844",
+    "Tag": "custom meta",
+    "CreationDate": 1658928911,
+    "AuthorId": "145397183",
+    "CreditedUserId": "142036728",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1600
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1582
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 18
+    },
+    "Status": "SUCCEEDED",
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "ExecutionDate": 1658928911,
+    "Type": "TRANSFER",
+    "Nature": "REGULAR",
+    "DebitedWalletId": "145397873",
+    "CreditedWalletId": "145389978"
+}  
+ ```  
+
+
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestCreateTransfer />
+  <PhpCreateTransfer />
+  <NodeCreateTransfer />
+  <RubyCreateTransfer />
+  <JavaCreateTransfer />
+  <PythonCreateTransfer />
+</RequestExample>

@@ -1,0 +1,28 @@
+---
+title: '121002'  
+description: '<small>&#8249; [All error codes](/errors/codes#payouts)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">The author is not the wallet owner</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The payout author is not the corresponding wallet owner.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Wallet</div>  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error is triggered when the payout `AuthorId` is different from the `UserId` of the Wallet from which the payout is made.

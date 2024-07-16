@@ -1,0 +1,162 @@
+---
+title: 'Create a Wallets Report'  
+api: 'POST /v2.01/{ClientId}/reports/wallets'  
+---
+
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCode2Response from '/snippets/p-response/ResultCode2Response.mdx';
+import Columns1Response from '/snippets/p-response/Columns1Response.mdx';
+import Filters1Response from '/snippets/p-response/Filters1Response.mdx';
+import PreviewResponse from '/snippets/p-response/PreviewResponse.mdx';
+import SortResponse from '/snippets/p-response/SortResponse.mdx';
+import ReportTypeResponse from '/snippets/p-response/ReportTypeResponse.mdx';
+import CallbackURLResponse from '/snippets/p-response/CallbackURLResponse.mdx';
+import DownloadURLResponse from '/snippets/p-response/DownloadURLResponse.mdx';
+import DownloadFormatResponse from '/snippets/p-response/DownloadFormatResponse.mdx';
+import Status4Response from '/snippets/p-response/Status4Response.mdx';
+import ReportDateResponse from '/snippets/p-response/ReportDateResponse.mdx';
+import Tag3Response from '/snippets/p-response/Tag3Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Columns from '/snippets/p-body/Columns.mdx';
+import Filters from '/snippets/p-body/Filters.mdx';
+import Preview from '/snippets/p-body/Preview.mdx';
+import Sort from '/snippets/p-body/Sort.mdx';
+import CallbackURL from '/snippets/p-body/CallbackURL.mdx';
+import DownloadFormat from '/snippets/p-body/DownloadFormat.mdx';
+import Tag5 from '/snippets/p-body/Tag5.mdx';
+
+import RestCreateWalletsReport from '/snippets/code/rest-create-wallets-report.mdx';
+import PhpCreateWalletsReport from '/snippets/code/php-create-wallets-report.mdx';
+import NodeCreateWalletsReport from '/snippets/code/node-create-wallets-report.mdx';
+import RubyCreateWalletsReport from '/snippets/code/ruby-create-wallets-report.mdx';
+import CreateWalletsReportPython from '/snippets/code/create-wallets-report-python.mdx';
+
+<Note>  
+**Note – Report expiration date** 
+  
+A report expires after 24 hours (i.e., you can no longer download it after this delay). You can still generate a new report with the same filters and information easily.  
+</Note>  
+
+### Body parameters  
+
+<Tag5 />  
+
+<DownloadFormat />  
+
+<CallbackURL />  
+
+<Sort />  
+
+<Preview />  
+
+<Filters />  
+
+<Columns />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<IdResponse />  
+
+<CreationDateResponse />  
+
+<Tag3Response />  
+
+<ReportDateResponse />  
+
+<Status4Response />  
+
+<DownloadFormatResponse />  
+
+<DownloadURLResponse />  
+
+<CallbackURLResponse />  
+
+<ReportTypeResponse />  
+
+<SortResponse />  
+
+<PreviewResponse />  
+
+<Filters1Response />  
+
+<Columns1Response />  
+
+<ResultCode2Response />  
+
+<ResultMessageResponse />
+
+</Accordion>
+
+<Accordion
+  title="400 - Max date range 24 months"
+>
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "23ca4f5b-6d35-45d0-8bde-c8424885a2e9",
+    "Date": 1715353491.0,
+    "errors": {
+        "Filters.AfterDate": "This report type can only be done for a date range of a maximum of 24 months."
+    }
+}
+```
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "147284953",
+    "CreationDate": 1658838991,
+    "Tag": "This is my tag",
+    "ReportDate": null,
+    "Status": "PENDING",
+    "DownloadFormat": "CSV",
+    "DownloadURL": null,
+    "CallbackURL": null,
+    "ReportType": "WALLETS",
+    "Sort": "CreationDate:ASC",
+    "Preview": false,
+    "Filters": {
+        "BeforeDate": 1658838931,
+        "AfterDate": 1656246931,
+        "OwnerId": null,
+        "Currency": null,
+        "MinBalanceAmount": null,
+        "MinBalanceCurrency": null,
+        "MaxBalanceAmount": null,
+        "MaxBalanceCurrency": null
+    },
+    "Columns": [
+        "Id",
+        "Tag",
+        "CreationDate",
+        "Owners",
+        "Description",
+        "BalanceAmount",
+        "BalanceCurrency",
+        "Currency",
+        "FundsType"
+    ],
+    "ResultCode": null,
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestCreateWalletsReport />
+  <PhpCreateWalletsReport />
+  <NodeCreateWalletsReport />
+  <RubyCreateWalletsReport />
+  <CreateWalletsReportPython />
+</RequestExample>

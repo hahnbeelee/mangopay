@@ -1,0 +1,33 @@
+---
+title: '121009'  
+description: '<small>&#8249; [All error codes](/errors/codes#payouts)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Payout expired before processing</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The payout request expired before it could be processed.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error occurs when a payout remains in `CREATED` status for longer than 7 days without the funds being sent by Mangopay.  
+
+Some payouts are subject to manual review by Mangopay’s teams for reasons of risk management or AML/CFT. If this review is not completed within 7 days, the payout expires.  
+
+#### What to do  
+
+In the event that this error occurs, platforms can recreate the payout for the user.

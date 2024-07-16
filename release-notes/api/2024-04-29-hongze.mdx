@@ -1,0 +1,24 @@
+---
+title: 'API - Apr 29, 2024 - Hongze'  
+description: '<small>&#8249; [All releases](/release-notes)</small>'  
+mode: wide  
+'og:description': 'StatementDescriptor available on SDD refunds'  
+---
+  
+  <div class="pill pill-green rn-pill">Added</div> 
+  
+### StatementDescriptor available on SDD refunds  
+
+Platforms can now send the `StatementDescriptor` parameter on refunds of SEPA Direct Debit pay-ins.  
+
+On refunds of other payment methods, as well as transfer refunds, the parameter is ignored.   
+
+The following endpoints have been updated:   
+
+<Card title="Endpoints" href="/api-reference/refunds/create-refund-payin">POST Create a Refund for a PayIn</Card>  
+
+<Card title="Endpoints" href="/api-reference/refunds/view-refund">GET View a Refund</Card>  
+
+For more information about the `StatementDescriptor` see:   
+
+<Card title="Guide" href="/bank-statements">Customizing bank statement references</Card>

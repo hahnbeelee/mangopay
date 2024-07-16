@@ -1,0 +1,120 @@
+---
+title: 'View a Repudiation'  
+api: 'GET /v2.01/{ClientId}/repudiations/{RepudiationId}'  
+---
+
+import InitialTransactionNature1Response from '/snippets/p-response/InitialTransactionNature1Response.mdx';
+import InitialTransactionType1Response from '/snippets/p-response/InitialTransactionType1Response.mdx';
+import InitialTransactionId1Response from '/snippets/p-response/InitialTransactionId1Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Fees4Response from '/snippets/p-response/Fees4Response.mdx';
+import DebitedFunds5Response from '/snippets/p-response/DebitedFunds5Response.mdx';
+import CreditedWalletId1Response from '/snippets/p-response/CreditedWalletId1Response.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import Type6Response from '/snippets/p-response/Type6Response.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import CreditedUserId1Response from '/snippets/p-response/CreditedUserId1Response.mdx';
+import AuthorId3Response from '/snippets/p-response/AuthorId3Response.mdx';
+import RepudiationId from '/snippets/p-path/RepudiationId.mdx';
+  
+import PhpViewRepudiation from '/snippets/code/php-view-repudiation.mdx';
+import NodeViewRepudiation from '/snippets/code/node-view-repudiation.mdx';
+import RubyViewRepudiation from '/snippets/code/ruby-view-repudiation.mdx';
+import ViewRepudationPython from '/snippets/code/view-repudation-python.mdx';
+
+### Path parameters  
+
+<RepudiationId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<AuthorId3Response />  
+
+<CreditedUserId1Response />  
+
+<CreditedFunds5Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<Type6Response />  
+
+<NatureResponse />  
+
+<CreditedWalletId1Response />  
+
+<DebitedFunds5Response />  
+
+<Fees4Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<InitialTransactionId1Response />  
+
+<InitialTransactionType1Response />  
+
+<InitialTransactionNature1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "AuthorId": "146476890",
+    "CreditedUserId": null,
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "Status": "SUCCEEDED",
+    "ExecutionDate": 1672662591,
+    "Type": "PAYOUT",
+    "Nature": "REPUDIATION",
+    "CreditedWalletId": null,
+    "DebitedWalletId": "CREDIT_EUR",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 0
+    },
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "Id": "159196330",
+    "Tag": null,
+    "CreationDate": 1672662590,
+    "InitialTransactionId": "159196283",
+    "InitialTransactionType": "PAYIN",
+    "InitialTransactionNature": "REGULAR"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpViewRepudiation />
+    <NodeViewRepudiation />
+    <RubyViewRepudiation />
+    <ViewRepudationPython />
+
+</RequestExample>

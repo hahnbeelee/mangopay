@@ -1,0 +1,164 @@
+---
+title: 'Create an MB WAY PayIn'  
+api: 'POST /v2.01/{ClientId}/payins/payment-methods/mbway'  
+---
+
+import Phone1Response from '/snippets/p-response/Phone1Response.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType6Response from '/snippets/p-response/PaymentType6Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees1Response from '/snippets/p-response/Fees1Response.mdx';
+import CreditedFunds2Response from '/snippets/p-response/CreditedFunds2Response.mdx';
+import DebitedFunds2Response from '/snippets/p-response/DebitedFunds2Response.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ProfilingAttemptReference from '/snippets/p-body/ProfilingAttemptReference.mdx';
+import Phone1 from '/snippets/p-body/Phone1.mdx';
+import StatementDescriptor from '/snippets/p-body/StatementDescriptor.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import Fees1 from '/snippets/p-body/Fees1.mdx';
+import DebitedFunds2 from '/snippets/p-body/DebitedFunds2.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+
+import CreateMbWayPayinRest from '/snippets/code/create-mb-way-payin-rest.mdx';
+import PythonCreateMbWayPayin from '/snippets/code/python-create-mb-way-payin.mdx'; 
+
+<Note>  
+**Note – Timeout after 4 minutes** 
+  
+The payment session lasts for 4 minutes, at which point the pay-in fails automatically if no action has been taken by the user.  
+</Note>  
+
+<Warning>  
+**Caution – No phone number validation** 
+  
+If the phone number provided is of an accepted format but not valid or not attributed to the corresponding MB WAY user, then the pay-in is created but will fail because the user will not receive a push notification from the MB WAY app.  
+</Warning>  
+
+### Body parameters  
+
+<Tag />  
+
+<AuthorId />  
+
+<DebitedFunds2 />  
+
+<Fees1 />  
+
+<CreditedWalletId />  
+
+<StatementDescriptor />  
+
+<Phone1 />  
+
+<ProfilingAttemptReference />  
+
+### Responses  
+
+<Accordion title="200 - Created">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<DebitedFunds2Response />  
+
+<CreditedFunds2Response />  
+
+<Fees1Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<PaymentType6Response />  
+
+<ExecutionTypeResponse />  
+
+<StatementDescriptorResponse />  
+
+<Phone1Response /></Accordion>
+
+<Accordion title="400 - Phone format not accepted">
+```json
+{
+    "message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "id": "401918a7-aab9-4b55-b09d-45007b96523d",
+    "date": 1696931925,
+    "type": "param_error",
+    "errors": {
+        "phone": "The field must match the regular expression '^\\d{1,5}#\\d{4,11}$'."
+    }
+}  
+ ```  
+</Accordion>
+  
+
+<ResponseExample>  
+
+```json 200 - Created  
+{
+    "Id": "wt_9fb9e538-7a0b-417e-af6e-196d2a7ffb5b",
+    "Tag": "Created using the Mangopay API Postman collection",
+    "CreationDate": 1696930998,
+    "AuthorId": "204068024",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 5000
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 5000
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 0
+    },
+    "Status": "CREATED",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "ExecutionDate": null,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "204089031",
+    "CreditedUserId": "204068024",
+    "PaymentType": "MBWAY",
+    "ExecutionType": "WEB",
+    "StatementDescriptor": "Mangopay",
+    "Phone": "33#652317567"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <CreateMbWayPayinRest />
+    <PythonCreateMbWayPayin />
+</RequestExample>

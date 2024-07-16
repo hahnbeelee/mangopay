@@ -1,0 +1,146 @@
+---
+title: "iDEAL"
+"og:description": "How users can pay via online banking using iDEAL, a popular payment method in the Netherlands."
+---
+
+## About
+
+iDEAL is a popular payment method in the Netherlands which allows users to pay via their online banking interface. It is covered by all the major Dutch commercial banks.
+
+<table>
+    <tbody>
+        <tr>
+            <th class="header">Region</th>
+            <td class="table-content">
+                Netherlands
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Currencies</th>
+            <td class="table-content">
+                EUR
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Refunds](/guides/refunds)</th>
+            <td class="table-content">
+                Yes, up to 1 year after initial transaction
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Disputes</th>
+            <td class="table-content">
+                Users authenticate directly with their bank, so there is no dispute process and a low risk of unrecognized or fraudulent payments
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Preauthorization</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Recurring payments</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+## How it works
+
+- On your app or website, the user selects iDEAL as the payment method during checkout, and selects their bank (if the bank selection functionality is implemented using the `Bic`)  
+- The user is redirected (via `RedirectURL`) to their bank’s interface to authenticate and complete the payment  
+- The user is returned to your platform on the `ReturnURL`
+
+The transaction is complete when the pay-in status changes from `CREATED` to `SUCCEEDED` or `FAILED`, indicating the outcome.
+
+You should also set up [hook notifications](/webhooks) for the relevant [event types](/webhooks/event-types):
+-   PAYIN_NORMAL_SUCCEEDED
+-   PAYIN_NORMAL_FAILED
+
+## Supported banks
+
+When offering iDEAL to your users, you can prompt them to select their bank at checkout. By doing so, you can redirect the user directly to their banking interface to log in and authenticate the payment.
+
+The `Bic` parameter of the Create an iDEAL PayIn endpoint allows you to submit the bank identifier code (BIC) to Mangopay and receive a bank-specific URL in the `RedirectURL`.
+
+If the `Bic` is not supplied, a generic `RedirectURL` is provided at which the user must select their bank to continue. Providing a BIC allows you to remove this step of the user experience and thereby facilitate conversion.
+
+<Note>
+    **Best practice - Allow the user to choose their bank** When the user
+    chooses iDEAL, present the list of bank names in a dropdown menu for the
+    user to select. Send the corresponding BIC value in the `Bic` parameter to
+    take the user straight to their banking interface via the `RedirectURL`.
+</Note>
+
+Allowed values for the `Bic` are listed below. The `BankName` parameter is returned in its place.
+
+<table>
+    <thead>
+        <tr>
+            <th class="header">BIC</th>
+            <th class="header">Bank name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="table-content">ABNANL2A</td>
+            <td class="table-content">ABN AMRO</td>
+        </tr>
+        <tr>
+            <td class="table-content">ASNBNL21</td>
+            <td class="table-content">ASN</td>
+        </tr>
+        <tr>
+            <td class="table-content">BITSNL2A</td>
+            <td class="table-content">Yoursafe</td>
+        </tr>
+        <tr>
+            <td class="table-content">BUNQNL2A</td>
+            <td class="table-content">Bunq</td>
+        </tr>
+        <tr>
+            <td class="table-content">FVLBNL22</td>
+            <td class="table-content">Van Lanschot Baniers</td>
+        </tr>
+        <tr>
+            <td class="table-content">INGBNL2A</td>
+            <td class="table-content">ING Bank</td>
+        </tr>
+        <tr>
+            <td class="table-content">KNABNL2H</td>
+            <td class="table-content">Knab</td>
+        </tr>
+        <tr>
+            <td class="table-content">RABONL2U</td>
+            <td class="table-content">Rabobank</td>
+        </tr>
+        <tr>
+            <td class="table-content">RBRBNL21</td>
+            <td class="table-content">RegioBank</td>
+        </tr>
+        <tr>
+            <td class="table-content">REVOLT21</td>
+            <td class="table-content">Revolut</td>
+        </tr>
+        <tr>
+            <td class="table-content">SNSBNL2A</td>
+            <td class="table-content">SNS Bank</td>
+        </tr>
+        <tr>
+            <td class="table-content">TRIONL2U</td>
+            <td class="table-content">Triodos Bank</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Related resources
+
+<CardGroup col={2}> 
+    <Card title="Endpoint" href="/api-reference/ideal/ideal-payin-object">The iDEAL PayIn object</Card>  
+
+    <Card title="Testing" href="/testing/payment-methods#ideal">Learn about testing iDEAL</Card>
+</CardGroup>

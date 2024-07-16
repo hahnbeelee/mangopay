@@ -1,0 +1,77 @@
+---
+title: 'List KYC Documents for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/kyc/documents'  
+---
+
+import Array_KYCDocumentResponse from '/snippets/p-response/Array_KYCDocumentResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+import Status1 from '/snippets/p-query/Status1.mdx';
+
+
+import PhpListKycDocumentsUser from '/snippets/code/php-list-kyc-documents-user.mdx';
+import NodeListKycUser from '/snippets/code/node-list-kyc-user.mdx';
+import RubyListKycDocumentsUser from '/snippets/code/ruby-list-kyc-documents-user.mdx';
+import ListUserKycDocumentsJava from '/snippets/code/list-user-kyc-documents-java.mdx';
+import PythonListKycDocumentsForUser from '/snippets/code/python-list-kyc-documents-for-user.mdx';
+
+[Read more about the KYC Document object →](/api-reference/kyc-documents/kyc-document-object)
+
+### Query parameters  
+
+<Status1 />  
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_KYCDocumentResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "Type": "REGISTRATION_PROOF",
+        "UserId": "151479566",
+        "Flags": [],
+        "Id": "151480832",
+        "Tag": "KYC Natural",
+        "CreationDate": 1663160678,
+        "ProcessedDate": null,
+        "Status": "CREATED",
+        "RefusedReasonType": null,
+        "RefusedReasonMessage": null
+    },
+    {
+        "Type": "IDENTITY_PROOF",
+        "UserId": "151479566",
+        "Flags": [],
+        "Id": "158785224",
+        "Tag": "Created using MANGOPAY API Collection Postman",
+        "CreationDate": 1671864905,
+        "ProcessedDate": null,
+        "Status": "VALIDATION_ASKED",
+        "RefusedReasonType": null,
+        "RefusedReasonMessage": null
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+
+            <PhpListKycDocumentsUser />
+            <NodeListKycUser />
+            <RubyListKycDocumentsUser />
+            <ListUserKycDocumentsJava />
+            <PythonListKycDocumentsForUser />
+  
+</RequestExample>

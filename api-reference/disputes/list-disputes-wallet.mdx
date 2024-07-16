@@ -1,0 +1,66 @@
+---
+title: 'List Disputes for a Wallet'  
+api: 'GET /v2.01/{ClientId}/wallets/{WalletId}/disputes'  
+---
+
+import Array_DisputesResponse from '/snippets/p-response/Array_DisputesResponse.mdx';
+import WalletId from '/snippets/p-path/WalletId.mdx';
+
+import NodeListWalletDisputes from '/snippets/code/node-list-wallet-disputes.mdx';
+import RubyListDisputesWallet from '/snippets/code/ruby-list-disputes-wallet.mdx';
+import ListWalletDisputesPython from '/snippets/code/list-wallet-disputes-python.mdx';
+
+### Path parameters  
+
+<WalletId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_DisputesResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "InitialTransactionId": "158596153",
+        "InitialTransactionType": "PAYIN",
+        "InitialTransactionNature": "REGULAR",
+        "DisputeType": "CONTESTABLE",
+        "ContestDeadlineDate": 1673049599,
+        "DisputedFunds": {
+            "Currency": "EUR",
+            "Amount": 1200
+        },
+        "ContestedFunds": {
+            "Currency": "EUR",
+            "Amount": 1200
+        },
+        "Status": "PENDING_CLIENT_ACTION",
+        "StatusMessage": null,
+        "DisputeReason": {
+            "DisputeReasonMessage": "This is a test dispute",
+            "DisputeReasonType": "UNKNOWN"
+        },
+        "ResultCode": "",
+        "ResultMessage": null,
+        "Id": "159102965",
+        "Tag": null,
+        "CreationDate": 1672411848,
+        "ClosedDate": 1675260940,
+        "RepudiationId": "159102966"
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <NodeListWalletDisputes />
+    <RubyListDisputesWallet />
+    <ListWalletDisputesPython />
+</RequestExample>

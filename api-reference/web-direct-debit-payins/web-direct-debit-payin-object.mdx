@@ -1,0 +1,110 @@
+---
+title: 'The Web Direct-Debit PayIn object'
+---
+
+import ProfilingAttemptReference from '/snippets/object-attributes/ProfilingAttemptReference.mdx';
+import Culture from '/snippets/object-attributes/Culture.mdx';
+import TemplateURL from '/snippets/object-attributes/TemplateURL.mdx';
+import TemplateURLOptions from '/snippets/object-attributes/TemplateURLOptions.mdx';
+import ReturnURL from '/snippets/object-attributes/ReturnURL.mdx';
+import RedirectURL from '/snippets/object-attributes/RedirectURL.mdx';
+import ExecutionType from '/snippets/object-attributes/ExecutionType.mdx';
+import PaymentType from '/snippets/object-attributes/PaymentType.mdx';
+import DebitedWalletId1 from '/snippets/object-attributes/DebitedWalletId1.mdx';
+import CreditedWalletId1 from '/snippets/object-attributes/CreditedWalletId1.mdx';
+import Nature from '/snippets/object-attributes/Nature.mdx';
+import Type from '/snippets/object-attributes/Type.mdx';
+import ExecutionDate from '/snippets/object-attributes/ExecutionDate.mdx';
+import Status1 from '/snippets/object-attributes/Status1.mdx';
+import Fees2 from '/snippets/object-attributes/Fees2.mdx';
+import CreditedFunds3 from '/snippets/object-attributes/CreditedFunds3.mdx';
+import DebitedFunds3 from '/snippets/object-attributes/DebitedFunds3.mdx';
+import CreditedUserId from '/snippets/object-attributes/CreditedUserId.mdx';
+import AuthorId1 from '/snippets/object-attributes/AuthorId1.mdx';
+import ResultMessage from '/snippets/object-attributes/ResultMessage.mdx';
+import ResultCode from '/snippets/object-attributes/ResultCode.mdx';
+import CreationDate from '/snippets/object-attributes/CreationDate.mdx';
+import Tag from '/snippets/object-attributes/Tag.mdx';
+import Id from '/snippets/object-attributes/Id.mdx';
+import DirectDebitType from '/snippets/object-attributes/DirectDebitType.mdx';
+  
+### Description
+Mangopay relies on the Web Direct-Debit PayIn object to process pay-in transactions made directly from the user’s bank account to a Wallet through an online payment method.    
+
+<Warning>
+**Warning – Giropay no longer available after June 30, 2024**
+
+Giropay’s operator Paydirekt has decided to cease the payment method’s services at the end of June, without providing a direct alternative. This decision by Paydirekt impacts the entire industry and is beyond our control.
+
+Effective July 1, 2024: 
+- Pay-ins will fail with the <a href="/errors/codes/101101">101101</a> error
+- Refunds will be possible for one year 
+
+This change affects both the <a href="/api-reference/giropay">new</a> integration and this legacy one.
+
+Our team is ready to assist you with your integration of alternatives like <a href="/guides/payment-methods/klarna">Klarna</a>, <a href="/guides/payment-methods/paypal">PayPal</a>, or <a href="/guides/payment-methods/banking/virtual-iban">virtual IBANs</a> for the German market. Please reach out <a href="https://hub.mangopay.com/">via the Hub</a>. 
+</Warning>
+
+<Warning>  
+**Caution – Sofort deprecation** 
+  
+These endpoints are the legacy integration of Sofort with Mangopay (`DirectDebitType` is `SOFORT`).  
+
+Klarna is deprecating the Sofort brand and technical solution. Platforms using Sofort are invited to integrate Klarna.  
+
+For a limited period, platforms can continue using Mangopay’s legacy integration of Sofort in both Production and Sandbox.  
+
+For more information, see the <a href="/guides/payment-methods/klarna">Klarna</a> article.  
+</Warning>  
+
+### Attributes  
+
+<DirectDebitType />  
+
+<Id />  
+
+<Tag />  
+
+<CreationDate />  
+
+<ResultCode />  
+
+<ResultMessage />  
+
+<AuthorId1 />  
+
+<CreditedUserId />  
+
+<DebitedFunds3 />  
+
+<CreditedFunds3 />  
+
+<Fees2 />  
+
+<Status1 />  
+
+<ExecutionDate />  
+
+<Type />  
+
+<Nature />  
+
+<CreditedWalletId1 />  
+
+<DebitedWalletId1 />  
+
+<PaymentType />  
+
+<ExecutionType />  
+
+<RedirectURL />  
+
+<ReturnURL />  
+
+<TemplateURLOptions />  
+
+<TemplateURL />  
+
+<Culture />  
+
+<ProfilingAttemptReference />

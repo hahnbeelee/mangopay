@@ -1,0 +1,46 @@
+---
+title: 'Create a Dispute Document Page'  
+api: 'POST /v2.01/{ClientId}/disputes/{DisputeId}/documents/{DisputeDocumentId}/pages'  
+---
+
+import File from '/snippets/p-body/File.mdx';
+import DisputeDocumentId from '/snippets/p-path/DisputeDocumentId.mdx';
+import DisputeId from '/snippets/p-path/DisputeId.mdx';
+
+import RestCreateDisputeDocumentPage from '/snippets/code/rest-create-dispute-document-page.mdx';
+import CreateDisputeDocumentPagePython from '/snippets/code/create-dispute-document-page-python.mdx';
+
+The Dispute Document Page is a file attached to the Dispute Document for Mangopay’s team to review. You can have as many Dispute Document Pages as there are actual pages of the document you send.  
+
+In order to be able to create a document page:  
+- The corresponding Dispute Document `Status` must be `CREATED`  
+- The `File` must be a base64 encoded file and have a maximum size of 10MB  
+
+### Path parameters  
+
+<DisputeId />  
+
+<DisputeDocumentId />  
+
+### Body parameters  
+
+<File />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="204 - No content (upload successful)">
+_No response body parameters_
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateDisputeDocumentPage />
+    <CreateDisputeDocumentPagePython />
+</RequestExample>

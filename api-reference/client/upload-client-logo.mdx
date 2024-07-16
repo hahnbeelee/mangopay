@@ -1,0 +1,32 @@
+---
+title: 'Upload a Client logo'  
+api: 'PUT /v2.01/{ClientId}/clients/logo'  
+---
+
+import File1 from '/snippets/p-body/File1.mdx';
+  
+import RestUploadClientLogo from '/snippets/code/rest-upload-client-logo.mdx';
+
+This endpoint allows you to upload the logo of the platform that is displayed on some payment pages to which end users may be redirected (e.g., mandate confirmation).  
+
+### Body parameters  
+
+<File1 />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="204 - No content (upload successful)">
+_No response body parameters_
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestUploadClientLogo />
+</RequestExample>

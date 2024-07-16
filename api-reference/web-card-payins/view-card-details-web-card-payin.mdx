@@ -1,0 +1,66 @@
+---
+title: 'View card details for a Web Card PayIn'  
+api: 'GET /v2.01/{ClientId}/payins/card/web/{PayInId}/extended'  
+---
+
+import FingerprintResponse from '/snippets/p-response/FingerprintResponse.mdx';
+import Country4Response from '/snippets/p-response/Country4Response.mdx';
+import CardTypeResponse from '/snippets/p-response/CardTypeResponse.mdx';
+import AliasResponse from '/snippets/p-response/AliasResponse.mdx';
+import ExpirationDate1Response from '/snippets/p-response/ExpirationDate1Response.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import PayInId from '/snippets/p-path/PayInId.mdx';
+
+import PhpViewCardDetailsWebPayin from '/snippets/code/php-view-card-details-web-payin.mdx';
+import RubyViewCardDetailsWebCardPayin1 from '/snippets/code/ruby-view-card-details-web-card-payin1.mdx';
+import PythonViewCardDetailsWebCardPayin from '/snippets/code/python-view-card-details-web-card-payin.mdx';
+
+### Path parameters  
+
+<PayInId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<ExpirationDate1Response />  
+
+<AliasResponse />  
+
+<CardTypeResponse />  
+
+<Country4Response />  
+
+<FingerprintResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+   "Id": "150523529",
+   "PaymentType": "CARD",
+   "ExecutionType": "WEB",
+   "ExpirationDate": "0323",
+   "Alias": "497010XXXXXX6588",
+   "CardType": "CB_VISA_MASTERCARD",
+   "Country": "FRA",
+   "Fingerprint": "586d14a7ee9244dd8a7a51bb79aafc24"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewCardDetailsWebPayin />
+    <RubyViewCardDetailsWebCardPayin1 />
+    <PythonViewCardDetailsWebCardPayin />
+</RequestExample>

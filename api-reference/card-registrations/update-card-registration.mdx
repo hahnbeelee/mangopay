@@ -1,0 +1,151 @@
+---
+title: 'Update a Card Registration'  
+api: 'PUT /v2.01/{ClientId}/cardregistrations/{CardRegistrationId}'  
+---
+
+import CardTypeResponse from '/snippets/p-response/CardTypeResponse.mdx';
+import Status1Response from '/snippets/p-response/Status1Response.mdx';
+import Currency2Response from '/snippets/p-response/Currency2Response.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CardRegistrationURLResponse from '/snippets/p-response/CardRegistrationURLResponse.mdx';
+import CardType1Response from '/snippets/p-response/CardType1Response.mdx';
+import CardIdResponse from '/snippets/p-response/CardIdResponse.mdx';
+import RegistrationDataResponse from '/snippets/p-response/RegistrationDataResponse.mdx';
+import PreregistrationDataResponse from '/snippets/p-response/PreregistrationDataResponse.mdx';
+import AccessKeyResponse from '/snippets/p-response/AccessKeyResponse.mdx';
+import UserIdResponse from '/snippets/p-response/UserIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag1Response from '/snippets/p-response/Tag1Response.mdx';
+import Id1Response from '/snippets/p-response/Id1Response.mdx';
+import RegistrationData from '/snippets/p-body/RegistrationData.mdx';
+import CardRegistrationId from '/snippets/p-path/CardRegistrationId.mdx';
+import CardHolderName from '/snippets/p-body/CardHolderName.mdx';
+
+import RestUpdateCardRegistration from '/snippets/code/rest-update-card-registration.mdx';
+import PhpUpdateCardRegistration from '/snippets/code/php-update-card-registration.mdx';
+import NodeUpdateCardRegistration from '/snippets/code/node-update-card-registration.mdx';
+import RubyUpdateCardRegistration from '/snippets/code/ruby-update-card-registration.mdx';
+import JavaUpdateCardRegistration from '/snippets/code/java-update-card-registration.mdx';
+import PythonUpdateCardRegistration from '/snippets/code/python-update-card-registration.mdx';
+
+This call is strictly used to add the string acquired from the tokenization to the Card Registration object in the parameter `RegistrationData`, thereby validating the registration. You cannot update any other parameters.  
+
+As a result, the Card object will be created (and the corresponding `CardId` returned).  
+
+### Path parameters  
+
+<CardRegistrationId />  
+
+### Body parameters  
+
+<RegistrationData />
+
+<CardHolderName />
+
+### Responses  
+
+<AccordionGroup>
+    <Accordion title='200 - Status "VALIDATED"'>  
+        <Id1Response />  
+        <Tag1Response />  
+        <CreationDateResponse />  
+        <UserIdResponse />  
+        <AccessKeyResponse />  
+        <PreregistrationDataResponse />  
+        <RegistrationDataResponse />  
+        <CardIdResponse />  
+        <CardType1Response />  
+        <CardRegistrationURLResponse />  
+        <ResultCodeResponse />  
+        <ResultMessageResponse />  
+        <Currency2Response />  
+        <Status1Response />
+    </Accordion>
+
+    <Accordion title='200 - Status "ERROR"'>  
+        <Id1Response />  
+        <Tag1Response />  
+        <CreationDateResponse />  
+        <UserIdResponse />  
+        <AccessKeyResponse />  
+        <PreregistrationDataResponse />  
+        <RegistrationDataResponse />  
+        <CardIdResponse />  
+        <CardTypeResponse />  
+        <CardRegistrationURLResponse />  
+        <ResultCodeResponse />  
+        <ResultMessageResponse />  
+        <Currency2Response />  
+        <Status1Response />
+    </Accordion>
+    <Accordion
+      title="400 - CardHolderName can't be longer than than 45 characters"
+    >
+````json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "21a37059-4f13-41c2-a6ef-fb8977b0f553",
+    "Date": 1715088135.0,
+    "errors": {
+        "CardHolderName": "The field CardHolderName must match the regular expression '^.{0,45}$'."
+    }
+}
+````
+
+    </Accordion>
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Status "VALIDATED"  
+
+{
+    "Id": "149333938",
+    "Tag": null,
+    "CreationDate": 1660737596,
+    "UserId": "146476890",
+    "AccessKey": "1X0m87dmM2LiwFgxPLBJ",
+    "PreregistrationData": "S2mSVl8PLRVHgaMNATInMvj89Yq1mzIdDroMCDVpVe-N9s6Jm9QuXkzNk96K5-2o2ddFLVXdicolcUIkv_kKEA",
+    "RegistrationData": "data=zaXL7u1LOFpPjYw4hCsZeOIe9iluWcnfOEMB9KwHmn1ObTIh_ICCIiYsaNfm8D8bnN1aM1h9ItsXjO_wR1mQydOmh-vDtkQob6nZTfk7FnIRxnHaHISav5XNqKU6GZ15KveYnfvMjBj-cRtzFqRcCA",
+    "CardId": "149334067",
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardRegistrationURL": "https://homologation-webpayment.payline.com/webpayment/getToken",
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "Currency": "EUR",
+    "Status": "VALIDATED"
+}  
+ ```  
+
+```json 200 - Status "ERROR"   
+
+{
+    "Id": "149271131",
+    "Tag": null,
+    "CreationDate": 1660661392,
+    "UserId": "133498164",
+    "AccessKey": "1X0m87dmM2LiwFgxPLBJ",
+    "PreregistrationData": "YkgVxL1yNY4ZOfKtqEew_e0SsxIfYZWISRpVi5B_jKboe08cd0V_NE-iZ891ehPx2ddFLVXdicolcUIkv_kKEA",
+    "RegistrationData": "data=R7hxMYui4h4rBkaNwbiH1PcCheeXpguO2974jNGgynAVfsmychzXX2Wj-MoseJpnl8C1taMnTBqWmjbSWmgMQNE2bMetrwzREAFpp6SMaYi3vFHtOVUf5ZCUjtEbhayaNx0xgKTVnyDj15oG8jR88g",
+    "CardId": null,
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardRegistrationURL": "https://homologation-webpayment.payline.com/webpayment/getToken",
+    "ResultCode": "105299",
+    "ResultMessage": "Token input Error",
+    "Currency": "EUR",
+    "Status": "ERROR"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestUpdateCardRegistration />
+    <PhpUpdateCardRegistration />
+    <NodeUpdateCardRegistration />
+    <RubyUpdateCardRegistration />
+    <JavaUpdateCardRegistration />
+    <PythonUpdateCardRegistration />
+</RequestExample>

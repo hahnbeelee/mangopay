@@ -1,0 +1,87 @@
+---
+title: 'View a Bank Account'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/bankaccounts/{BankAccountId}'  
+---
+
+import ActiveResponse from '/snippets/p-response/ActiveResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag4Response from '/snippets/p-response/Tag4Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type5Response from '/snippets/p-response/Type5Response.mdx';
+import OwnerNameResponse from '/snippets/p-response/OwnerNameResponse.mdx';
+import UserId1Response from '/snippets/p-response/UserId1Response.mdx';
+import BICResponse from '/snippets/p-response/BICResponse.mdx';
+import IBANResponse from '/snippets/p-response/IBANResponse.mdx';
+import OwnerAddressResponse from '/snippets/p-response/OwnerAddressResponse.mdx';
+import BankAccountId from '/snippets/p-path/BankAccountId.mdx';
+  
+import PhpViewBankAccount from '/snippets/code/php-view-bank-account.mdx';
+import NodeViewBankAccount from '/snippets/code/node-view-bank-account.mdx';
+import RubyViewBankAccount from '/snippets/code/ruby-view-bank-account.mdx';
+import JavaViewBankAccount from '/snippets/code/java-view-bank-account.mdx';
+import PythonViewBankAccount from '/snippets/code/python-view-bank-account.mdx';
+
+### Path parameters  
+
+<BankAccountId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - IBAN-type Bank Account example">  
+
+<OwnerAddressResponse />  
+
+<IBANResponse />  
+
+<BICResponse />  
+
+<UserId1Response />  
+
+<OwnerNameResponse />  
+
+<Type5Response />  
+
+<IdResponse />  
+
+<Tag4Response />  
+
+<CreationDateResponse />  
+
+<ActiveResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - IBAN-type Bank Account example  
+
+{
+    "OwnerAddress":{
+        "AddressLine1":"The Oasis",
+        "AddressLine2":"Rue des plantes",
+        "City":"Paris",
+        "Region":"Ile de Frog",
+        "PostalCode":"75010",
+        "Country":"FR"
+    },
+    "IBAN":"FR7630004000031234567890143",
+    "BIC":"CRLYFRPP",
+    "UserId":"142036728",
+    "OwnerName":"John Doe",
+    "Type":"IBAN",
+    "Id":"142036878",
+    "Tag":"Custom meta",
+    "CreationDate":1654073079,
+    "Active":true
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpViewBankAccount />
+    <NodeViewBankAccount />
+    <RubyViewBankAccount />
+    <JavaViewBankAccount />
+    <PythonViewBankAccount />
+  
+</RequestExample>

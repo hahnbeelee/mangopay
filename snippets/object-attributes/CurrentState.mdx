@@ -1,0 +1,26 @@
+  
+import PayinsLinked from '/snippets/object-attributes/PayinsLinked.mdx';  
+
+  
+import CumulatedDebitedAmount from '/snippets/object-attributes/CumulatedDebitedAmount.mdx';  
+
+  
+import CumulatedFeesAmount from '/snippets/object-attributes/CumulatedFeesAmount.mdx';  
+
+  
+import LastPayinId from '/snippets/object-attributes/LastPayinId.mdx';  
+
+  
+<ParamField body="CurrentState" type="object">     
+Information about the recurring pay-ins related to the registration object. 
+
+**Note:** If the `LastPayinId` references a transaction older than 13 months, it may have been <a href="/api-reference/overview/data-availability-periods">archived</a>.
+
+<Expandable title="properties"><PayinsLinked />  
+<CumulatedDebitedAmount />  
+<CumulatedFeesAmount />  
+<LastPayinId />  
+  
+
+</Expandable> 
+</ParamField>

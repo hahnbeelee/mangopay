@@ -1,0 +1,104 @@
+---
+title: 'Create a Card Registration'  
+api: 'POST /v2.01/{ClientId}/cardregistrations'
+---
+
+import Status1Response from '/snippets/p-response/Status1Response.mdx';
+import Currency2Response from '/snippets/p-response/Currency2Response.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CardRegistrationURLResponse from '/snippets/p-response/CardRegistrationURLResponse.mdx';
+import CardTypeResponse from '/snippets/p-response/CardTypeResponse.mdx';
+import CardIdResponse from '/snippets/p-response/CardIdResponse.mdx';
+import RegistrationDataResponse from '/snippets/p-response/RegistrationDataResponse.mdx';
+import PreregistrationDataResponse from '/snippets/p-response/PreregistrationDataResponse.mdx';
+import AccessKeyResponse from '/snippets/p-response/AccessKeyResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag1Response from '/snippets/p-response/Tag1Response.mdx';
+import Id1Response from '/snippets/p-response/Id1Response.mdx';
+import Currency2 from '/snippets/p-body/Currency2.mdx';
+import CardType from '/snippets/p-body/CardType.mdx';
+import UserId from '/snippets/p-body/UserId.mdx';
+import Tag1 from '/snippets/p-body/Tag1.mdx';
+
+import RestCreateCardRegistration from '/snippets/code/rest-create-card-registration.mdx';
+import PhpCreateCardRegistration from '/snippets/code/php-create-card-registration.mdx';
+import NodeCreateCardRegistration from '/snippets/code/node-create-card-registration.mdx';
+import RubyCreateCardRegistration from '/snippets/code/ruby-create-card-registration.mdx';
+import JavaCreateCardRegistration from '/snippets/code/java-create-card-registration.mdx';
+import PythonCreateCardRegistration from '/snippets/code/python-create-card-registration.mdx';
+  
+[Read more about the Card Registration object →](/api-reference/card-registrations/card-registration-object)
+
+### Body parameters  
+
+<Tag1 />  
+
+<UserId />  
+
+<CardType />  
+
+<Currency2 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Id1Response />  
+
+<Tag1Response />  
+
+<CreationDateResponse />  
+
+<AccessKeyResponse />  
+
+<PreregistrationDataResponse />  
+
+<RegistrationDataResponse />  
+
+<CardIdResponse />  
+
+<CardTypeResponse />  
+
+<CardRegistrationURLResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<Currency2Response />  
+
+<Status1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "147875477",
+    "Tag": null,
+    "CreationDate": 1659357290,
+    "UserId": "142036728",
+    "AccessKey": "1X0m87dmM2LiwFgxPLBJ",
+    "PreregistrationData": "dtxlzFRSvUcdNkJimn-i_E9CO8GG2_UkinMagHuUUTmnXzGFUsakUMAhT2m7ywSD2ddFLVXdicolcUIkv_kKEA",
+    "RegistrationData": null,
+    "CardId": null,
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardRegistrationURL": "https://homologation-webpayment.payline.com/webpayment/getToken",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "Currency": "EUR",
+    "Status": "CREATED"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateCardRegistration />
+    <PhpCreateCardRegistration />
+    <NodeCreateCardRegistration />
+    <RubyCreateCardRegistration />
+    <JavaCreateCardRegistration />
+    <PythonCreateCardRegistration />
+</RequestExample>

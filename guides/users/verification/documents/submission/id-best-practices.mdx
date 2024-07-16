@@ -1,0 +1,143 @@
+---
+title: 'Identity proof best practices'  
+sidebarTitle: 'ID best practices'
+'og:description': 'See best practices for submitting identity proof documents and errors to avoid to ensure that the document can be read and validated.'  
+---
+  
+import LegalRepresentative from '/snippets/glossary/legal-representative.mdx';
+import IconGreenCheck from '/snippets/icons/icon-green-check.mdx';
+import IconRedCross from '/snippets/icons/icon-red-cross.mdx';
+
+Both natural and legal users must provide an official identity document (ID) as proof of identity during the verification process. For legal users, it is the entity’s <LegalRepresentative content="legal representative" /> who must provide proof of identity.  
+
+<Warning>  
+**Caution - Accepted documents vary by country** 
+  
+Not all kinds of official identity documents are accepted for all countries. Check which documents can be submitted per country in the Requirements for natural persons.  
+</Warning>  
+
+## Best practices  
+
+When uploading files, it is very important that the user respects the best practices below to ensure that the document can be read and verified.   
+
+If any of the guidelines are not respected, it may result in an error or delay in processing the document.  
+
+The document should be:
+
+    <CardGroup cols={2}>
+
+        <Card icon={IconGreenCheck}>
+        One of the accepted documents from the country of issue
+        </Card>
+
+        <Card icon={IconGreenCheck}>
+        Consistent with the information provided for the user
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        For passports: one file (double-page spread) uploaded as one document page in one KYC Document.
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        For ID cards, driving licenses, residence permits: two files (front and back) uploaded as two document pages in one merged KYC Document.
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        Valid and up to date
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        For a person aged over 18
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        A color photo (rather than a scan from an image scanner, like a flatbed photocopier or a printer)
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        Between 32KB and about 7MB (max. 10MB when encoded)
+        </Card>
+        
+        <Card icon={IconGreenCheck}>
+        In one of the accepted formats: PNG, PDF, JPG, JPEG
+        </Card>
+        
+    </CardGroup>  
+
+See the how-to guide for guidance in technical implementation:  
+
+<Card title="How to" href="/guides/users/verification/documents/submission/how-to">Submit a KYC Document for verification</Card>
+
+## Errors to avoid  
+
+Below are some common errors than can lead to a document being refused:
+
+<CardGroup cols={2}>
+
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-edges-not-visible.png" />
+    <br/>
+    Edges not fully visible
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-mrz-not-readable.png" />
+    <br/>
+    Machine-readable zone (MRZ), data, or photo not fully visible
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-covered-finger.png" />
+    <br/>
+    Covered by anything, especially a finger
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-glare-flash.png" />
+    <br/>
+    Glare or flash obscuring readability
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-blurred.png" />
+    <br/>
+    Blurred
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-black-white.png" />
+    <br/>
+    Black and white
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-both-side-one-page.png" />
+    <br/>
+    Card-type with both sides in one file
+    </Card>
+    
+    <Card icon={IconRedCross}>
+    <img src="/images/illu-id-passport-simultaneously.png" />
+    <br/>
+    Two types of document submitted simultaneously (in the same file or not)
+    </Card>
+
+</CardGroup>  
+
+## Related resources  
+
+<CardGroup cols={2}>
+
+    <Card title="Guide" href="/guides/users/verification/requirements">
+    Learn about verification requirements
+    </Card>
+
+   <Card title="How to" href="/guides/users/verification/documents/submission/how-to">
+   Learn how to submit a KYC Document
+   </Card>
+</CardGroup>
+
+
+
+
+

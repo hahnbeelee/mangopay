@@ -1,0 +1,88 @@
+---
+title: 'List all Events'  
+api: 'GET /v2.01/{ClientId}/events'  
+---
+
+import Array_EventsResponse from '/snippets/p-response/Array_EventsResponse.mdx';
+import AfterDate from '/snippets/p-query/AfterDate.mdx';
+import BeforeDate from '/snippets/p-query/BeforeDate.mdx';
+import EventType from '/snippets/p-query/EventType.mdx';
+  
+import PhpListEvents from '/snippets/code/php-list-events.mdx';
+import NodeListEvents from '/snippets/code/node-list-events.mdx';
+import RubyListEvents from '/snippets/code/ruby-list-events.mdx';
+import PythonListEvents from '/snippets/code/list-events-python.mdx';
+
+<Note>  
+**Note** 
+  
+Events are returned up to 45 days after they occur. Any request attempting to access an event older than 45 days will result in an HTTP 400 - error.  
+</Note>  
+
+### Query parameters  
+
+<EventType />  
+
+<BeforeDate />  
+
+<AfterDate />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<Array_EventsResponse />
+
+</Accordion>
+
+<Accordion
+  title="400 - Events older than 45 days not retrievable"
+>
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "9fb282aa-7c7e-462c-9f5c-df5f8714b39f",
+    "Date": 1715350291.0,
+    "errors": {
+        "AfterDate": "Events older than 45 days can not be searched",
+        "BeforeDate": "Events older than 45 days can not be searched"
+    }
+}
+```
+
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "ResourceId": "144085929",
+        "EventType": "UBO_DECLARATION_CREATED",
+        "Date": 1655891453
+    },
+    {
+        "ResourceId": "144086566",
+        "EventType": "KYC_CREATED",
+        "Date": 1655891893
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+
+    <PhpListEvents />
+    <NodeListEvents />
+    <RubyListEvents />
+    <PythonListEvents />
+  
+</RequestExample>

@@ -1,0 +1,118 @@
+---
+title: Overview
+sidebarTitle: Overview
+---
+
+import Sca from '/snippets/glossary/sca.mdx'
+
+**Availability:**
+- All card types
+
+## Process
+
+Processing a one-time card payment is a multi-step process: 
+
+<Steps>
+    <Step title="Card tokenization">
+        <a href="/guides/payment-methods/card#card-registration">Register the card</a> to tokenize its sensitive data so it can be used for payment.
+    </Step>
+    <Step title="Payment request">
+        Call the <a href="/api-reference/direct-card-payins/create-direct-card-payin">POST Create a Direct Card PayIn</a> endpoint to initiate the payment.
+    </Step>
+    <Step title="3DS redirection">
+        If required by the issuer, redirect the user to the issuer's Access Control Server (ACS) to complete <Sca content="strong customer authentication"/>.
+    </Step>
+    <Step title="Payment outcome">
+        Mangopay updates the `Status`of the pay-in from `CREATED` to `SUCCEEDED` or `FAILED` to indicate the result.
+
+        Set up [webhooks](/webhooks) for the following event types: 
+            - `PAYIN_NORMAL_SUCCEEDED`
+            - `PAYIN_NORMAL_FAILED`
+
+        Call the <a href="/api-reference/direct-card-payins/view-payin-direct-card">GET View a PayIn</a> endpoint to confirm the result and customize the user's post-pay experience.
+    </Step>
+    <Step title="Card deactivation">
+        Call the <a href="/api-reference/cards/deactivate-edit-card">PUT Deactivate or edit a Card</a> endpoint to disable the `CardId` if you don't have the user's permission to save their payment details.
+    </Step>
+</Steps>
+
+See the how-to guide for a detailed walkthrough of these steps you need to take:
+
+<Card
+    title="How to"
+    href="/guides/payment-methods/card/direct/how-to"
+>
+    Process a one-time card payment
+</Card>
+
+## Sequence diagram
+The following diagram details the full flow described above: 
+
+{/* Link for diagram below https://swimlanes.io/u/8i-AYs3E8, code at bottom of this page */}
+<div>
+  <iframe 
+    width="100%" 
+    height="700" 
+    src="https://cdn.swimlanes.io/dist/embeded.html#pZXPbtpAEMbvfoo5Jgio2rQXpEZybdNaBeLaJlJO0WIPYQV46e46iJz6Dn3DPknHf1C8GChKz+v5ZuY334xjrlc4AJdLTDQkTKawYbsez+DPr9/wTWyBa9gKuVSWZW828A62OFNcI/R6txCsmJ4LuR5AhFkZucZMg8SfOSoNcynWUDzkCqVlfR5Ap/O+D06RRYslZvyFaS6yTsfaKwGpjln2JEgL7MAfQHAXxeBIZJSzjAzxiSsty0ir+S0YFYWoc5kNwE4SVOo77roQSJSNYJdp1i01m5LTcGRUY3RdNfo20QN8txA3EAARekb5H/pdYES6nGCKmvGVso4kONLRHlR4kKVdsDnuIxFnpjiNYbpJ3zbEMsRPawd96ENgGu3APwf9DVEniwH4AbA0lYS1CzMptsQDeFbEVEWc6XZP6F8Sl5m43rUSAzXit/u3nQiuuFI5yusie7VN9XbVFG76cONGRCAt5aot4nMqcgiRY0Po/Zj6oefClwfwo2jqhVZTtl3iRGg+5zvQC6aB5XpBuXhSeYerEjVlSi/YuAiTXOJYpBjW1ZX2jDTTuQKmwAk9O/bcBq9jrqxCX+9H+/yYnGyz5iuicA2JWG9WqDGF2a4hZZBoKd2j5PPdAQSLoo3AFsHarPssdOIMFMVjcQeq+X18dbHINZWJNL/TbJ0FPeH+NtcoiwRTx/E8l+YsJAxtf0RYTZX2mSaECyGWENgP/uRxcheO7dGjIWS81Kqnzf3Vi+Ge4/aEm1vbXFV/dvqOyOacnjYmoprdp/ofkiIj5z9f8A+h6+PuP8aiQ3JXtYJ/AQ==#pZXQ"
+  >
+  </iframe>
+</div>
+
+## Related resources
+
+<CardGroup col={2}> 
+    <Card title="Test cards" href="/testing/payment-methods">Use Mangopay's dedicated test cards in Sandbox</Card>
+
+    <Card title="Endpoints" href="/api-reference/direct-card-payins/direct-card-payin-object">The Direct Card PayIn object</Card>  
+    
+    <Card title="Guides" href="/guides/payment-methods/card/3ds">Learn more about 3DS and SCA</Card>  
+</CardGroup>
+
+
+{/* ----------------------- */}
+
+{/* 
+
+https://swimlanes.io/u/8i-AYs3E8
+
+Title: Direct card pay-in – How it works
+
+App / website --> Platform: Send payment request from end user
+
+=: **1. Card tokenization**
+Platform -> Mangopay API: POST Create Card Registration
+Mangopay API -> Platform: Return: AccessKey, PreregistrationData, CardRegistrationURL
+Platform -> App / website: Send: AccessKey, PreregistrationData, CardRegistrationURL
+App / website -> Tokenization server: Send: AccessKey, PreregistrationData, CardRegistrationURL, and card details
+Tokenization server -> App / website: Return: RegistrationData
+App / website -> Platform: Send: RegistrationData
+Platform -> Mangopay API: PUT Update Card Registration
+Mangopay API -> Platform: Return CardId
+
+=: **2. Payment request**
+Platform -> App / website: Fetch: IP address, browser information
+App / website -> Platform: Return: IP address, browser information
+Platform -> Mangopay API: POST Create Direct Card PayIn
+Mangopay API -> ACS (issuer): Request payment
+
+=: **3. 3DS redirection**
+if: IF SCA REQUIRED BY ISSUER
+ACS (issuer) -> Mangopay API: Notifiy that authentication is required
+Mangopay API -> Platform: Return: SecureModeRedirectURL, Status as CREATED
+Platform --> App / website: Redirect end user
+App / website --> ACS (issuer): Authentication (SCA) completed by end user
+ACS (issuer) --> ACS (issuer): Verify authentication
+end
+ACS (issuer)-> Mangopay API: Return end user to SecureModeReturnURL
+
+=: **4. Payment outcome**
+Mangopay API -> Platform: Change pay-in Status to SUCCEEDED or FAILED
+Mangopay API --> Platform: Send webhook PAYIN_NORMAL_SUCCEEDED or PAYIN_NORMAL_FAILED
+Platform -> Mangopay API: GET View PayIn
+Mangopay API -> Platform: Return Status
+Platform --> App / website: Confirm payment outcome
+
+=: **5. Card deactivation**
+Platform -> Mangopay API: PUT Deactivate or edit Card
+
+*/}

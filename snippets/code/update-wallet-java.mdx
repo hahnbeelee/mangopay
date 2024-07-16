@@ -1,0 +1,27 @@
+  
+```java Java  
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mangopay.MangoPayApi;
+import com.mangopay.core.Money;
+import com.mangopay.entities.Wallet;
+
+public class UpdateWallet {
+    public static void main(String[] args) throws Exception {
+        MangoPayApi mangopay = new MangoPayApi();
+        mangopay.getConfig().setClientId("your-client-id");
+        mangopay.getConfig().setClientPassword("your-api-key");
+
+        Wallet wallet = mangopay.getWalletApi().get("wlt_m_01HSV2W1JYHZQMW24EWREKEN62");
+
+        wallet.setTag("Updated using the Mangopay Java SDK");
+
+        Wallet updateWallet = mangopay.getWalletApi().update(wallet);
+
+        Gson prettyPrint = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = prettyPrint.toJson(updateUbo);
+
+        System.out.println(updateWallet);
+    }
+}
+```

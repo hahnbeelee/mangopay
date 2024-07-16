@@ -1,0 +1,57 @@
+---
+title: 'List all Hooks'  
+api: 'GET /v2.01/{CliendId}/hooks'  
+---
+
+import Array_HooksResponse from '/snippets/p-response/Array_HooksResponse.mdx';
+
+import PhpListHooks from '/snippets/code/php-list-hooks.mdx';
+import NodeListHooks from '/snippets/code/node-list-hooks.mdx';
+import RubyListHooks from '/snippets/code/ruby-list-hooks.mdx';
+import ListAlHooksPython from '/snippets/code/list-al-hooks-python.mdx';
+
+This call returns all the Hooks that have been created for the platform. It includes both enabled and disabled hooks.  
+
+### Responses  
+
+<AccordionGroup>
+    <Accordion title="200">
+        <Array_HooksResponse />
+    </Accordion>
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "Url": "https://mangopay.com/docs/please-ignore",
+        "Status": "ENABLED",
+        "Validity": "VALID",
+        "EventType": "PAYIN_NORMAL_CREATED",
+        "Id": "144086866",
+        "Tag": null,
+        "CreationDate": 1655892104
+    },
+    {
+        "Url": "https://mangopay.com/docs/please-ignore",
+        "Status": "ENABLED",
+        "Validity": "VALID",
+        "EventType": "UBO_DECLARATION_VALIDATION_ASKED",
+        "Id": "144246103",
+        "Tag": "Custom meta",
+        "CreationDate": 1655991027
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListHooks />
+    <NodeListHooks />
+    <RubyListHooks />
+    <ListAlHooksPython />
+</RequestExample>

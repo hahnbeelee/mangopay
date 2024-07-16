@@ -1,0 +1,117 @@
+---
+title: 'Create a UBO Declaration'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/kyc/ubodeclarations'  
+---
+
+import Array_UBOsResponse from '/snippets/p-response/Array_UBOsResponse.mdx';
+import MessageResponse from '/snippets/p-response/MessageResponse.mdx';
+import ReasonResponse from '/snippets/p-response/ReasonResponse.mdx';
+import Status11Response from '/snippets/p-response/Status11Response.mdx';
+import ProcessDateResponse from '/snippets/p-response/ProcessDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import PhpCreateUboDeclaration from '/snippets/code/php-create-ubo-declaration.mdx';
+import NodeCreateUboDeclaration from '/snippets/code/node-create-ubo-declaration.mdx';
+import RubyCreateUboDeclaration from '/snippets/code/ruby-create-ubo-declaration.mdx';
+import JavaCreateUboDeclaration from '/snippets/code/create-ubo-declaration-java.mdx';
+import PythonCreateUboDeclaration from '/snippets/code/python-create-ubo-declaration.mdx';
+
+[Read more about the UBO Declaration object →](/api-reference/ubo-declarations/ubo-declaration-object)
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup>
+    <Accordion title="200">  
+
+        <IdResponse />  
+
+        <UserId2Response />  
+
+        <CreationDateResponse />  
+
+        <ProcessDateResponse />  
+
+        <Status11Response />  
+
+        <ReasonResponse />  
+
+        <MessageResponse />  
+
+        <Array_UBOsResponse />
+
+</Accordion>
+</AccordionGroup>  
+
+<AccordionGroup>  
+    <Accordion title="400 - Failed due to lack of UBO">
+    ```json
+    {
+        "Message": "You can not request validation for a declaration which has no ubo",
+        "Type": "invalid_action",
+        "Id": "96ee403c-1a23-46c9-8b2e-1e56c7e80325#1672326575",
+        "Date": 1672326576.0,
+        "errors": null
+    }  
+    ```  
+    </Accordion>
+    
+    <Accordion title="400 - Declaration already in progress">
+    ```json
+    {
+        "Message": "You can not create a declaration because you already have a declaration in progress",
+        "Type": "invalid_action",
+        "Id": "5b9c158f-2a55-44c0-b14b-e3cf62a5f2c4#1672326207",
+        "Date": 1672326208.0,
+        "errors": null
+    }  
+    ```  
+
+    </Accordion>
+    
+    <Accordion title="400 - Wrong LegalUserType">
+    ```json
+    {
+        "Message": "Cannot create an UBO for a LegalUser of type SOLETRADER",
+        "Type": "invalid_action",
+        "Id": "f2da32db-43cd-405b-b7c2-d50ab14f41d8#1672326440",
+        "Date": 1672326441.0,
+        "errors": null
+    }  
+    ```  
+    </Accordion>
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Id": "158947737",
+    "UserId": "158947634",
+    "CreationDate": 1672153298,
+    "ProcessedDate": null,
+    "Status": "CREATED",
+    "Reason": null,
+    "Message": null,
+    "Ubos": []
+}  
+ ```  
+
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpCreateUboDeclaration />
+    <NodeCreateUboDeclaration />
+    <RubyCreateUboDeclaration />
+    <JavaCreateUboDeclaration />
+    <PythonCreateUboDeclaration />
+  
+</RequestExample>

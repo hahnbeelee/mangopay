@@ -1,0 +1,55 @@
+---
+title: 'List Authorizations for all countries'  
+api: 'GET /v2.01/countries/authorizations'  
+---
+
+import Array_AuthorizationsResponse from '/snippets/p-response/Array_AuthorizationsResponse.mdx';
+
+import NodeListCountryAuthorizations from '/snippets/code/node-list-country-authorizations.mdx';
+import RubyListCountryAuthorizations from '/snippets/code/ruby-list-country-authorizations.mdx';
+import ListCountryAuthorizationsPython from '/snippets/code/list-country-authorizations-python.mdx';
+
+This call returns the restrictions of all countries.  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_AuthorizationsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "CountryCode":"FI",
+        "CountryName":"Finland",
+        "Authorization":{
+            "BlockUserCreation":false,
+            "BlockBankAccountCreation":false,
+            "BlockPayout":false
+        },
+        "LastUpdate":1644574249
+    },
+    {
+        "CountryCode":"FR",
+        "CountryName":"France",
+        "Authorization":{
+            "BlockUserCreation":false,
+            "BlockBankAccountCreation":false,
+            "BlockPayout":false
+        },
+        "LastUpdate":1644574249
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <NodeListCountryAuthorizations />
+    <RubyListCountryAuthorizations />
+    <ListCountryAuthorizationsPython />
+</RequestExample>

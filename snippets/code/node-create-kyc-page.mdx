@@ -1,0 +1,29 @@
+  
+```javascript NodeJS  
+const mangopayInstance = require('mangopay2-nodejs-sdk');
+const mangopay = new mangopayInstance({
+    clientId: "your-client-id",
+    clientApiKey: "your-api-key",
+});
+
+let myUser = {
+    Id: 'your-user-id'
+}
+
+let myKycDocument = {
+    Id: 'your-kyc-document-id'
+}
+
+const createKycDocumentPage = async (userId, kycDocumentId, file) => {
+    return await mangopay.Users.createKycPageFromFile(userId, kycDocumentId, file)
+        .then((response) => {
+            console.info(response)
+            return response
+        }).catch((err) => {
+            console.log(err);
+            return false
+        }); 
+}
+
+createKycDocument(myUser.Id, myKycDocument.Id, 'your-file')
+```

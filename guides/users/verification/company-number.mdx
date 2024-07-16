@@ -1,0 +1,293 @@
+---
+title: 'Company number'
+'og:description': 'Manage the company numbers of legal users effectively, and see all expected formats per country, to accelerate the KYB verification process.'  
+---
+
+The company number is the legal registration number of an entity provided by the relevant national authority in the country where it is registered.  
+
+The company number is one of the elements checked during the user verification process. The number is required for Business-type legal users, and recommended for Soletraders and Organizations if it exists.
+
+The `CompanyNumber` must be in the correct format for their country of registration, as determined by the `Country` of the `HeadquartersAddress`. For Business-type users, an incorrect format blocks the verification process.
+
+## Validating format prior to verification
+
+Platforms should validate the format of the `CompanyNumber` for businesses before requesting verification. 
+
+You can set up <a href="/webhooks">hook notifications</a> for the following <a href="/webhooks/event-types">event types</a> to be notified when a user’s number corresponds or not to the expected format:  
+- LEGAL_COMPANY_NUMBER_VALIDATION_SUCCEEDED  
+- LEGAL_COMPANY_NUMBER_VALIDATION_FAILED  
+
+These hooks can be triggered on the following calls:  
+- <a href="/api-reference/users/create-legal-user">POST Create a Legal User</a>
+- <a href="/api-reference/users/update-legal-user">PUT Update a Legal User</a>
+
+You can also use the following endpoint to check the format of the number and retrieve the validation rules applied for a given country:  
+
+<Card title="Endpoint" href="/api-reference/user-data-format/validate-user-data-format">
+Validate the format of User data
+</Card>
+
+<Warning>  
+**Caution - Veracity of company number checked later** 
+  
+The endpoint and hooks above only check that the format of the company number is as expected. Whether or not the data is true and correct for the specific user is checked during verification when documents are submitted.  
+</Warning>  
+
+## Accepted format by country  
+
+The countries in the table below have rules in place regarding a valid format for their country number. Countries not in the list have no formatting rules in place – the number format should match the verification documents.  
+
+The regular expressions for the accepted formats are returned on the <a href="/api-reference/user-data-format/validate-user-data-format">POST Validate the format of User data</a> endpoint.  
+
+<Note>  
+**Note - Only alphanumeric characters assessed** 
+  
+The company number formatting rules only evaluate alphanumeric characters. Any other characters, like dashes or spaces, in the `CompanyNumber` string are removed beforehand.  
+</Note>
+
+
+<table>
+<thead>
+    <tr>
+        <th class="header">Country</th>
+        <th class="header">Accepted formats</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+<td>Austria (AT)</td>
+<td>
+- 2 letters + 6 numbers + 1 letter (LLXXXXXXL)
+- 1 – 6 numbers + 1 letter (XXXXXXL)
+</td>
+</tr>
+<tr>
+<td>Belgium (BE)</td>
+<td>
+- 10 numbers (XXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Bulgaria (BG)</td>
+<td>
+- 9 numbers (XXXXXXXXX)
+- 13 numbers (XXXXXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Croatia (HR)</td>
+<td>
+- 11 numbers (XXXXXXXXXXX)
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Cyprus (CY)</td>
+<td>
+- 2 letters + 6 numbers (HEXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Czech Republic (CZ)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Denmark (DK)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Estonia (EE)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Finland (FI)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>France (FR)</td>
+<td>
+- 9 numbers (XXXXXXXXX)
+- 14 numbers (XXXXXXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Germany (DE)</td>
+<td>
+- 2 – 3 letters + 6 numbers (LLXXXXXX)
+- 2 – 3 letters + 1 – 6 numbers (LLLXXXX)
+- 2 – 3 letters + 1 – 6 numbers + 1 letter (LLLXXXXXXL)
+- 2 – 3 letters + 1 – 6 numbers + 1 – 2 letter (LLLXXXXXXLL)
+</td>
+</tr>
+<tr>
+<td>Greece (GR)</td>
+<td>
+- 12 numbers (XXXXXXXXXXXX)
+- 9 numbers (XXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Hungary (HU)</td>
+<td>
+- 2 letters + 10 numbers (LLXXXXXXXXXX)
+- 10 numbers (XXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Iceland (IS)</td>
+<td>
+- 10 numbers (XXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Ireland (IE)</td>
+<td>
+- 6 numbers (XXXXXX)
+- 5 numbers (XXXXX)
+</td>
+</tr>
+<tr>
+<td>Italy (IT)</td>
+<td>
+- 11 numbers (XXXXXXXXXXX)
+- 2 letters + 7 numbers (LLXXXXXXX)
+- 2 letters + 6 numbers (LLXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Latvia (LV)</td>
+<td>
+- 11 numbers (XXXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Liechtenstein (LI)</td>
+<td>
+- 3 letters + 9 numbers (LLLXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Lithuania (LT)</td>
+<td>
+- 9 numbers (XXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Luxembourg (LU)</td>
+<td>
+- 1 letter + 6 numbers (LXXXXXX)
+- 1 letter (from A to J) + 3 – 6 numbers
+</td>
+</tr>
+<tr>
+<td>Malta (MT)</td>
+<td>
+- 1 letter + 5 numbers (LXXXXX)
+</td>
+</tr>
+<tr>
+<td>Netherlands (NL)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Norway (NO)</td>
+<td>
+- 11 numbers (XXXXXXXXXXX)
+- 9 numbers (XXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Poland (PL)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+- 6 numbers (XXXXXX)
+- 9 numbers (XXXXXXXXX)
+- 10 numbers (XXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Portugal (PT)</td>
+<td>
+- 9 numbers (XXXXXXXXX)
+- 3 – 6 numbers (XXXXXX)
+</td>
+</tr>
+<tr>
+<td>Romania (RO)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Slovakia (SK)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Slovenia (SI)</td>
+<td>
+- 10 numbers (XXXXXXXXXX)
+- 7 – 10 numbers (XXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Spain (ES)</td>
+<td>
+- 1 letter + 8 numbers (LXXXXXXXX)
+- 1 letter + 7 numbers + 1 letter (LXXXXXXXL)
+</td>
+</tr>
+<tr>
+<td>Sweden (SE)</td>
+<td>
+- 10 numbers (XXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>Switzerland (CH)</td>
+<td>
+- 9 numbers (XXXXXXXXX)
+- CHE + 9 numbers (CHEXXXXXXXXX)
+</td>
+</tr>
+<tr>
+<td>United Kingdom (GB)</td>
+<td>
+- 8 numbers (XXXXXXXX)
+- 7 numbers (XXXXXXX)
+- OC + 6 numbers (OCXXXXXX)
+- SC + 6 numbers (SCXXXXXX)
+- NI + 6 numbers (NIXXXXXX)
+- R + 7 numbers (RXXXXXXX)
+- IP + 5 numbers + R (IPXXXXXR)
+</td>
+</tr>
+</tbody>
+</table>
+
+## Related resources  
+
+<CardGroup col={2}> 
+<Card title="Endpoint" href="/api-reference/user-data-format/validate-user-data-format">
+Validate the format of User data
+</Card> 
+
+<Card title="Endpoint" href="/api-reference/users/legal-user-object">
+The Legal User object
+</Card>  
+
+<Card title="Webhooks" href="/webhooks/event-types">
+Learn more about event types
+</Card>
+</CardGroup>

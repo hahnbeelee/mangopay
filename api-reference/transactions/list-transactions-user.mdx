@@ -1,0 +1,87 @@
+---
+title: 'List Transactions for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/transactions'  
+---
+
+import Array_Transactions1Response from '/snippets/p-response/Array_Transactions1Response.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+import Nature from '/snippets/p-query/Nature.mdx';
+import Type from '/snippets/p-query/Type.mdx';
+import AfterDate1 from '/snippets/p-query/AfterDate1.mdx';
+import BeforeDate1 from '/snippets/p-query/BeforeDate1.mdx';
+import ResultCode from '/snippets/p-query/ResultCode.mdx';
+import Status from '/snippets/p-query/Status.mdx';
+  
+import PhpListUserTransactions from '/snippets/code/php-list-user-transactions.mdx';
+import NodeListTransactionsUser from '/snippets/code/node-list-transactions-user.mdx';
+import RubyListTransactionsUser from '/snippets/code/ruby-list-transactions-user.mdx';
+
+This call returns all the transactions with the same `AuthorId`.  
+
+### Query parameters  
+
+<Status />  
+
+<ResultCode />  
+
+<BeforeDate1 />  
+
+<AfterDate1 />  
+
+<Type />  
+
+<Nature />  
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_Transactions1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "Id":"145498191",
+        "Tag":"test doc july 2022",
+        "CreationDate":1657175185,
+        "AuthorId":"145494935",
+        "CreditedUserId":"145397183",
+        "DebitedFunds":{
+            "Currency":"EUR",
+            "Amount":12
+        },
+        "CreditedFunds":{
+            "Currency":"EUR",
+            "Amount":11
+        },
+        "Fees":{
+            "Currency":"EUR",
+            "Amount":1
+        },
+        "Status":"FAILED",
+        "ResultCode":"009199",
+        "ResultMessage":"PSP technical error",
+        "ExecutionDate":1661859994,
+        "Type":"PAYIN",
+        "Nature":"REGULAR",
+        "CreditedWalletId":"145397873",
+        "DebitedWalletId":null
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListUserTransactions />
+    <NodeListTransactionsUser />
+    <RubyListTransactionsUser />
+</RequestExample>

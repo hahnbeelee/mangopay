@@ -1,0 +1,21 @@
+  
+```java Java  
+import com.google.gson.GsonBuilder;
+import com.mangopay.MangoPayApi;
+import com.mangopay.entities.ConversionQuote;
+
+public class ViewQuote {
+        public static void main(String[] args) throws Exception {
+        MangoPayApi mangopay = new MangoPayApi();
+        mangopay.getConfig().setClientId("your-client-id");
+        mangopay.getConfig().setClientPassword("your-api-key");
+
+        ConversionQuote quote = mangopay.getConversionsApi().getConversionQuote("cvrquote_01HTFARNTMH993KYYNC8MZ2KH8");
+        
+        Gson prettyPrint = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = prettyPrint.toJson(quote);
+
+        System.out.println(prettyJson);
+    }
+}
+```

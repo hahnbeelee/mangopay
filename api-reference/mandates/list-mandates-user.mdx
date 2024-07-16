@@ -1,0 +1,64 @@
+---
+title: 'List Mandates for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/mandates'  
+---
+
+import Array_MandatesResponse from '/snippets/p-response/Array_MandatesResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import PhpListMandatesUser from '/snippets/code/php-list-mandates-user.mdx';
+import NodeListMandatesUser from '/snippets/code/node-list-mandates-user.mdx';
+import RubyListMandatesUser from '/snippets/code/ruby-list-mandates-user.mdx';
+import JavaListUserMandates from '/snippets/code/java-list-user-mandates.mdx';
+import PythonListUserMandates from '/snippets/code/python-list-user-mandates.mdx';
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_MandatesResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "Id":"151566839",
+        "CreationDate":1663244376,
+        "Status":"FAILED",
+        "UserId":"151452401",
+        "ExecutionType":"WEB",
+        "MandateType":"DIRECT_DEBIT",
+        "Tag":null,
+        "ResultCode":"001807",
+        "ResultMessage":"User has let the mandate session expire without confirming"
+    },
+    {
+        "Id":"156620699",
+        "CreationDate":1669040333,
+        "Status":"ACTIVE",
+        "UserId":"151452401",
+        "ExecutionType":"WEB",
+        "MandateType":"DIRECT_DEBIT",
+        "Tag":"This is a tag for my mandate",
+        "ResultCode":"000000",
+        "ResultMessage":"Success"
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListMandatesUser />
+    <NodeListMandatesUser />
+    <RubyListMandatesUser />
+    <JavaListUserMandates />
+    <PythonListUserMandates />
+</RequestExample>

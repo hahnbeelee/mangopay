@@ -1,0 +1,139 @@
+---
+title: 'Create a UBO'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/kyc/ubodeclarations/{UboDeclarationId}/ubos'  
+---
+
+import IsActiveResponse from '/snippets/p-response/IsActiveResponse.mdx';
+import BirthplaceResponse from '/snippets/p-response/BirthplaceResponse.mdx';
+import Address4Response from '/snippets/p-response/Address4Response.mdx';
+import Nationality1Response from '/snippets/p-response/Nationality1Response.mdx';
+import Birthday1Response from '/snippets/p-response/Birthday1Response.mdx';
+import FirstName2Response from '/snippets/p-response/FirstName2Response.mdx';
+import LastName2Response from '/snippets/p-response/LastName2Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Birthplace from '/snippets/p-body/Birthplace.mdx';
+import Address4 from '/snippets/p-body/Address4.mdx';
+import Nationality1 from '/snippets/p-body/Nationality1.mdx';
+import Birthday1 from '/snippets/p-body/Birthday1.mdx';
+import FirstName2 from '/snippets/p-body/FirstName2.mdx';
+import LastName2 from '/snippets/p-body/LastName2.mdx';
+import UboDeclarationId from '/snippets/p-path/UboDeclarationId.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import RestCreateUbo from '/snippets/code/rest-create-ubo.mdx';
+import PhpCreateUbo from '/snippets/code/php-create-ubo.mdx';
+import NodeCreateUbo from '/snippets/code/node-create-ubo.mdx';
+import RubyCreateUbo from '/snippets/code/ruby-create-ubo.mdx';
+import CreateUboJava from '/snippets/code/create-ubo-java.mdx';
+import PythonCreateUbo from '/snippets/code/python-create-ubo.mdx';
+
+[Read more about the UBO object →](/api-reference/ubo-declarations/ubo-object)
+
+### Path parameters  
+
+<UserId />  
+
+<UboDeclarationId />  
+
+### Body parameters  
+
+<LastName2 />  
+
+<FirstName2 />  
+
+<Birthday1 />  
+
+<Nationality1 />  
+
+<Address4 />  
+
+<Birthplace />  
+
+### Responses  
+
+
+<Accordion title="200">  
+
+<IdResponse />  
+
+<CreationDateResponse />  
+
+<LastName2Response />  
+
+<FirstName2Response />  
+
+<Birthday1Response />  
+
+<Nationality1Response />  
+
+<Address4Response />  
+
+<BirthplaceResponse />  
+
+<IsActiveResponse />
+
+</Accordion>
+
+<Accordion title="400 - Max 15 UBOs per declaration">
+```json
+{
+    "Message": "You can not create more than 15 UBO for a declaration",
+    "Type": "invalid_action",
+    "Id": "f5c1f9c7-bafa-4fe9-b5b1-2b005d0e6f8a",
+    "Date": 1698759679.0,
+    "errors": null
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - Region required if Country is US, CA, MX">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "2951739b-416e-43a4-a40b-8e8d6ba52719",
+    "Date": 1717664987.0,
+    "errors": {
+        "Region": "The Region is a required field for this Country"
+    }
+}
+```  
+</Accordion>
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Id": "158947898",
+    "CreationDate": 1672153693,
+    "LastName": "Wiza",
+    "FirstName": "Jess",
+    "Birthday": 652117514,
+    "Nationality": "FR",
+    "Address": {
+        "AddressLine1": "669 Ratke Forge",
+        "AddressLine2": "Schamberger Walk",
+        "City": "Paris",
+        "Region": "Ile-de-France",
+        "PostalCode": "75001",
+        "Country": "FR"
+    },
+    "Birthplace": {
+        "City": "Paris",
+        "Country": "FR"
+    },
+    "IsActive": true
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateUbo />
+    <PhpCreateUbo />
+    <NodeCreateUbo />
+    <RubyCreateUbo />
+    <CreateUboJava />
+    <PythonCreateUbo />
+</RequestExample>

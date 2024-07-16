@@ -1,0 +1,79 @@
+---
+title: 'MB WAY'  
+'og:description': 'How users can pay online using the MB WAY mobile app, a popular payment method in Portugal.'  
+---
+
+## About
+
+MB WAY is a popular payment method in Portugal which allows users to pay online using their mobile phone.  
+
+<table>
+    <tbody>
+        <tr>
+            <th class="header">Region</th>
+            <td class="table-content">
+                Portugal
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Currencies</th>
+            <td class="table-content">
+                EUR
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Refunds](/guides/refunds)</th>
+            <td class="table-content">
+                Yes
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Disputes</th>
+            <td class="table-content">
+                Users authenticate directly with their bank, so there is no dispute process and a low risk of unrecognized or fraudulent payments
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Preauthorization</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Recurring payments</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+## User prerequisites
+
+To use this payment method, users must:  
+- Download the MB WAY app and sign up, thereby registering their phone number and creating a PIN code  
+- Connect their bank account in the app  
+
+## How it works  
+- On your app or website, the user selects MB WAY as the payment method during checkout and enters their phone number in the `Phone` parameter  
+- The user receives a push notification to open the MB WAY app on their phone  
+- The user chooses their preferred card and confirms the payment details  
+- The user authenticates themselves using their MB WAY app PIN  
+
+The transaction is complete when the pay-in status changes from `CREATED` to `SUCCEEDED` or `FAILED`, indicating the outcome.  
+
+You should also set up [hook notifications](/webhooks) for the relevant [event types](/webhooks/event-types):
+-   PAYIN_NORMAL_SUCCEEDED
+-   PAYIN_NORMAL_FAILED 
+
+## Related resources  
+
+<CardGroup col={2}> 
+    <Card title="Endpoint" href="/api-reference/mb-way/mb-way-payin-object">
+    The MB WAY PayIn object
+    </Card>  
+
+    <Card title="Testing" href="/testing/payment-methods#mb-way-pay">
+    Learn about testing MB WAY
+    </Card>
+</CardGroup>

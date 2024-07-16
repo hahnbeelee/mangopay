@@ -1,0 +1,60 @@
+---
+title: '004802'  
+description: '<small>&#8249; [All error codes](/errors/codes#fx-conversions)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Conversion failed during conversion operation</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The funds could not be converted.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">FX</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error arises when the FX conversion service is unable to complete the operation.  
+
+#### What to do  
+
+If this case arises:   
+- Retry the operation  
+- Ensure your platform is configured to allow out of hours conversions  
+
+#### Example  
+```json API response - Create an Instant Conversion
+{
+    "Id": "cvr_01HAPXRZ2PYPJWG988CFBVK6D4",
+    "Type": "CONVERSION",
+    "Nature": "REGULAR",
+    "CreationDate": 1695134022,
+    "Status": "FAILED",
+    "AuthorId": "203762586",
+    "DebitedWalletId": "203763032",
+    "CreditedWalletId": "203765650",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 79
+    },
+    "CreditedFunds": {
+        "Currency": "GBP",
+        "Amount": null
+    },
+    "ResultCode": "004802",
+    "ResultMessage": "Conversion failed during conversion operation",
+    "ExecutionDate": null,
+    "ConversionRateResponse": null,
+    "Tag": "Created using the Mangopay API Postman collection"
+}
+```

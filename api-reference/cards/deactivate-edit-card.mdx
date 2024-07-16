@@ -1,0 +1,133 @@
+---
+title: 'Deactivate or edit a Card'  
+api: 'PUT /v2.01/{ClientId}/cards/{CardId}'  
+---
+
+import FingerprintResponse from '/snippets/p-response/FingerprintResponse.mdx';
+import Tag6Response from '/snippets/p-response/Tag6Response.mdx';
+import Id4Response from '/snippets/p-response/Id4Response.mdx';
+import UserIdResponse from '/snippets/p-response/UserIdResponse.mdx';
+import ValidityResponse from '/snippets/p-response/ValidityResponse.mdx';
+import Currency2Response from '/snippets/p-response/Currency2Response.mdx';
+import Active2Response from '/snippets/p-response/Active2Response.mdx';
+import BankCodeResponse from '/snippets/p-response/BankCodeResponse.mdx';
+import ProductResponse from '/snippets/p-response/ProductResponse.mdx';
+import Country4Response from '/snippets/p-response/Country4Response.mdx';
+import CardProviderResponse from '/snippets/p-response/CardProviderResponse.mdx';
+import CardType1Response from '/snippets/p-response/CardType1Response.mdx';
+import AliasResponse from '/snippets/p-response/AliasResponse.mdx';
+import ExpirationDate1Response from '/snippets/p-response/ExpirationDate1Response.mdx';
+import Active1 from '/snippets/p-body/Active1.mdx';
+import CardHolderName1 from '/snippets/p-body/CardHolderName1.mdx';
+import CardHolderNameResponse from '/snippets/p-response/CardHolderNameResponse.mdx';
+import CardId1 from '/snippets/p-path/CardId1.mdx';
+
+import RestDeactivateCard from '/snippets/code/rest-deactivate-card.mdx';
+import PhpDeactivateCard from '/snippets/code/php-deactivate-card.mdx';
+import NodeDeactivateCard from '/snippets/code/node-deactivate-card.mdx';
+import RubyDeactivateCard from '/snippets/code/ruby-deactivate-card.mdx';
+import JavaDeactivateCard from '/snippets/code/java-deactivate-card.mdx';
+import PythonDeactivateCard from '/snippets/code/python-deactivate-card.mdx';
+
+This call serves one of two purposes:
+
+- Setting the card as inactive, and thereby preventing it from being used again. This action is irreversible but doesn’t prevent the card being registered again with <a href="/api-reference/card-registrations/create-card-registration">POST Create a Card Registration</a>.
+- Adding the `CardHolderName` to an existing Card object. The `CardHolderName` cannot be modified once added to a Card object. It can also be done during registration with <a href="/api-reference/card-registrations/update-card-registration">PUT Update a Card Registration</a>.
+
+<Warning>  
+**Warning – Implement card deactivation** 
+  
+Because card information cannot be kept without the end user's approval, you should implement a way to deactivate the end user’s card systematically when relevant.  
+</Warning>  
+
+### Path parameters  
+
+<CardId1 />  
+
+### Body parameters  
+
+<Active1 />  
+
+<CardHolderName1 />
+
+### Responses  
+
+<Accordion title="200">  
+
+<ExpirationDate1Response />  
+
+<AliasResponse />  
+
+<CardType1Response />  
+
+<CardProviderResponse />  
+
+<Country4Response />  
+
+<ProductResponse />  
+
+<BankCodeResponse />  
+
+<Active2Response />  
+
+<Currency2Response />  
+
+<ValidityResponse />  
+
+<UserIdResponse />  
+
+<Id4Response />  
+
+<Tag6Response />  
+
+<FingerprintResponse />
+
+<CardHolderNameResponse/>
+
+</Accordion>
+
+<Accordion title="400 - Card is already deactivated">
+```json
+{
+    "Message": "The card has already been deactivated",
+    "Type": "card_already_not_active",
+    "Id": "8ebd2256-e596-4404-8c76-cd14b505d7a4",
+    "Date": 1690292341.0,
+    "errors": null
+}  
+ ```  
+</Accordion>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "ExpirationDate": "0224",
+    "Alias": "497010XXXXXX4329",
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardProvider": "VISA",
+    "Country": "FRA",
+    "Product": "I",
+    "BankCode": "unknown",
+    "Active": false,
+    "Currency": "EUR",
+    "Validity": "VALID",
+    "UserId": "142036728",
+    "Id": "148795138",
+    "Tag": null,
+    "CreationDate": 1660121693,
+    "Fingerprint": "1ab7328005e4445dbfd38ac6cb49c3af"
+}  
+ ```  
+
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestDeactivateCard />
+    <PhpDeactivateCard />
+    <NodeDeactivateCard />
+    <RubyDeactivateCard />
+    <JavaDeactivateCard />
+    <PythonDeactivateCard />
+</RequestExample>

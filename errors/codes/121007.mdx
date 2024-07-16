@@ -1,0 +1,65 @@
+---
+title: '121007'  
+description: '<small>&#8249; [All error codes](/errors/codes#payouts)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">The author is not the bank account owner</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The payout author is not the corresponding bank account owner.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error occurs when the payout `AuthorId` is different from the `UserId` of the Bank Account to which the payout is made.  
+
+#### Example  
+```json API Response
+{
+    "ModeRequested":"STANDARD",
+    "ModeApplied":"NONE",
+    "FallbackReason":null,
+    "EndToEndId":"8de3a444444cc95a9b8f9dcd0",
+    "Id":"3327999444",
+    "Tag":"",
+    "CreationDate":1677595681,
+    "AuthorId":"32799855558",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":12000000
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":12000000
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"FAILED",
+    "ResultCode":"121007",
+    "ResultMessage":"The author is not the bank account owner",
+    "ExecutionDate":null,
+    "Type":"PAYOUT",
+    "Nature":"REGULAR",
+    "CreditedWalletId":null,
+    "DebitedWalletId":"32799444429",
+    "PaymentType":"BANK_WIRE",
+    "BankAccountId":"330099444477",
+    "BankWireRef":null
+}
+```

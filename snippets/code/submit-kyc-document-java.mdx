@@ -1,0 +1,28 @@
+  
+```java Java  
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mangopay.MangoPayApi;
+import com.mangopay.core.enumerations.KycStatus;
+import com.mangopay.entities.KycDocument;
+
+public class SubmitKYCDoc {
+     public static void main(String[] args) throws Exception {
+        MangoPayApi mangopay = new MangoPayApi();
+        mangopay.getConfig().setClientId("your-client-id");
+        mangopay.getConfig().setClientPassword("your-api-key");
+
+        var userId = "user_m_01HR9SZTXDRY1PCFHSJFAPC0YJ";
+
+        KycDocument kycDoc = mangopay.getKycDocumentApi().getKycDocument("kyc_01HSB6MMPT9RPDFHSG1BN9BKPP");
+        kycDoc.setStatus(KycStatus.VALIDATION_ASKED);
+
+        KycDocument submitKycDoc = mangopay.getUserApi().updateKycDocument(userId, kycDoc);
+
+        Gson prettyPrint = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = prettyPrint.toJson(submitKycDoc);
+
+        System.out.println(prettyJson);
+    }
+}
+```

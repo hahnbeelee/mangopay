@@ -1,0 +1,116 @@
+---
+title: 'Document submission process'
+sidebarTitle: 'Submission' 
+'og:description': 'Learn about Mangopay’s KYC/KYB document validation process: submission steps, constraints, and dealing with refusals.'  
+---
+  
+import WorkingDay from '/snippets/glossary/working-day.mdx';
+import IconGreenCheck from '/snippets/icons/icon-green-check.mdx';
+
+## Process  
+
+The verification process can be broken down into the following steps:  
+
+<Steps> 
+    <Step>The platform collects the necessary information for the user.</Step> 
+    <Step>The platform collects the relevant document(s) from the user and submits them to Mangopay.</Step> 
+    <Step>Against the information declared, Mangopay verifies the documents and either validates or refuses them.</Step> 
+    <Step>In case of refusal, new documents may be required from the end user.</Step>  
+</Steps>  
+
+You can submit end users' verification documents with the dedicated KYC Documents endpoints.   
+
+Submission requires a minimum of 3 API calls:
+- [Create the KYC Document](/api-reference/kyc-documents/create-kyc-document)
+- Upload each file as a [KYC Document Page](/api-reference/kyc-documents/create-kyc-document-page) (this call must be repeated for each file)
+- [Submit the KYC Document](/api-reference/kyc-documents/submit-kyc-document) by changing its status.  
+
+Follow the how-to guide for a step-by-step explanation:  
+
+<Card title="How to" href="/guides/users/verification/documents/submission/how-to">
+Submit a KYC Document for verification
+</Card>
+
+<Note>  
+**Note - Verification time** 
+  
+Verification takes on average 24 hours on <WorkingDay content="working days" /> to be completed by the Mangopay Compliance team.  
+
+You can use [webhooks](/webhooks) to be notified of the KYC Document status update.  
+</Note>  
+
+Mangopay returns the following statuses once the verification process is done:
+- `VALIDATED` – The document is validated by Mangopay’s team.
+- `REFUSED` – The document is rejected by Mangopay’s team.
+
+The following status may also be returned as a result of the [Verification downgrade](/guides/users/verification/downgrade) mechanism.
+- `OUT_OF_DATE` – The user's key details have been modified.
+The downgrade can be triggered after submission (in the case of identity proofs) and validation (in the case of all documents).
+
+## File constraints  
+
+When uploading files as pages of the KYC Documents through the dedicated endpoints, you need to respect the the following constraints.  
+
+#### Format  
+
+Accepted formats: PDF, JPEG, JPG, PNG.  
+
+#### Encoding  
+
+All files must be Base64 encoded.  
+
+#### Size  
+
+File size (per KYC Document Page) is essential for good quality, therefore the following rules apply:  
+
+#### Identity proof  
+- Minimum size: 32KB  
+- Maximum size: about 7MB (10MB when Base64 encoded)  
+
+#### Other document types   
+- Minimum size: 1KB  
+- Maximum size: about 7MB (10MB when Base64 encoded)  
+
+#### Number of files per KYC Document  
+
+A maximum of 5 files can be submitted for a document, created as KYC Document Pages in the API.  
+
+This limit applies to all types of verification documents.  
+
+Note: A document typically requires 1 to 3 files, for example the front and back of an ID card, or a document and its translation.  
+
+## Best practices
+
+Good quality submissions are necessary to effectively assess whether documents are genuine or not.   
+
+For identity proof documents, refer to:
+
+<Card
+  title="Guide"
+  href="/guides/users/verification/documents/submission/id-best-practices"
+>
+  Best practices for submitting ID documents
+</Card>
+
+For other types, the document should be: 
+<CardGroup cols={2}>
+
+    <Card icon={IconGreenCheck}>
+        Compliant with the accepted documents for the legal entity’s country of registration.
+    </Card>
+    
+    <Card icon={IconGreenCheck}>
+        Consistent with the information declared for the user, the legal representative, and any beneficial owners (if applicable).
+    </Card>
+    
+    <Card icon={IconGreenCheck}>
+        Full and complete, meaning not censored, concealed, obscured, modified or otherwise altered in any way.
+    </Card>
+    
+    <Card icon={IconGreenCheck}>
+        Accompanied by an official translation if **not** in one of the accepted languages: English, French, Spanish, German, Dutch, Italian and Portuguese.
+        <br/>
+        The official translation must be to English or French, signed by a certified sworn translator, and submitted in the same KYC Document object.
+    </Card>
+
+</CardGroup>  

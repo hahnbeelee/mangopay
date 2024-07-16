@@ -1,0 +1,80 @@
+---
+title: 'View a KYC Document'  
+api: 'GET /v2.01/{ClientId}/kyc/documents/{KycDocumentId}'  
+---
+
+import RefusedReasonMessageResponse from '/snippets/p-response/RefusedReasonMessageResponse.mdx';
+import RefusedReasonType1Response from '/snippets/p-response/RefusedReasonType1Response.mdx';
+import Status12Response from '/snippets/p-response/Status12Response.mdx';
+import ProcessedDateResponse from '/snippets/p-response/ProcessedDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import FlagsResponse from '/snippets/p-response/FlagsResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import Type11Response from '/snippets/p-response/Type11Response.mdx';
+import KycDocumentId from '/snippets/p-path/KycDocumentId.mdx';
+
+import PhpViewKycDocument from '/snippets/code/php-view-kyc-document.mdx';
+import NodeViewKycDocument from '/snippets/code/node-view-kyc-document.mdx';
+import RubySubmitKycDocument1 from '/snippets/code/ruby-submit-kyc-document1.mdx';
+import ViewKycDocumentJava from '/snippets/code/view-kyc-document-java.mdx';
+import PythonViewKycDocument from '/snippets/code/python-view-kyc-document.mdx';
+
+[Read more about the KYC Document object →](/api-reference/kyc-documents/kyc-document-object)
+
+### Path parameters  
+
+<KycDocumentId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Type11Response />  
+
+<UserId2Response />  
+
+<FlagsResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ProcessedDateResponse />  
+
+<Status12Response />  
+
+<RefusedReasonType1Response />  
+
+<RefusedReasonMessageResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Type": "IDENTITY_PROOF",
+    "UserId": "151479566",
+    "Flags": [],
+    "Id": "158785224",
+    "Tag": "Created using MANGOPAY API Collection Postman",
+    "CreationDate": 1671864905,
+    "ProcessedDate": null,
+    "Status": "VALIDATION_ASKED",
+    "RefusedReasonType": null,
+    "RefusedReasonMessage": null
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewKycDocument />
+    <NodeViewKycDocument />
+    <RubySubmitKycDocument1 />
+    <ViewKycDocumentJava />
+    <PythonViewKycDocument />
+</RequestExample>

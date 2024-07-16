@@ -1,0 +1,95 @@
+---
+title: 'Create a Hook'  
+api: 'POST /v2.01/{ClientId}/hooks'  
+---
+
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import EventTypeResponse from '/snippets/p-response/EventTypeResponse.mdx';
+import Validity1Response from '/snippets/p-response/Validity1Response.mdx';
+import Status7Response from '/snippets/p-response/Status7Response.mdx';
+import UrlResponse from '/snippets/p-response/UrlResponse.mdx';
+import Tag3 from '/snippets/p-body/Tag3.mdx';
+import Url from '/snippets/p-body/Url.mdx';
+import EventType from '/snippets/p-body/EventType.mdx';
+
+import RestCreateHook from '/snippets/code/rest-create-hook.mdx';
+import PhpCreateHook from '/snippets/code/php-create-hook.mdx';
+import NodeCreateHook from '/snippets/code/node-create-hook.mdx';
+import RubyCreateHook from '/snippets/code/ruby-create-hook.mdx';
+import CreateHookPython from '/snippets/code/create-hook-python.mdx';
+
+<Note>  
+**Note** 
+  
+You can only create one Hook for each `EventType`.  
+</Note>  
+
+### Body parameters  
+
+<EventType />  
+
+<Url />  
+
+<Tag3 />  
+
+### Responses  
+
+<Accordion title="200">  
+
+<UrlResponse /> 
+
+<Status7Response />  
+
+<Validity1Response />  
+
+<EventTypeResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse /></Accordion>
+
+<Accordion title="400 - Hook already exists for this EventType">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "829f2782-85a9-45b1-a2bd-993b0978c5bc",
+    "Date": 1690295313.0,
+    "errors": {
+        "EventType": "A hook has already been registered for this EventType"
+    }
+}  
+ ```  
+</Accordion>
+
+
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Url": "https://mangopay.com/docs/please-ignore",
+    "Status": "ENABLED",
+    "Validity": "VALID",
+    "EventType": "UBO_DECLARATION_VALIDATION_ASKED",
+    "Id": "144246103",
+    "Tag": "Custom meta",
+    "CreationDate": 1655991027
+}
+ ```  
+
+
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestCreateHook />
+  <PhpCreateHook />
+  <NodeCreateHook />
+  <RubyCreateHook />
+  <CreateHookPython />
+</RequestExample>

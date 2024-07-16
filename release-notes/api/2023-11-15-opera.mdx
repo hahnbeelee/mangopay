@@ -1,0 +1,38 @@
+---
+title: 'API - Nov 15, 2023 - Opera'  
+description: '<small>&#8249; [All releases](/release-notes)</small>'  
+mode: wide  
+'og:description': 'SpotFX: Instant Conversions now available'  
+---
+  
+  <div class="pill pill-green rn-pill">Added</div> 
+  
+### SpotFX: Instant Conversions now available  
+
+Platforms can now execute an immediate conversion of funds between two wallets of different currencies (both owned by the same user), thanks to the <a href="/api-reference/conversions/create-instant-conversion">POST Create an Instant Conversion endpoint</a>.   
+
+The rate offered by Mangopay can be viewed in real-time via the <a href="/api-reference/conversion-rates/view-conversion-rate">View an indicative Conversion Rate</a> endpoint.   
+
+Mangopay’s SpotFX feature allows platforms to offer their users multi-currency wallet balances across GBP, EUR, and USD.   
+
+<a href="/guides/fx" class="btn Secondary normal">Learn more about FX</a> **&#8250;**
+
+#### Endpoints  
+
+The following endpoints have been added:   
+- <a href="/api-reference/conversion-rates/view-conversion-rate">GET View an indicative Conversion Rate</a>
+- <a href="/api-reference/conversions/create-instant-conversion">Create an Instant Conversion</a>
+- <a href="/api-reference/conversions/view-conversion">View an Instant Conversion</a>
+
+#### Webhooks  
+
+The following event types are available for <a href="/webhooks">webhook notifications</a>:  
+- INSTANT_CONVERSION_IN_PROGRESS  
+- INSTANT_CONVERSION_SUCCEEDED  
+- INSTANT_CONVERSION_FAILED  
+
+#### Errors  
+
+The following functional errors have also been added:  
+- <a href="/errors/codes/004801">004801</a> – Conversion could not be debited from wallet  
+- <a href="/errors/codes/004802">004802</a> – Conversion failed during conversion operation

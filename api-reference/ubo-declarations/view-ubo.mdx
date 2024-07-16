@@ -1,0 +1,94 @@
+---
+title: 'View a UBO'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/kyc/ubodeclarations/{UboDeclarationId}/ubos/{UboId}'  
+---
+
+import IsActiveResponse from '/snippets/p-response/IsActiveResponse.mdx';
+import BirthplaceResponse from '/snippets/p-response/BirthplaceResponse.mdx';
+import Address4Response from '/snippets/p-response/Address4Response.mdx';
+import Nationality1Response from '/snippets/p-response/Nationality1Response.mdx';
+import Birthday1Response from '/snippets/p-response/Birthday1Response.mdx';
+import FirstName2Response from '/snippets/p-response/FirstName2Response.mdx';
+import LastName2Response from '/snippets/p-response/LastName2Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import UboId from '/snippets/p-path/UboId.mdx';
+import UboDeclarationId from '/snippets/p-path/UboDeclarationId.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+
+import PhpViewUbo from '/snippets/code/php-view-ubo.mdx';
+import NodeViewUbo from '/snippets/code/node-view-ubo.mdx';
+import RubyViewUbo from '/snippets/code/ruby-view-ubo.mdx';
+import JavaViewUbo from '/snippets/code/view-ubo-java.mdx';
+import PythonViewUbo from '/snippets/code/python-view-ubo.mdx';
+
+[Read more about the UBO object →](/api-reference/ubo-declarations/ubo-object)
+
+### Path parameters  
+
+<UserId />  
+
+<UboDeclarationId />  
+
+<UboId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<CreationDateResponse />  
+
+<LastName2Response />  
+
+<FirstName2Response />  
+
+<Birthday1Response />  
+
+<Nationality1Response />  
+
+<Address4Response />  
+
+<BirthplaceResponse />  
+
+<IsActiveResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "158947898",
+    "CreationDate": 1672153693,
+    "LastName": "Wiza",
+    "FirstName": "Jess",
+    "Birthday": 652117514,
+    "Nationality": "FR",
+    "Address": {
+        "AddressLine1": "669 Ratke Forge",
+        "AddressLine2": "Schamberger Walk",
+        "City": "Paris",
+        "Region": "Ile-de-France",
+        "PostalCode": "75001",
+        "Country": "FR"
+    },
+    "Birthplace": {
+        "City": "Paris",
+        "Country": "FR"
+    },
+    "IsActive": true
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpViewUbo />
+    <NodeViewUbo />
+    <RubyViewUbo />
+    <JavaViewUbo />
+    <PythonViewUbo />
+  
+</RequestExample>

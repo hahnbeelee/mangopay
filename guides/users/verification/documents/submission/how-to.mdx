@@ -1,0 +1,146 @@
+---
+title: 'How to submit a KYC Document'
+sidebarTitle: 'How to'
+'og:description': 'Step-by-step guide to submitting verification (KYC/KYB) documents: uploading files, managing outcomes, and setting up webhooks.'
+---
+
+import RestCreateKycDoc from '/snippets/code/rest-create-kyc-doc.mdx';
+import PhpCreateKycDoc from '/snippets/code/php-create-kyc-doc.mdx';
+import NodeCreateKycDoc from '/snippets/code/node-create-kyc-doc.mdx';
+import RubyCreateKycDocument from '/snippets/code/ruby-create-kyc-document.mdx';
+import JavaCreateKycDocument from '/snippets/code/java-create-kyc-document.mdx';
+import PythonCreateKycDocument from '/snippets/code/python-create-kyc-document.mdx';
+
+import RestCreateKycPage from '/snippets/code/rest-create-kyc-page.mdx';
+import PhpCreateKycPage from '/snippets/code/php-create-kyc-page.mdx';
+import NodeCreateKycPage from '/snippets/code/node-create-kyc-page.mdx';
+import RubyCreateKycPage from '/snippets/code/ruby-create-kyc-page.mdx';
+
+import RestSubmitKycDocument from '/snippets/code/rest-submit-kyc-document.mdx';
+import PhpSubmitKycDocument from '/snippets/code/php-submit-kyc-document.mdx';
+import NodeSubmitKycDoc from '/snippets/code/node-submit-kyc-doc.mdx';
+import RubySubmitKycDocument from '/snippets/code/ruby-submit-kyc-document.mdx';
+import JavaSubmitKycDocument from '/snippets/code/submit-kyc-document-java.mdx';
+import PythonSubmitKycDocument from '/snippets/code/python-submit-kyc-document.mdx';
+
+## Introduction  
+
+This how-to guide will show you how to successfully submit a KYC Document for validation by Mangopay.  
+
+<Info>
+**Prerequisites**
+
+- A `ClientId` and an API key – you can create these in the <a href="https://hub.mangopay.com/" target="_blank">Mangopay Hub</a> (or else <a href="https://mangopay.com/contact" target="_blank">contact Sales</a> to get started)
+- An Owner user (natural or legal)
+</Info>
+
+The KYC Document object allows you to submit any type of verification document for your users. Find out more about the different types in the <a href="/guides/users/verification/documents/types">Types of verification document</a> article.  
+
+<Note>  
+**Note - Follow best practices for identity documents** 
+  
+`IDENTITY_PROOF` documents must adhere to best practices to avoid refusal. Communicate our <a href="/guides/users/verification/documents/submission/id-best-practices">guidelines for IDs</a> to your end users to help them upload good-quality documents and optimize your acceptance rate.  
+</Note>  
+
+## 1. Create the KYC Document  
+
+Create the document with the `UserId` and indicate which type is being submitted.  
+
+> [**POST** /v2.01/&lcub;ClientId&rcub;/users/&lcub;UserId&rcub;/kyc/documents](/api-reference/kyc-documents/create-kyc-document)
+
+<CodeGroup>  
+    <RestCreateKycDoc />  
+    <PhpCreateKycDoc />
+    <NodeCreateKycDoc />
+    <RubyCreateKycDocument />
+    <JavaCreateKycDocument />
+    <PythonCreateKycDocument />
+</CodeGroup>  
+
+The response shows the `Status` “CREATED” and contains an `Id`, which is the unique identifier of the KYC Document object. You need to save this for the next step.  
+
+## 2. Create the page for the user’s file  
+
+With the `Id` of the KYC Document as the `KycDocumentId` path parameter, create the KYC Document Page containing the file uploaded by the user. The file must be encoded in Base64 (which is handled natively in our SDKs) and respect the format and size constraints described in the Document validation process article.  
+
+> [**POST** /v2.01/&lcub;ClientId&rcub;/users/&lcub;UserId&rcub;/kyc/documents/&lcub;KycDocumentId&rcub;/pages](/api-reference/kyc-documents/create-kyc-document-page)
+
+<CodeGroup>
+    <RestCreateKycPage />
+    <PhpCreateKycPage />
+    <NodeCreateKycPage />
+    <RubyCreateKycPage />
+</CodeGroup>
+
+The 204 No content response means that the file has been uploaded successfully.  
+
+<Warning>  
+**Warning - Storage of KYC documents prohibited** 
+  
+You’re not allowed to store verification documents (in any format, even encoded) on your side unless you have permission from the appropriate authorities in your country.  
+</Warning>  
+
+## 3. Create additional pages as needed  
+
+Repeat Step 2 as many times as necessary. Each file of the real-life document requires a separate API call (Step 2) to upload the file in a dedicated KYC Document Page.  
+
+For example:  
+- National identity cards typically have 2 files: the front side and back side of the card.  
+- Passports have 1 file: the full-page spread displaying the photo.  
+- Documents for legal users may have many physical pages but in one file, so one KYC Document Page. If a translation, this can be uploaded as a second file.  
+
+## 4. Submit the KYC Document  
+
+Once all pages are uploaded, submit the document for review by Mangopay’s teams by changing the `Status` from `CREATED` to `VALIDATION_ASKED`. 
+
+> [**PUT**/v2.01/&lcub;ClientId&rcub;/users/&lcub;UserId&rcub;/kyc/documents/&lcub;KycDocumentId&rcub;](/api-reference/kyc-documents/submit-kyc-document)
+
+<CodeGroup>  
+    <RestSubmitKycDocument />
+    <PhpSubmitKycDocument />
+    <NodeSubmitKycDoc />
+    <RubySubmitKycDocument />
+    <JavaSubmitKycDocument />
+    <PythonSubmitKycDocument />
+</CodeGroup>  
+
+## 5. Set up relevant hooks (recommended)  
+
+There are dedicated hooks to provide notifications of the outcome of the review by Mangopay:  
+- KYC_SUCCEEDED, notifying that the KYC Document status has changed to `VALIDATED`.  
+- KYC_FAILED, notifying that the KYC Document status has changed to `REFUSED`.  
+
+For the IDENTITY_PROOF and REGISTRATION_PROOF documents, the document can be downgraded as a result of modifying user information. This is notified with the hook:  
+- KYC_OUTDATED, notifying that the status has changed to `OUT_OF_DATE`.  
+
+<Note>  
+**Note - Refused or downgraded documents must be re-created** 
+  
+A KYC Document with the status `REFUSED` or `OUT_OF_DATE` can’t be re-submitted. You need to create a new document and submit it again.  
+
+In the case of a refusal, information about why it was refused is available in the `RefusedReasonType` and `RefusedReasonMessage` parameters.
+</Note>  
+
+If all the required documents are validated, then the user obtains the verified status. You can be notified of this event with the hook:  
+- USER_KYC_REGULAR, notifying that the `KYCLevel` parameter of the user object has changed to `REGULAR`  
+
+For more information on the requirements for user verification, see:  
+
+<Card title="Guide" href="/guides/users/verification/requirements">Requirements by user type</Card>
+
+## 6. Simulate the response from Mangopay in Sandbox  
+
+The outcome of Mangopay’s review is indicated by the change of status of the document.  
+
+In the Dashboard, you can simulate the response from Mangopay:  
+1. Go to the _Sandbox operations_ section.  
+2. Select _Process a KYC document_.  
+3. Enter the identifiers of the document and the user, then select the action you want to simulate.  
+4. Click _Submit_ to send the response.  
+
+## Related resources
+<CardGroup col={2}>
+   <Card title="Guide" href="/guides/users/verification/requirements#natural-persons">Learn about verification requirements for natural persons</Card>  
+   
+   <Card title="Guide" href="/guides/users/verification/requirements#legal-entities">Learn about verification requirements for legal entities</Card>  
+</CardGroup>

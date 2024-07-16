@@ -1,0 +1,269 @@
+---
+title: 'Create a Direct Direct-Debit PayIn'  
+api: 'POST /v2.01/{ClientId}/payins/directdebit/direct'  
+---
+
+import StatementDescriptor1Response from '/snippets/p-response/StatementDescriptor1Response.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import MandateIdResponse from '/snippets/p-response/MandateIdResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Fees4Response from '/snippets/p-response/Fees4Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ChargeDateResponse from '/snippets/p-response/ChargeDateResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ProfilingAttemptReference from '/snippets/p-body/ProfilingAttemptReference.mdx';
+import StatementDescriptor1 from '/snippets/p-body/StatementDescriptor1.mdx';
+import MandateId from '/snippets/p-body/MandateId.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+import Fees10 from '/snippets/p-body/Fees10.mdx';
+import DebitedFunds11 from '/snippets/p-body/DebitedFunds11.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import CreditedUserId from '/snippets/p-body/CreditedUserId.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+  
+import RestCreateADirectDirectDebitPayin from '/snippets/code/rest-create-a-direct-direct-debit-payin.mdx';
+import CreateDirectDirectDebitPayinPhp from '/snippets/code/create-direct-direct-debit-payin-php.mdx';
+import NodeCreateDirectDirectDebitPayin from '/snippets/code/node-create-direct-direct-debit-payin.mdx';
+import RubyCreateDirectDirectDebitPayin from '/snippets/code/ruby-create-direct-direct-debit-payin.mdx';
+import JavaCreateDirectDirectDebitPayin from '/snippets/code/java-create-direct-direct-debit-payin.mdx';
+import PythonCreateDirectDirectDebitPayin from '/snippets/code/python-create-direct-direct-debit-payin.mdx';
+
+### Body parameters  
+
+<AuthorId />  
+
+<CreditedUserId />  
+
+<CreditedWalletId />  
+
+<DebitedFunds11 />  
+
+<Fees10 />  
+
+<Tag />  
+
+<MandateId />  
+
+<StatementDescriptor1 />  
+
+<ProfilingAttemptReference />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<ChargeDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<CreditedFunds5Response />  
+
+<DebitedFunds7Response />  
+
+<Fees4Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<Tag2Response />  
+
+<MandateIdResponse />  
+
+<StatementDescriptorResponse /></Accordion><Accordion title="200 - Failed due to invalid mandate status">  
+
+<IdResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<ChargeDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<CreditedFunds5Response />  
+
+<DebitedFunds7Response />  
+
+<Fees4Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<TagResponse />  
+
+<MandateIdResponse />  
+
+<StatementDescriptor1Response />
+
+</Accordion>
+
+</AccordionGroup>  
+<AccordionGroup>  
+
+<Accordion title="400 - Payment method not activated">
+```json  
+{
+    "Message":"Error this mean of payment for this asked currency has been disabled",
+    "Type":"disabled_mean_of_payment_for_currency",
+    "Id":"2c4253ca-dd49-4092-8997-65b20b467b45#1663145348",
+    "Date":1663145349.0,
+    "errors":{
+        "error":"The method payment DIRECT_DEBIT_GOCARDLESS with the ccy EUR is not active for the partner Sandboxtest"
+    }
+}  
+ ```  
+</Accordion>
+<Accordion title="400 - Statement descriptor not available for BACS Direct Debit ">
+```json 
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "24e0f9e1-7f37-4a8b-b644-873cabc4ee97",
+    "Date": 1695374496.0,
+    "errors": {
+        "StatementDescriptor": "This field is only available for Mandates with the Scheme 'SEPA'"
+    }
+}  
+ ```  
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Id":"156622086",
+    "CreationDate":1669040874,
+    "AuthorId":"151452401",
+    "CreditedUserId":"151452401",
+    "Status":"CREATED",
+    "ExecutionDate":null,
+    "ChargeDate":1669248000,
+    "Type":"PAYIN",
+    "Nature":"REGULAR",
+    "CreditedWalletId":"152161972",
+    "DebitedWalletId":null,
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":1188
+    },
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":1200
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":12
+    },
+    "ResultCode":null,
+    "ResultMessage":null,
+    "PaymentType":"DIRECT_DEBIT",
+    "ExecutionType":"DIRECT",
+    "Tag":null,
+    "MandateId":"156620699",
+    "StatementDescriptor":"sandbox test Nov2022"
+}  
+ ```  
+
+```json 200 - Failed due to invalid mandate status  
+{
+    "Id":"152162063",
+    "CreationDate":1663916149,
+    "AuthorId":"151452401",
+    "CreditedUserId":"151452401",
+    "Status":"FAILED",
+    "ExecutionDate":null,
+    "ChargeDate":null,
+    "Type":"PAYIN",
+    "Nature":"REGULAR",
+    "CreditedWalletId":"152161972",
+    "DebitedWalletId":null,
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":11988
+    },
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":12000
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":12
+    },
+    "ResultCode":"001833",
+    "ResultMessage":"The Status of this Mandate does not allow for payments",
+    "PaymentType":"DIRECT_DEBIT",
+    "ExecutionType":"DIRECT",
+    "Tag":null,
+    "MandateId":"152162020",
+    "StatementDescriptor":"sandbox test Nov2022"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateADirectDirectDebitPayin />
+    <CreateDirectDirectDebitPayinPhp />
+    <NodeCreateDirectDirectDebitPayin />
+    <RubyCreateDirectDirectDebitPayin />
+    <JavaCreateDirectDirectDebitPayin />
+    <PythonCreateDirectDirectDebitPayin />
+</RequestExample>

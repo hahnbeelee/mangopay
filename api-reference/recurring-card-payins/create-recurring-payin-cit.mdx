@@ -1,0 +1,255 @@
+---
+title: 'Create a Recurring PayIn (CIT)'  
+api: 'POST /v2.01/{ClientId}/payins/recurring/card/direct'  
+---
+
+import CardInfoResponse from '/snippets/p-response/CardInfoResponse.mdx';
+import PreferredCardNetworkResponse from '/snippets/p-response/PreferredCardNetworkResponse.mdx';
+import RecurringPayinRegistrationIdResponse from '/snippets/p-response/RecurringPayinRegistrationIdResponse.mdx';
+import Applied3DSVersionResponse from '/snippets/p-response/Applied3DSVersionResponse.mdx';
+import Requested3DSVersionResponse from '/snippets/p-response/Requested3DSVersionResponse.mdx';
+import Shipping2Response from '/snippets/p-response/Shipping2Response.mdx';
+import Billing1Response from '/snippets/p-response/Billing1Response.mdx';
+import IpAddressResponse from '/snippets/p-response/IpAddressResponse.mdx';
+import BrowserInfoResponse from '/snippets/p-response/BrowserInfoResponse.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import SecurityInfoResponse from '/snippets/p-response/SecurityInfoResponse.mdx';
+import Culture6Response from '/snippets/p-response/Culture6Response.mdx';
+import SecureModeNeededResponse from '/snippets/p-response/SecureModeNeededResponse.mdx';
+import SecureModeRedirectURLResponse from '/snippets/p-response/SecureModeRedirectURLResponse.mdx';
+import SecureModeReturnURLResponse from '/snippets/p-response/SecureModeReturnURLResponse.mdx';
+import CardId1Response from '/snippets/p-response/CardId1Response.mdx';
+import SecureModeResponse from '/snippets/p-response/SecureModeResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees13Response from '/snippets/p-response/Fees13Response.mdx';
+import CreditedFunds9Response from '/snippets/p-response/CreditedFunds9Response.mdx';
+import DebitedFunds14Response from '/snippets/p-response/DebitedFunds14Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import RecurringPayinRegistrationId from '/snippets/p-body/RecurringPayinRegistrationId.mdx';
+import IpAddress from '/snippets/p-body/IpAddress.mdx';
+import BrowserInfo from '/snippets/p-body/BrowserInfo.mdx';
+import StatementDescriptor from '/snippets/p-body/StatementDescriptor.mdx';
+import Culture3 from '/snippets/p-body/Culture3.mdx';
+import SecureModeReturnURL from '/snippets/p-body/SecureModeReturnURL.mdx';
+import Fees11 from '/snippets/p-body/Fees11.mdx';
+import DebitedFunds12 from '/snippets/p-body/DebitedFunds12.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+import PreferredCardNetwork from '/snippets/p-body/PreferredCardNetwork.mdx';
+
+import RestCreateRecurringPayinCit from '/snippets/code/rest-create-recurring-payin-cit.mdx';
+import PhpCreateRecurringPayinCit from '/snippets/code/php-create-recurring-payin-cit.mdx';
+import NodeCreateRecurringPayinCit from '/snippets/code/node-create-recurring-payin-cit.mdx';
+import RubyCreateRecurringPayinCit from '/snippets/code/ruby-create-recurring-payin-cit.mdx';
+import PythonCreateRecurringPayinCit from '/snippets/code/python-create-recurring-payin-cit.mdx'; 
+
+### Body parameters  
+
+<Tag />  
+
+<DebitedFunds12 />  
+
+<Fees11 />  
+
+<SecureModeReturnURL />  
+
+<Culture3 />  
+
+<StatementDescriptor />  
+
+<BrowserInfo />  
+
+<IpAddress />  
+
+<RecurringPayinRegistrationId />
+
+<PreferredCardNetwork />
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds14Response />  
+
+<CreditedFunds9Response />  
+
+<Fees13Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<SecureModeResponse />  
+
+<CardId1Response />  
+
+<SecureModeReturnURLResponse />  
+
+<SecureModeRedirectURLResponse />  
+
+<SecureModeNeededResponse />  
+
+<Culture6Response />  
+
+<SecurityInfoResponse />  
+
+<StatementDescriptorResponse />  
+
+<BrowserInfoResponse />  
+
+<IpAddressResponse />  
+
+<Billing1Response />  
+
+<Shipping2Response />  
+
+<Requested3DSVersionResponse />  
+
+<Applied3DSVersionResponse />  
+
+<RecurringPayinRegistrationIdResponse />  
+
+<PreferredCardNetworkResponse />  
+
+<CardInfoResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id":"156285688",
+    "Tag":"Created using MANGOPAY API Collection Postman",
+    "CreationDate":1668601301,
+    "AuthorId":"146476890",
+    "CreditedUserId":"146476890",
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":900
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":890
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":10
+    },
+    "Status":"SUCCEEDED",
+    "ResultCode":"000000",
+    "ResultMessage":"Success",
+    "ExecutionDate":1668601302,
+    "Type":"PAYIN",
+    "Nature":"REGULAR",
+    "CreditedWalletId":"148968396",
+    "DebitedWalletId":null,
+    "PaymentType":"CARD",
+    "ExecutionType":"DIRECT",
+    "SecureMode":null,
+    "CardId":"156285393",
+    "SecureModeReturnURL":"http://www.my-site.com/returnURL?transactionId=156285688",
+    "SecureModeRedirectURL":null,
+    "SecureModeNeeded":false,
+    "Culture":"EN",
+    "SecurityInfo":{
+        "AVSResult":"NO_CHECK"
+    },
+    "StatementDescriptor":"POSTMAN",
+    "BrowserInfo":{
+        "AcceptHeader":"text/html, application/xhtml+xml, application/xml;q=0.9, /;q=0.8",
+        "JavaEnabled":true,
+        "Language":"FR-FR",
+        "ColorDepth":4,
+        "ScreenHeight":1800,
+        "ScreenWidth":400,
+        "TimeZoneOffset":60,
+        "UserAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+        "JavascriptEnabled":true
+    },
+    "IpAddress":"2001:0620:0000:0000:0211:24FF:FE80:C12C",
+    "Billing":{
+        "FirstName":"John",
+        "LastName":"Doe",
+        "Address":{
+            "AddressLine1":"The Oasis",
+            "AddressLine2":"Rue des Plantes",
+            "City":"Paris",
+            "Region":"Ile de France",
+            "PostalCode":"75001",
+            "Country":"FR"
+        }
+    },
+    "Shipping":{
+        "FirstName":"John",
+        "LastName":"Doe",
+        "Address":{
+            "AddressLine1":"The Oasis",
+            "AddressLine2":"Rue des Plantes",
+            "City":"Paris",
+            "Region":"Ile de France",
+            "PostalCode":"75001",
+            "Country":"FR"
+        }
+    },
+    "Requested3DSVersion":null,
+    "Applied3DSVersion":"V2_1",
+    "RecurringPayinRegistrationId":"156285527",
+    "PreferredCardNetwork":"MASTERCARD",
+    "CardInfo": {
+        "BIN": "497010",
+        "IssuingBank": "LA BANQUE POSTALE",
+        "IssuerCountryCode": "MA",
+        "Type": "CREDIT",
+        "Brand": "MASTERCARD",
+        "SubType": null
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateRecurringPayinCit />
+    <PhpCreateRecurringPayinCit />
+    <NodeCreateRecurringPayinCit />
+    <RubyCreateRecurringPayinCit />
+    <PythonCreateRecurringPayinCit />
+</RequestExample>

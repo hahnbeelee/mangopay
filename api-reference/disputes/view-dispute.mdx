@@ -1,0 +1,114 @@
+---
+title: 'View a Dispute'  
+api: 'GET /v2.01/{ClientId}/disputes/{DisputeId}'  
+---
+
+import RepudiationIdResponse from '/snippets/p-response/RepudiationIdResponse.mdx';
+import ClosedDateResponse from '/snippets/p-response/ClosedDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCode1Response from '/snippets/p-response/ResultCode1Response.mdx';
+import DisputeReasonResponse from '/snippets/p-response/DisputeReasonResponse.mdx';
+import StatusMessageResponse from '/snippets/p-response/StatusMessageResponse.mdx';
+import Status3Response from '/snippets/p-response/Status3Response.mdx';
+import ContestedFundsResponse from '/snippets/p-response/ContestedFundsResponse.mdx';
+import DisputedFundsResponse from '/snippets/p-response/DisputedFundsResponse.mdx';
+import ContestDeadlineDateResponse from '/snippets/p-response/ContestDeadlineDateResponse.mdx';
+import DisputeTypeResponse from '/snippets/p-response/DisputeTypeResponse.mdx';
+import InitialTransactionNatureResponse from '/snippets/p-response/InitialTransactionNatureResponse.mdx';
+import InitialTransactionTypeResponse from '/snippets/p-response/InitialTransactionTypeResponse.mdx';
+import InitialTransactionIdResponse from '/snippets/p-response/InitialTransactionIdResponse.mdx';
+import DisputeId from '/snippets/p-path/DisputeId.mdx';
+
+import PhpViewDispute from '/snippets/code/php-view-dispute.mdx';
+import NodeViewDispute from '/snippets/code/node-view-dispute.mdx';
+import RubyViewDispute from '/snippets/code/ruby-view-dispute.mdx';
+import ViewDisputePython from '/snippets/code/view-dispute-python.mdx';
+
+
+### Path parameters  
+
+<DisputeId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<InitialTransactionIdResponse />  
+
+<InitialTransactionTypeResponse />  
+
+<InitialTransactionNatureResponse />  
+
+<DisputeTypeResponse />  
+
+<ContestDeadlineDateResponse />  
+
+<DisputedFundsResponse />  
+
+<ContestedFundsResponse />  
+
+<Status3Response />  
+
+<StatusMessageResponse />  
+
+<DisputeReasonResponse />  
+
+<ResultCode1Response />  
+
+<ResultMessageResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ClosedDateResponse />  
+
+<RepudiationIdResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "InitialTransactionId": "156981683",
+    "InitialTransactionType": "PAYIN",
+    "InitialTransactionNature": "REGULAR",
+    "DisputeType": "CONTESTABLE",
+    "ContestDeadlineDate": 1670025599,
+    "DisputedFunds": {
+        "Currency": "EUR",
+        "Amount": 10000
+    },
+    "ContestedFunds": {
+        "Currency": "EUR",
+        "Amount": 10000
+    },
+    "Status": "PENDING_CLIENT_ACTION",
+    "StatusMessage": null,
+    "DisputeReason": {
+        "DisputeReasonMessage": "This is a test dispute",
+        "DisputeReasonType": "UNKNOWN"
+    },
+    "ResultCode": "",
+    "ResultMessage": null,
+    "Id": "156981783",
+    "Tag": null,
+    "CreationDate": 1669384460,
+    "ClosedDate": null,
+    "RepudiationId": "156981784"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <PhpViewDispute />
+  <NodeViewDispute />
+  <RubyViewDispute />
+  <ViewDisputePython />
+</RequestExample>

@@ -1,0 +1,102 @@
+---
+title: 'BLIK'  
+'og:description': 'How users can pay with BLIK, a popular payment method in Poland.'  
+---
+
+## About
+
+BLIK is a popular payment method available on mobile banking applications in Poland. It allows users to pay online, at physical terminals, and between individuals, as well as withdraw cash from ATMs.  
+
+<table>
+    <tbody>
+        <tr>
+            <th class="header">Region</th>
+            <td class="table-content">
+                Poland
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Currencies</th>
+            <td class="table-content">
+                PLN
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Refunds](/guides/refunds)</th>
+            <td class="table-content">
+                Yes
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Disputes](/guides/disputes)</th>
+            <td class="table-content">
+                Yes
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Preauthorization</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Recurring payments</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+## How it works  
+
+1. On your app or website, the user selects BLIK as the payment method during checkout.
+2. The user opens their banking app where they find a six-digit code generated.
+3. The user copies the code and returns to your app or website.
+4. The user enters the code to validate the payment.
+5. The platform makes an API call with `Code`.
+6. The user is redirected to their banking app.
+7. The user enters their banking app PIN to confirm the payment. 
+8. The user is returned to your app or website.
+
+### BLIK OneClick
+
+BLIK then gives users the option to save the merchant (that is, your platform) so future payments can be processed without the temporary 6-digit code – this is known as BLIK OneClick.
+
+There are two options to save a merchant:
+
+- Option 1: On the payment confirmation page, the user clicks _Save the shop_.
+- Option 2: After entering their card PIN, the user clicks _Pay and save_ to simultaneously confirm the payment and save the merchant. 
+
+Once the merchant is saved, the user sees 2 buttons. They can choose the basic flow by clicking _BLIK with code_, or they can click _BLIK without code_ to use OneClick.
+
+The OneClick flow uses the <a href="/api-reference/blik/create-blik-payin-without-code">POST Create a BLIK PayIn (without code)</a> endpoint:
+
+1. On your app or website, the user selects _BLIK without code_ during checkout.
+2. The user is redirected to their banking app.
+3. The user enters their card PIN to confirm the payment. 
+
+For more information, see the [BLIK Level 0 + OneClick](https://blik.com/lp/payment-without-code/Level_0_%2B_OneClick.html) article on the BLIK documentation.
+
+## Hooks
+
+The transaction is complete when the pay-in status changed from `CREATED` to `SUCCEEDED` or `FAILED`, indicating the outcome.  
+
+You should also set up [hook notifications](/webhooks) for the relevant [event types](/webhooks/event-types):
+
+- PAYIN_NORMAL_SUCCEEDED  
+- PAYIN_NORMAL_FAILED  
+
+## Related resources  
+
+<CardGroup col={2}> 
+    <Card title="Endpoint" href="/api-reference/blik/blik-payin-object">
+    The BLIK PayIn object
+    </Card>  
+
+    <Card title="Testing" href="/testing/payment-methods#blik">
+    Learn about testing BLIK
+    </Card>
+</CardGroup>

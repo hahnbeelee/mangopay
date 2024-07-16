@@ -1,0 +1,73 @@
+---
+title: 'View a Dispute Document'  
+api: 'GET /v2.01/{ClientId}/dispute-documents/{DisputeDocumentId}'  
+---
+
+import RefusedReasonMessageResponse from '/snippets/p-response/RefusedReasonMessageResponse.mdx';
+import RefusedReasonTypeResponse from '/snippets/p-response/RefusedReasonTypeResponse.mdx';
+import Status6Response from '/snippets/p-response/Status6Response.mdx';
+import ProcessedDateResponse from '/snippets/p-response/ProcessedDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type4Response from '/snippets/p-response/Type4Response.mdx';
+import DisputeIdResponse from '/snippets/p-response/DisputeIdResponse.mdx';
+import DisputeDocumentId from '/snippets/p-path/DisputeDocumentId.mdx';
+
+import PhpViewDisputeDocument from '/snippets/code/php-view-dispute-document.mdx';
+import NodeViewDisputeDocument from '/snippets/code/node-view-dispute-document.mdx';
+import RubyViewDisputeDocument from '/snippets/code/ruby-view-dispute-document.mdx';
+import ViewDisputeDocumentPython from '/snippets/code/view-dispute-document-python.mdx';
+
+
+### Path parameters  
+
+<DisputeDocumentId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<DisputeIdResponse />  
+
+<Type4Response />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ProcessedDateResponse />  
+
+<Status6Response />  
+
+<RefusedReasonTypeResponse />  
+
+<RefusedReasonMessageResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "DisputeId": "159102965",
+    "Type": "DELIVERY_PROOF",
+    "Id": "159188418",
+    "Tag": null,
+    "CreationDate": 1672655973,
+    "ProcessedDate": null,
+    "Status": "VALIDATION_ASKED",
+    "RefusedReasonType": null,
+    "RefusedReasonMessage": null
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <PhpViewDisputeDocument />
+  <NodeViewDisputeDocument />
+  <RubyViewDisputeDocument />
+  <ViewDisputeDocumentPython />
+</RequestExample>

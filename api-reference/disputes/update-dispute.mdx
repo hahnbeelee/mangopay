@@ -1,0 +1,115 @@
+---
+title: 'Update a Dispute'  
+api: 'PUT /v2.01/{ClientId}/disputes/{DisputeId}'  
+---
+
+import RepudiationIdResponse from '/snippets/p-response/RepudiationIdResponse.mdx';
+import ClosedDateResponse from '/snippets/p-response/ClosedDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCode1Response from '/snippets/p-response/ResultCode1Response.mdx';
+import DisputeReasonResponse from '/snippets/p-response/DisputeReasonResponse.mdx';
+import StatusMessageResponse from '/snippets/p-response/StatusMessageResponse.mdx';
+import Status3Response from '/snippets/p-response/Status3Response.mdx';
+import ContestedFundsResponse from '/snippets/p-response/ContestedFundsResponse.mdx';
+import DisputedFundsResponse from '/snippets/p-response/DisputedFundsResponse.mdx';
+import ContestDeadlineDateResponse from '/snippets/p-response/ContestDeadlineDateResponse.mdx';
+import DisputeTypeResponse from '/snippets/p-response/DisputeTypeResponse.mdx';
+import InitialTransactionNatureResponse from '/snippets/p-response/InitialTransactionNatureResponse.mdx';
+import InitialTransactionTypeResponse from '/snippets/p-response/InitialTransactionTypeResponse.mdx';
+import InitialTransactionIdResponse from '/snippets/p-response/InitialTransactionIdResponse.mdx';
+import DisputeId from '/snippets/p-path/DisputeId.mdx';
+
+import RestUpdateDispute from '/snippets/code/rest-update-dispute.mdx';
+import PhpUpdateDispute from '/snippets/code/php-update-dispute.mdx';
+import NodeUpdateDispute from '/snippets/code/node-update-dispute.mdx';
+import RubyUpdateDispute from '/snippets/code/ruby-update-dispute.mdx';
+import UpdateADisputePython from '/snippets/code/update-a-dispute-python.mdx';
+
+### Path parameters  
+
+<DisputeId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<InitialTransactionIdResponse />  
+
+<InitialTransactionTypeResponse />  
+
+<InitialTransactionNatureResponse />  
+
+<DisputeTypeResponse />  
+
+<ContestDeadlineDateResponse />  
+
+<DisputedFundsResponse />  
+
+<ContestedFundsResponse />  
+
+<Status3Response />  
+
+<StatusMessageResponse />  
+
+<DisputeReasonResponse />  
+
+<ResultCode1Response />  
+
+<ResultMessageResponse />  
+
+<IdResponse />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<ClosedDateResponse />  
+
+<RepudiationIdResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "InitialTransactionId": "159196292",
+    "InitialTransactionType": "PAYIN",
+    "InitialTransactionNature": "REGULAR",
+    "DisputeType": "CONTESTABLE",
+    "ContestDeadlineDate": 1673395199,
+    "DisputedFunds": {
+        "Currency": "EUR",
+        "Amount": 2000
+    },
+    "ContestedFunds": {
+        "Currency": "EUR",
+        "Amount": 2000
+    },
+    "Status": "PENDING_CLIENT_ACTION",
+    "StatusMessage": null,
+    "DisputeReason": {
+        "DisputeReasonMessage": "This is a test dispute",
+        "DisputeReasonType": "DUPLICATE"
+    },
+    "ResultCode": "",
+    "ResultMessage": null,
+    "Id": "159206448",
+    "Tag": "Updated tag",
+    "CreationDate": 1672669787,
+    "ClosedDate": null,
+    "RepudiationId": "159206449"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestUpdateDispute />
+  <PhpUpdateDispute />
+  <NodeUpdateDispute />
+  <RubyUpdateDispute />
+  <UpdateADisputePython />
+</RequestExample>

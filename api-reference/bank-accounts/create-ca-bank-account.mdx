@@ -1,0 +1,135 @@
+---
+title: 'Create a CA Bank Account'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/bankaccounts/ca'  
+---
+
+import ActiveResponse from '/snippets/p-response/ActiveResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag4Response from '/snippets/p-response/Tag4Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type5Response from '/snippets/p-response/Type5Response.mdx';
+import OwnerNameResponse from '/snippets/p-response/OwnerNameResponse.mdx';
+import UserId1Response from '/snippets/p-response/UserId1Response.mdx';
+import BankName2Response from '/snippets/p-response/BankName2Response.mdx';
+import BranchCodeResponse from '/snippets/p-response/BranchCodeResponse.mdx';
+import InstitutionNumberResponse from '/snippets/p-response/InstitutionNumberResponse.mdx';
+import AccountNumberResponse from '/snippets/p-response/AccountNumberResponse.mdx';
+import OwnerAddressResponse from '/snippets/p-response/OwnerAddressResponse.mdx';
+import Tag4 from '/snippets/p-body/Tag4.mdx';
+import OwnerName from '/snippets/p-body/OwnerName.mdx';
+import BankName from '/snippets/p-body/BankName.mdx';
+import BranchCode from '/snippets/p-body/BranchCode.mdx';
+import InstitutionNumber from '/snippets/p-body/InstitutionNumber.mdx';
+import AccountNumber from '/snippets/p-body/AccountNumber.mdx';
+import OwnerAddress from '/snippets/p-body/OwnerAddress.mdx';
+import UserId1 from '/snippets/p-path/UserId1.mdx';
+  
+import RestCreateCaBankAccount from '/snippets/code/rest-create-ca-bank-account.mdx';
+import PhpCreateCaBankAccount from '/snippets/code/php-create-ca-bank-account.mdx';
+import NodeCreateCaBankAccount from '/snippets/code/node-create-ca-bank-account.mdx';
+import RubyCreateCaBankAccount from '/snippets/code/ruby-create-ca-bank-account.mdx';
+import JavaCreateCaBankAccount from '/snippets/code/java-create-ca-bank-account.mdx';
+import PythonCreateCaBankAccount from '/snippets/code/python-create-ca-bank-account.mdx';
+
+### Path parameters  
+
+<UserId1 />  
+
+### Body parameters  
+
+<OwnerAddress />  
+
+<AccountNumber />  
+
+<InstitutionNumber />  
+
+<BranchCode />  
+
+<BankName />  
+
+<OwnerName />  
+
+<Tag4 />  
+
+### Responses  
+
+<Accordion title="200">  
+
+<OwnerAddressResponse />  
+
+<AccountNumberResponse />  
+
+<InstitutionNumberResponse />  
+
+<BranchCodeResponse />  
+
+<BankName2Response />  
+
+<UserId1Response />  
+
+<OwnerNameResponse />  
+
+<Type5Response />  
+
+<IdResponse />  
+
+<Tag4Response />  
+
+<CreationDateResponse />  
+
+<ActiveResponse /></Accordion>
+
+<Accordion title="400 - Missing parameters">
+```json
+{
+    "Message":"One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type":"param_error",
+    "Id":"4ee7cdf4-602a-4d6f-8859-4e7548022abf#1661865189",
+    "Date":1661865190.0,
+    "errors":{
+        "InstitutionNumber":"The InstitutionNumber field is required.",
+        "BranchCode":"The BranchCode field is required.",
+        "BankName":"The BankName field is required."
+    }
+}  
+ ```  
+</Accordion>
+
+<ResponseExample>  
+
+```json 200  
+{
+    "OwnerAddress":{
+        "AddressLine1":"The Oasis",
+        "AddressLine2":"Rue des plantes",
+        "City":"Paris",
+        "Region":"Ile de France",
+        "PostalCode":"75001",
+        "Country":"FR"
+    },
+    "AccountNumber":"11696419",
+    "InstitutionNumber":"614",
+    "BranchCode":"00152",
+    "BankName":"The Bank",
+    "UserId":"142036728",
+    "OwnerName":"Joe Blogs",
+    "Type":"CA",
+    "Id":"150295080",
+    "Tag":null,
+    "CreationDate":1661865058,
+    "Active":true
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <RestCreateCaBankAccount />
+    <PhpCreateCaBankAccount />
+    <NodeCreateCaBankAccount />
+    <RubyCreateCaBankAccount />
+    <JavaCreateCaBankAccount />
+    <PythonCreateCaBankAccount />
+
+</RequestExample>

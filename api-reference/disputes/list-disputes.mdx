@@ -1,0 +1,73 @@
+---
+title: 'List all Disputes'  
+api: 'GET /v2.01/{ClientId}/disputes'  
+---
+
+import Array_DisputesResponse from '/snippets/p-response/Array_DisputesResponse.mdx';
+import AfterDate2 from '/snippets/p-query/AfterDate2.mdx';
+import BeforeDate2 from '/snippets/p-query/BeforeDate2.mdx';
+
+import PhpListDisputes from '/snippets/code/php-list-disputes.mdx';
+import NodeListDisputes from '/snippets/code/node-list-disputes.mdx';
+import RubyListDisputes from '/snippets/code/ruby-list-disputes.mdx';
+import ListDisputesPython from '/snippets/code/list-disputes-python.mdx';
+
+
+### Query parameters  
+
+<BeforeDate2 />  
+
+<AfterDate2 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_DisputesResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "InitialTransactionId": "158596153",
+        "InitialTransactionType": "PAYIN",
+        "InitialTransactionNature": "REGULAR",
+        "DisputeType": "CONTESTABLE",
+        "ContestDeadlineDate": 1673049599,
+        "DisputedFunds": {
+            "Currency": "EUR",
+            "Amount": 1200
+        },
+        "ContestedFunds": {
+            "Currency": "EUR",
+            "Amount": 1200
+        },
+        "Status": "PENDING_CLIENT_ACTION",
+        "StatusMessage": null,
+        "DisputeReason": {
+            "DisputeReasonMessage": "This is a test dispute",
+            "DisputeReasonType": "UNKNOWN"
+        },
+        "ResultCode": "",
+        "ResultMessage": null,
+        "Id": "159102965",
+        "Tag": null,
+        "CreationDate": 1672411848,
+        "ClosedDate": 1675260940,
+        "RepudiationId": "159102966"
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <PhpListDisputes />
+  <NodeListDisputes />
+  <RubyListDisputes />
+  <ListDisputesPython />
+
+</RequestExample>

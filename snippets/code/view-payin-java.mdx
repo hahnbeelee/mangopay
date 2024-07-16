@@ -1,0 +1,24 @@
+  
+```java Java  
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mangopay.MangoPayApi;
+import com.mangopay.entities.PayIn;
+
+import java.lang.reflect.Field;
+
+public class HandleRequest {
+    public static void main(String[] args) {
+        MangoPayApi mangopay = new MangoPayApi();
+        mangopay.getConfig().setClientId("your-client-id");
+        mangopay.getConfig().setClientPassword("your-api-key");
+        
+        PayIn payin = mangopay.getPayInApi().get("wt_4988a6e9-cc9b-47a7-a754-1f7e3eed8365");
+        
+        Gson prettyPrint = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = prettyPrint.toJson(payin);
+
+        System.out.println(viewKycDoc);
+    }
+}  
+```

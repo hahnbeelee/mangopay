@@ -1,0 +1,211 @@
+---
+title: 'How to validate a card without debiting a payment'
+sidebarTitle: 'How to'
+'og:description': "Step-by-step guide to validating a user's card without debiting a transaction, allowing you to provide a better registration experience."
+---
+
+## Introduction  
+
+Mangopay cards must be validated (`Validity` value is `VALID`) within 24 hours after the card registration. This can be done by making a successful pay-in with the card (direct, preauthorized, recurring, etc). See How to process a card payment for the complete flow of a one-off card payment.  
+
+Alternatively - and particularly if the card is not going to be used within 24 hours - you can use the card validation feature to perform 3DS authentication without debiting the card.  
+
+This guide focuses on how to perform a card validation.  
+
+<Info>
+**Prerequisites**
+
+- A `ClientId` and an API key – you can create these in the <a href="https://hub.mangopay.com/" target="_blank">Mangopay Hub</a> (or else <a href="https://mangopay.com/contact" target="_blank">contact Sales</a> to get started)
+- A User object created for your end user 
+- A `CardId` for the end user’s card (`CardType` must be `CB_VISA_MASTERCARD`), obtained through the card registration flow or returned by the Mangopay [Vault SDK or Checkout SDK](/sdks/checkout) – in Sandbox, we recommend you use the [challenge test card](https://mangopay.com/docs/dev-tools/testing/payment-methods)
+- The URL of a page on your platform to return the end user to after authentication
+</Info>
+
+## 1. Request the card validation  
+
+Using the User’s `Id` as the `AuthorId`, use the [Create a Card Validation](/api-reference/card-validations/create-card-validation) endpoint to make the request for validation without a payment.  
+
+When you make the card validation request, you also need to:  
+- Be ready to handle 3DS authentication (Step 2)  
+- Specify the page to which the user will be returned after authentication (Step 3)  
+
+Read these steps before continuing.
+
+> [**POST** /V2.01/&lcub;ClientId&rcub;/cards/&lcub;CardId&rcub;/validation](/api-reference/card-validations/create-card-validation)
+
+<CodeGroup>
+```json REST
+{
+    "AuthorId": "2659641945",
+    "SecureModeReturnURL": "https://mangopay.com/docs/please-ignore/returnurl/?check=payin&env={{ENV}}",
+    "IpAddress": "159.180.248.187",
+    "Tag": "Custom meta",
+    "BrowserInfo": {
+        "AcceptHeader": "application/json,text/javascript,*/*;q=0.01<",
+        "JavaEnabled": true,
+        "Language": "fr",
+        "ColorDepth": 32,
+        "ScreenHeight": 667,
+        "ScreenWidth": 375,
+        "TimeZoneOffset": "-120",
+        "UserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+        "JavascriptEnabled": true
+      },
+    "PreferredCardNetwork": "VISA"
+}
+```  
+
+```python Python
+import mangopay
+
+mangopay.client_id='your-client-id'
+mangopay.apikey='your-api-key'
+
+from mangopay.api import APIRequest
+handler = APIRequest(sandbox=True)
+
+from mangopay.resources import NaturalUser, CardValidation
+from mangopay.utils import BrowserInfo
+
+natural_user = NaturalUser.get('213600749')
+
+user_card_validation = CardValidation(
+    author = natural_user,
+    secure_mode_return_url = 'https://mangopay.com/docs/please-ignore',
+    ip_address = '159.180.248.187',
+    tag = 'Created with Mangopay Python SDK',
+    browser_info = BrowserInfo(
+        user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+        screen_width = 375,
+        screen_height = 667,
+        color_depth = 32,
+        language = 'EN',
+        accept_header = 'application/json,text/javascript,*/*;q=0.01<',
+        timezone_offset = '-120',
+        java_enabled = True,
+        javascript_enabled = True
+    ),
+    card_id = '213601128'
+)
+
+create_card_validation = user_card_validation.validate(card_id = user_card_validation.card_id)
+
+pprint(create_card_validation)  
+```
+</CodeGroup>
+
+
+```json API response
+{
+    "Id": "158aa411-6eaa-420c-82b5-bee7dab2e49c",
+    "AuthorId": "2659641945",
+    "Status": "CREATED",
+    "SecureModeReturnURL": "https://mangopay.com/docs/please-ignore",
+    "SecureModeRedirectURL": "https://api.mangopay.com/cardvalidation/Acs/Redirect?secureSessionToken=0ff144d4-caec-41a9-97dc-b211fd4b237f",
+    "SecureModeNeeded": true,
+    "IpAddress": "159.180.248.187",
+    "BrowserInfo": {
+        "AcceptHeader": "application/json,text/javascript,*/*;q=0.01<",
+        "JavaEnabled": true,
+        "Language": "fr",
+        "ColorDepth": 32,
+        "ScreenHeight": 667,
+        "ScreenWidth": 375,
+        "TimeZoneOffset": -120,
+        "UserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+        "JavascriptEnabled": true
+    },
+    "PreferredCardNetwork": null,
+    "Validity": "UNKNOWN",
+    "CreationDate": 1687355222,
+    "AuthorizationDate": null,
+    "Type": "CARD_VALIDATION",
+    "Applied3DSVersion": "V2_1",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "Tag": "Created using the Mangopay API Postman collection",
+    "CardInfo": {
+        "BIN": "497010",
+        "IssuingBank": "LA BANQUE POSTALE",
+        "IssuerCountryCode": "MA",
+        "Type": "CREDIT",
+        "Brand": "VISA",
+        "SubType": null
+    }
+}
+```  
+
+## 2. Redirect the user to 3DS protocol (if required)  
+
+Redirect the user to the `SecureModeRedirectURL` value to complete strong customer authentication.  
+
+In the case of the Card Validation, it is highly unlikely that the value will be `null` (indicating that 3DS is not required and no redirection is needed).  
+
+You can also use the `SecureModeNeeded` boolean to determine this redirection behavior.  
+
+See the <a href="/guides/payment-methods/card/3ds">3DS</a> article for more information.  
+
+<Note>  
+**Note - Card validation expires after 5 minutes** 
+  
+Because you cannot create two requests at once for the same card, the card validation will expire after 5 minutes, setting the `Status` of the Card Validation object to `FAILED`.  
+
+The Card `Validity`, however, will remain `UNKNOWN`, which allows you to request a new Card Validation.  
+</Note>  
+
+## 3. Redirect the user after authentication  
+
+After the card validation, whatever the authentication outcome, the end user is returned to the `SecureModeReturnURL` which you defined.  
+
+The Mangopay API returns your `SecureModeReturnURL` with the `Id` of the card validation attached as a query parameter in the following format:
+
+> https<span>://www</span>.example.com?cardValidationId=`Id`
+
+Mangopay updates the `Status` of the card validation to indicate the outcome of the end user's authentication.  
+
+You can set up the following hooks to be notified of the outcome:
+
+<table>
+    <thead>
+        <tr>
+            <th class="header">Name</th>
+            <th class="header">ResourceId</th>
+            <th class="header">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="table-content">CARD_VALIDATION_CREATED</td>
+            <td class="table-content">CardValidationId</td>
+            <td class="table-content">The Card Validation object has been created and the card is pending validation.</td>
+        </tr>
+        <tr>
+            <td class="table-content">CARD_VALIDATION_FAILED</td>
+            <td class="table-content">CardValidationId</td>
+            <td class="table-content">The Card Validation has failed, setting the corresponding card as invalid.</td>
+        </tr>
+        <tr>
+            <td class="table-content">CARD_VALIDATION_SUCCEEDED</td>
+            <td class="table-content">CardValidationId</td>
+            <td class="table-content">The Card Validation has succeeded, setting the corresponding card as valid.</td>
+        </tr>
+    </tbody>
+</table>
+
+## Handling errors  
+
+The card validation endpoints contain HTTP error examples, such as when a card validation is already in progress or the card is already valid or invalid.  
+
+In terms of functional errors, the card validation endpoints may return the same errors as other card pay-in requests. 
+
+[See all error codes](/errors/codes)
+
+## Related resources  
+
+<CardGroup col={2}> 
+    <Card title="How to" href="/guides/payment-methods/card/direct/how-to">Learn how to process a card payment</Card>  
+
+    <Card title="Guide" href="/guides/payment-methods/card/validation">Learn more about card validation</Card>
+
+    <Card title="Endpoints" href="/api-reference/card-validations/card-validation-object">The Card Validation object</Card>  
+</CardGroup>

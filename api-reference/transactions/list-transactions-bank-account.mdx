@@ -1,0 +1,116 @@
+---
+title: 'List Transactions for a Bank Account'  
+api: 'GET /v2.01/{ClientId}/bankaccounts/{BankAccountId}/transactions'  
+---
+
+import Array_Transactions1Response from '/snippets/p-response/Array_Transactions1Response.mdx';
+import BankAccountId from '/snippets/p-path/BankAccountId.mdx';
+import Nature from '/snippets/p-query/Nature.mdx';
+import Type from '/snippets/p-query/Type.mdx';
+import AfterDate1 from '/snippets/p-query/AfterDate1.mdx';
+import BeforeDate1 from '/snippets/p-query/BeforeDate1.mdx';
+import ResultCode from '/snippets/p-query/ResultCode.mdx';
+import Status from '/snippets/p-query/Status.mdx';
+
+import PhpListTransactionsBankAccount from '/snippets/code/php-list-transactions-bank-account.mdx';
+import NodeListTransactionsBankAccount from '/snippets/code/node-list-transactions-bank-account.mdx';
+import RubyListTransactionsBankAccount from '/snippets/code/ruby-list-transactions-bank-account.mdx';
+import PythonListBankAccountTransactions from '/snippets/code/python-list-bank-account-transactions.mdx';
+
+This call returns all the transactions of a given bank account, whether the bank account is the source (pay-in) or the target (payout) of the transaction.  
+
+### Query parameters  
+
+<Status />  
+
+<ResultCode />  
+
+<BeforeDate1 />  
+
+<AfterDate1 />  
+
+<Type />  
+
+<Nature />  
+
+### Path parameters  
+
+<BankAccountId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Payouts-only example">  
+
+<Array_Transactions1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Payouts-only example  
+
+[
+    {
+        "Id":"155249846",
+        "Tag":"Created using MANGOPAY API Collection Postman",
+        "CreationDate":1667471665,
+        "AuthorId":"146476890",
+        "CreditedUserId":null,
+        "DebitedFunds":{
+            "Currency":"EUR",
+            "Amount":1000
+        },
+        "CreditedFunds":{
+            "Currency":"EUR",
+            "Amount":990
+        },
+        "Fees":{
+            "Currency":"EUR",
+            "Amount":10
+        },
+        "Status":"SUCCEEDED",
+        "ResultCode":"000000",
+        "ResultMessage":"Success",
+        "ExecutionDate":1667471665,
+        "Type":"PAYOUT",
+        "Nature":"REGULAR",
+        "CreditedWalletId":null,
+        "DebitedWalletId":"148968396"
+    },
+    {
+        "Id":"155250949",
+        "Tag":"Created using MANGOPAY API Collection Postman",
+        "CreationDate":1667471872,
+        "AuthorId":"146476890",
+        "CreditedUserId":null,
+        "DebitedFunds":{
+            "Currency":"EUR",
+            "Amount":16000
+        },
+        "CreditedFunds":{
+            "Currency":"EUR",
+            "Amount":15990
+        },
+        "Fees":{
+            "Currency":"EUR",
+            "Amount":10
+        },
+        "Status":"FAILED",
+        "ResultCode":"001001",
+        "ResultMessage":"Unsufficient wallet balance",
+        "ExecutionDate":null,
+        "Type":"PAYOUT",
+        "Nature":"REGULAR",
+        "CreditedWalletId":null,
+        "DebitedWalletId":"148968396"
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListTransactionsBankAccount />
+    <NodeListTransactionsBankAccount />
+    <RubyListTransactionsBankAccount />
+    <PythonListBankAccountTransactions />
+</RequestExample>

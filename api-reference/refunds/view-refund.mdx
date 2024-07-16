@@ -1,0 +1,139 @@
+---
+title: 'View a Refund'  
+api: 'GET /v2.01/{ClientId}/refunds/{RefundId}'  
+---
+
+import RefundReasonResponse from '/snippets/p-response/RefundReasonResponse.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import DebitedWalletIdResponse from '/snippets/p-response/DebitedWalletIdResponse.mdx';
+import InitialTransactionNature1Response from '/snippets/p-response/InitialTransactionNature1Response.mdx';
+import InitialTransactionType1Response from '/snippets/p-response/InitialTransactionType1Response.mdx';
+import InitialTransactionId1Response from '/snippets/p-response/InitialTransactionId1Response.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees9Response from '/snippets/p-response/Fees9Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedFunds5Response from '/snippets/p-response/DebitedFunds5Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorId3Response from '/snippets/p-response/AuthorId3Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import StatementDescriptorResponse_Refunds from '/snippets/p-response/StatementDescriptorResponse_Refunds.mdx';
+
+import PhpViewRefund from '/snippets/code/php-view-refund.mdx';
+import NodeViewRefund from '/snippets/code/node-view-refund.mdx';
+import RubyViewARefund from '/snippets/code/ruby-view-a-refund.mdx';
+import PythonViewRefund from '/snippets/code/python-view-refund.mdx';
+
+<Note>
+**Note – Refund data retained for 13 months**
+
+The API retains all transaction objects for 13 months from `CreationDate`. This applies to refunds and the initial transaction linked to a refund.
+
+A call to retrieve the initial transaction of a refund, based on the refund’s `InitialTransactionId`, may return a 404 Not Found if it occurred more than 13 months ago.
+
+For more information, see the <a href="/api-reference/overview/data-availability-periods">Data availability periods</a> article.
+</Note>
+
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorId3Response />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds5Response />  
+
+<CreditedFunds5Response />  
+
+<Fees9Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<InitialTransactionId1Response />  
+
+<InitialTransactionType1Response />  
+
+<InitialTransactionNature1Response />  
+
+<DebitedWalletIdResponse />  
+
+<CreditedWalletIdResponse />  
+
+<RefundReasonResponse />
+
+<StatementDescriptorResponse_Refunds/>
+
+</Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id":"151981490",
+    "Tag":null,
+    "CreationDate":1663749078,
+    "AuthorId":"142036728",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":1500
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":1500
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"SUCCEEDED",
+    "ResultCode":"000000",
+    "ResultMessage":"Success",
+    "ExecutionDate":1663749078,
+    "Type":"PAYIN",
+    "Nature":"REFUND",
+    "InitialTransactionId":"151981274",
+    "InitialTransactionType":"PAYOUT",
+    "InitialTransactionNature":"REGULAR",
+    "DebitedWalletId":null,
+    "CreditedWalletId":"145389978",
+    "RefundReason":{
+        "RefundReasonMessage":"OTHER",
+        "RefundReasonType":"OTHER"
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewRefund />
+    <NodeViewRefund />
+    <RubyViewARefund />
+    <PythonViewRefund />
+</RequestExample>

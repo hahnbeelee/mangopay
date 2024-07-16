@@ -1,0 +1,65 @@
+---
+title: 'View a Client Wallet'  
+api: 'GET /v2.01/{ClientId}/clients/wallets/{FundsType}/{Currency}'  
+---
+
+import CreationDate1Response from '/snippets/p-response/CreationDate1Response.mdx';
+import Tag7Response from '/snippets/p-response/Tag7Response.mdx';
+import Id5Response from '/snippets/p-response/Id5Response.mdx';
+import FundsTypeResponse from '/snippets/p-response/FundsTypeResponse.mdx';
+import Currency23Response from '/snippets/p-response/Currency23Response.mdx';
+import BalanceResponse from '/snippets/p-response/BalanceResponse.mdx';
+import Currency from '/snippets/p-path/Currency.mdx';
+import FundsType from '/snippets/p-path/FundsType.mdx';
+
+import NodeViewClientWallet from '/snippets/code/node-view-client-wallet.mdx';
+import PhpViewClientWallet from '/snippets/code/php-view-client-wallet.mdx';
+import ViewClientWalletJava from '/snippets/code/view-client-wallet-java.mdx';
+import PythonViewClientWallet from '/snippets/code/python-view-client-wallet.mdx';
+
+### Path parameters  
+
+<FundsType />  
+
+<Currency />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<BalanceResponse />  
+
+<Currency23Response />  
+
+<FundsTypeResponse />  
+
+<Id5Response />  
+
+<Tag7Response />  
+
+<CreationDate1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Balance": {
+        "Currency": "EUR",
+        "Amount": 2027
+    },
+    "Currency": "EUR",
+    "FundsType": "FEES",
+    "Id": "FEES_EUR",
+    "Tag": null,
+    "CreationDate": 1658926202
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <NodeViewClientWallet />
+    <PhpViewClientWallet />
+    <ViewClientWalletJava />
+    <PythonViewClientWallet />
+</RequestExample>

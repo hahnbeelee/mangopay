@@ -1,0 +1,61 @@
+---
+title: '005406'  
+description: '<small>&#8249; [All error codes](/errors/codes#refunds)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Another refund for this transaction is still pending.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">Another refund for this transaction is still pending.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Refund</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Example  
+```json API Response
+{
+    "Id":"30602228",
+    "Tag":"Custom meta",
+    "CreationDate":1670313254,
+    "AuthorId":"30300444",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":1541
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":1541
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"FAILED",
+    "ResultCode":"005406",
+    "ResultMessage":"Another refund for this transaction is still pending.",
+    "ExecutionDate":null,
+    "Type":"PAYOUT",
+    "Nature":"REFUND",
+    "InitialTransactionId":"3030044417",
+    "InitialTransactionType":"PAYIN",
+    "InitialTransactionNature":"REGULAR",
+    "DebitedWalletId":"3030444499",
+    "CreditedWalletId":null,
+    "RefundReason":{
+        "RefundReasonMessage":null,
+        "RefundReasonType":"INITIALIZED_BY_CLIENT"
+    }
+}
+```

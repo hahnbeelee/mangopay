@@ -1,0 +1,68 @@
+---
+title: '008501'  
+description: '<small>&#8249; [All error codes](/errors/codes#risk-management)</small>'
+---
+  
+<table>
+    <tbody>
+        <tr>
+            <th class="header"><strong>Error message</strong></th>
+            <td class="table-content">Transaction refused due to blocked Country</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Description</strong></th>
+            <td class="table-content">The payout cannot be performed because the target country is not authorized.</td>
+        </tr>
+        <tr>
+            <th class="header"><strong>Categories</strong></th>
+            <td class="table-content">  
+<div class="label">Fraud policy</div>  
+<div class="label">Payout</div>
+</td>
+        </tr>
+    </tbody>
+</table>  
+
+#### Causes  
+
+This error is triggered when attempting to make a payout to a bank account domiciled in a country for which the payout feature is blocked.   
+
+For more information, see the <a href="/guides/users/country-restrictions">Country restrictions</a> article.  
+
+#### Example  
+```json API Response
+{
+    "ModeRequested":null,
+    "ModeApplied":"NONE",
+    "FallbackReason":null,
+    "EndToEndId":"1e9d9a99d044442d796ec986a5463",
+    "Id":"3294440358",
+    "Tag":"custom meta",
+    "CreationDate":1676641647,
+    "AuthorId":"2276244405",
+    "CreditedUserId":null,
+    "DebitedFunds":{
+        "Currency":"EUR",
+        "Amount":4000
+    },
+    "CreditedFunds":{
+        "Currency":"EUR",
+        "Amount":4000
+    },
+    "Fees":{
+        "Currency":"EUR",
+        "Amount":0
+    },
+    "Status":"FAILED",
+    "ResultCode":"008501",
+    "ResultMessage":"Transaction refused due to blocked Country",
+    "ExecutionDate":null,
+    "Type":"PAYOUT",
+    "Nature":"REGULAR",
+    "CreditedWalletId":null,
+    "DebitedWalletId":"22764449",
+    "PaymentType":"BANK_WIRE",
+    "BankAccountId":"31145444479",
+    "BankWireRef":null
+}
+```

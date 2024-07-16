@@ -1,0 +1,185 @@
+---
+title: 'Create a Web Direct-Debit PayIn'  
+api: 'POST POST /v2.01/{ClientId}/payins/directdebit/web'  
+---
+
+import Culture4Response from '/snippets/p-response/Culture4Response.mdx';
+import TemplateURLResponse from '/snippets/p-response/TemplateURLResponse.mdx';
+import ReturnURL2Response from '/snippets/p-response/ReturnURL2Response.mdx';
+import RedirectURLResponse from '/snippets/p-response/RedirectURLResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees4Response from '/snippets/p-response/Fees4Response.mdx';
+import CreditedFunds5Response from '/snippets/p-response/CreditedFunds5Response.mdx';
+import DebitedFunds7Response from '/snippets/p-response/DebitedFunds7Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import DirectDebitTypeResponse from '/snippets/p-response/DirectDebitTypeResponse.mdx';
+import ProfilingAttemptReference from '/snippets/p-body/ProfilingAttemptReference.mdx';
+import Culture1 from '/snippets/p-body/Culture1.mdx';
+import TemplateURLOptions from '/snippets/p-body/TemplateURLOptions.mdx';
+import ReturnURL3 from '/snippets/p-body/ReturnURL3.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import Fees10 from '/snippets/p-body/Fees10.mdx';
+import DebitedFunds11 from '/snippets/p-body/DebitedFunds11.mdx';
+import CreditedUserId from '/snippets/p-body/CreditedUserId.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+import DirectDebitType from '/snippets/p-body/DirectDebitType.mdx';
+
+import RestCreateWebDirectDebit from '/snippets/code/rest-create-web-direct-debit.mdx';
+import NodeWebDirectDebitPayin from '/snippets/code/node-web-direct-debit-payin.mdx';
+import RubyCreateWebDirectDebitPayin from '/snippets/code/ruby-create-web-direct-debit-payin.mdx';
+import JavaCreateWebDirectDebitPayin from '/snippets/code/java-create-web-direct-debit-payin.mdx';
+import PythonCreateWebDirectDebitPayin from '/snippets/code/python-create-web-direct-debit-payin.mdx';
+
+<Warning>
+**Warning – Giropay no longer available after June 30, 2024**
+
+Giropay’s operator Paydirekt has decided to cease the payment method’s services at the end of June, without providing a direct alternative. This decision by Paydirekt impacts the entire industry and is beyond our control.
+
+Effective July 1, 2024: 
+- Pay-ins will fail with the <a href="/errors/codes/101101">101101</a> error
+- Refunds will be possible for one year 
+
+This change affects both the <a href="/api-reference/giropay">new</a> integration and this legacy one.
+
+Our team is ready to assist you with your integration of alternatives like <a href="/guides/payment-methods/klarna">Klarna</a>, <a href="/guides/payment-methods/paypal">PayPal</a>, or <a href="/guides/payment-methods/banking/virtual-iban">virtual IBANs</a> for the German market. Please reach out <a href="https://hub.mangopay.com/">via the Hub</a>. 
+</Warning>
+
+
+### Body parameters  
+
+<DirectDebitType />  
+
+<Tag />  
+
+<AuthorId />  
+
+<CreditedUserId />  
+
+<DebitedFunds11 />  
+
+<Fees10 />  
+
+<CreditedWalletId />  
+
+<ReturnURL3 />  
+
+<TemplateURLOptions />  
+
+<Culture1 />  
+
+<ProfilingAttemptReference />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<DirectDebitTypeResponse />  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds7Response />  
+
+<CreditedFunds5Response />  
+
+<Fees4Response />  
+
+<Status2Response />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<RedirectURLResponse />  
+
+<ReturnURL2Response />  
+
+<TemplateURLResponse />  
+
+<Culture4Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "DirectDebitType": "SOFORT",
+    "Id": "158596153",
+    "Tag": "custom meta",
+    "CreationDate": 1671609130,
+    "ResultCode": null,
+    "ResultMessage": null,
+    "AuthorId": "146476890",
+    "CreditedUserId": "146476890",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1200
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1188
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 12
+    },
+    "Status": "CREATED",
+    "ExecutionDate": null,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "148968396",
+    "DebitedWalletId": null,
+    "PaymentType": "DIRECT_DEBIT",
+    "ExecutionType": "WEB",
+    "RedirectURL": "https://api.sandbox.mangopay.com/Content/PaylineTemplateWidget?rp=7012a35bacc94224887444a6befdcabc&transactionId=158596153&token=14gpfysmDhsVLpjlL2451671609131187",
+    "ReturnURL": "http://www.my-site.com/returnURL/?transactionId=158596153",
+    "TemplateURL": "https://api.sandbox.mangopay.com/Content/PaylineTemplateWidget?rp=7012a35bacc94224887444a6befdcabc&transactionId=158596153",
+    "Culture": "EN"
+}
+  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestCreateWebDirectDebit />
+  <NodeWebDirectDebitPayin />
+  <RubyCreateWebDirectDebitPayin />
+  <JavaCreateWebDirectDebitPayin />
+  <PythonCreateWebDirectDebitPayin />
+</RequestExample>

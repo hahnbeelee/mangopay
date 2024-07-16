@@ -1,0 +1,96 @@
+---
+title: 'View a UBO Declaration'  
+api: 'GET /v2.01/{ClientId}/kyc/ubodeclarations/{UboDeclarationId}'  
+---
+
+import UbosResponse from '/snippets/p-response/UbosResponse.mdx';
+import MessageResponse from '/snippets/p-response/MessageResponse.mdx';
+import ReasonResponse from '/snippets/p-response/ReasonResponse.mdx';
+import Status11Response from '/snippets/p-response/Status11Response.mdx';
+import ProcessDateResponse from '/snippets/p-response/ProcessDateResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import UserId2Response from '/snippets/p-response/UserId2Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import UboDeclarationId from '/snippets/p-path/UboDeclarationId.mdx';
+
+import PhpViewUboDeclaration from '/snippets/code/php-view-ubo-declaration.mdx';
+import NodeViewUboDeclaration from '/snippets/code/node-view-ubo-declaration.mdx';
+import RubyViewUboDeclaration from '/snippets/code/ruby-view-ubo-declaration.mdx';
+import JavaViewUboDeclaration from '/snippets/code/view-ubo-declaration-java.mdx';
+import PythonViewUboDeclaration from '/snippets/code/python-view-ubo-declaration.mdx';
+
+[Read more about the UBO Declaration object →](/api-reference/ubo-declarations/ubo-declaration-object)
+
+### Path parameters  
+
+<UboDeclarationId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<IdResponse />  
+
+<UserId2Response />  
+
+<CreationDateResponse />  
+
+<ProcessDateResponse />  
+
+<Status11Response />  
+
+<ReasonResponse />  
+
+<MessageResponse />  
+
+<UbosResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "Id": "158947737",
+    "UserId": "158947634",
+    "CreationDate": 1672153298,
+    "ProcessedDate": null,
+    "Status": "CREATED",
+    "Reason": null,
+    "Message": null,
+    "Ubos": [
+        {
+            "Id": "158947898",
+            "CreationDate": 1672153693,
+            "LastName": "Wiza",
+            "FirstName": "Jess",
+            "Birthday": 652117514,
+            "Nationality": "FR",
+            "Address": {
+                "AddressLine1": "669 Ratke Forge",
+                "AddressLine2": "Schamberger Walk",
+                "City": "Paris",
+                "Region": "Ile-de-France",
+                "PostalCode": "75001",
+                "Country": "FR"
+            },
+            "Birthplace": {
+                "City": "Paris",
+                "Country": "FR"
+            },
+            "IsActive": true
+        }
+    ]
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpViewUboDeclaration />
+    <NodeViewUboDeclaration />
+    <RubyViewUboDeclaration />
+    <JavaViewUboDeclaration />
+    <PythonViewUboDeclaration />
+  
+</RequestExample>

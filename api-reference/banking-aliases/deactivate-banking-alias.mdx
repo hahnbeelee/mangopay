@@ -1,0 +1,98 @@
+---
+title: 'Deactivate a Banking Alias'  
+api: 'PUT /v2.01/{ClientId}/bankingaliases/{BankingAliasId}'  
+---
+
+import WalletId1Response from '/snippets/p-response/WalletId1Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type10Response from '/snippets/p-response/Type10Response.mdx';
+import Active1Response from '/snippets/p-response/Active1Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import Country5Response from '/snippets/p-response/Country5Response.mdx';
+import CreditedUserId3Response from '/snippets/p-response/CreditedUserId3Response.mdx';
+import BIC2Response from '/snippets/p-response/BIC2Response.mdx';
+import IBAN2Response from '/snippets/p-response/IBAN2Response.mdx';
+import OwnerName1Response from '/snippets/p-response/OwnerName1Response.mdx';
+import Active2 from '/snippets/p-body/Active2.mdx';
+import BankingAliasId from '/snippets/p-path/BankingAliasId.mdx';
+
+import RestDeactivateIbanBankingAlias from '/snippets/code/rest-deactivate-iban-banking-alias.mdx';
+import PhpDeactivateBankingAlias from '/snippets/code/php-deactivate-banking-alias.mdx';
+import NodeDeactivateBankingAlias from '/snippets/code/node-deactivate-banking-alias.mdx';
+import RubyDeactivateBankingAlias from '/snippets/code/ruby-deactivate-banking-alias.mdx';
+import JavaDeactivateBankingAlias from '/snippets/code/java-deactivate-banking-alias.mdx';
+
+<Warning>  
+**Caution – Deactivating a Banking Alias is irreversible** 
+  
+Once the Banking Alias object is deactivated, you cannot reactivate it or attach another to the same wallet. 
+
+Any funds wired to the banking alias won’t be credited to the corresponding wallet.
+
+If such cases arise, contact Mangopay <a href="https://hub.mangopay.com/" target="_blank">via the Hub</a>.
+
+</Warning>  
+
+### Path parameters  
+
+<BankingAliasId />  
+
+### Body parameters  
+
+<Active2 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<OwnerName1Response />  
+
+<IBAN2Response />  
+
+<BIC2Response />  
+
+<CreditedUserId3Response />  
+
+<Country5Response />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<Active1Response />  
+
+<Type10Response />  
+
+<IdResponse />  
+
+<WalletId1Response /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+    "OwnerName": "John Doe.",
+    "IBAN": "FR617452110000GJX2HRBQPLS41",
+    "BIC": "MPAYFRP1PIN",
+    "CreditedUserId": "145397183",
+    "Country": "FR",
+    "Tag": "ibanized",
+    "CreationDate": 1670342493,
+    "Active": false,
+    "Type": "IBAN",
+    "Id": "157688274",
+    "WalletId": "157688124"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestDeactivateIbanBankingAlias />
+    <PhpDeactivateBankingAlias />
+    <NodeDeactivateBankingAlias />
+    <RubyDeactivateBankingAlias />
+    <JavaDeactivateBankingAlias />
+</RequestExample>

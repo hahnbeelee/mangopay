@@ -1,0 +1,98 @@
+---
+title: 'View a Card'  
+api: 'GET /v2.01/{ClientId}/cards/{CardId}'  
+---
+
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import FingerprintResponse from '/snippets/p-response/FingerprintResponse.mdx';
+import Tag6Response from '/snippets/p-response/Tag6Response.mdx';
+import Id4Response from '/snippets/p-response/Id4Response.mdx';
+import UserIdResponse from '/snippets/p-response/UserIdResponse.mdx';
+import ValidityResponse from '/snippets/p-response/ValidityResponse.mdx';
+import BankCodeResponse from '/snippets/p-response/BankCodeResponse.mdx';
+import ProductResponse from '/snippets/p-response/ProductResponse.mdx';
+import Country4Response from '/snippets/p-response/Country4Response.mdx';
+import CardProviderResponse from '/snippets/p-response/CardProviderResponse.mdx';
+import AliasResponse from '/snippets/p-response/AliasResponse.mdx';
+import ExpirationDate1Response from '/snippets/p-response/ExpirationDate1Response.mdx';
+import CardId1 from '/snippets/p-path/CardId1.mdx';
+import CardHolderNameResponse from '/snippets/p-response/CardHolderNameResponse.mdx';
+
+import PhpViewCard from '/snippets/code/php-view-card.mdx';
+import NodeViewCard from '/snippets/code/node-view-card.mdx';
+import RubyViewCard from '/snippets/code/ruby-view-card.mdx';
+import JavaViewCard from '/snippets/code/java-view-card.mdx';
+import PythonViewCard from '/snippets/code/python-view-card.mdx';
+
+### Path parameters  
+
+<CardId1 />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<ExpirationDate1Response />  
+
+<AliasResponse />  
+
+<CardProviderResponse />  
+
+<Country4Response />  
+
+<ProductResponse />  
+
+<BankCodeResponse />  
+
+<ValidityResponse />  
+
+<UserIdResponse />  
+
+<Id4Response />  
+
+<Tag6Response />  
+
+<CreationDateResponse />
+
+<FingerprintResponse />  
+
+<CardHolderNameResposne />
+
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "ExpirationDate": "1229",
+    "Alias": "497010XXXXXX8183",
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardProvider": "VISA",
+    "Country": "FRA",
+    "Product": "I",
+    "BankCode": "unknown",
+    "Active": true,
+    "Currency": "EUR",
+    "Validity": "UNKNOWN",
+    "UserId": "user_m_01HWWPNMR93ASQYJEH6XVDW44T",
+    "Id": "card_m_01HXVD91R8QEDY7MYC8TX9R9M8",
+    "Tag": null,
+    "CreationDate": 1715685590,
+    "Fingerprint": "48d63bbcfc2c47fcbc19df35e47b2f8d",
+    "CardHolderName": "Alex Smith"
+}
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewCard />
+    <NodeViewCard />
+    <RubyViewCard />
+    <JavaViewCard />
+    <PythonViewCard />
+</RequestExample>

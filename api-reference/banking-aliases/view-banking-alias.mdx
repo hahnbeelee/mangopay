@@ -1,0 +1,131 @@
+---
+title: 'View a Banking Alias'  
+api: 'GET /v2.01/{ClientId}/bankingaliases/{BankingAliasId}'  
+---
+
+import WalletId1Response from '/snippets/p-response/WalletId1Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type10Response from '/snippets/p-response/Type10Response.mdx';
+import Active1Response from '/snippets/p-response/Active1Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag2Response from '/snippets/p-response/Tag2Response.mdx';
+import Country5Response from '/snippets/p-response/Country5Response.mdx';
+import CreditedUserId3Response from '/snippets/p-response/CreditedUserId3Response.mdx';
+import BIC2Response from '/snippets/p-response/BIC2Response.mdx';
+import IBAN2Response from '/snippets/p-response/IBAN2Response.mdx';
+import OwnerName1Response from '/snippets/p-response/OwnerName1Response.mdx';
+import BankingAliasId from '/snippets/p-query/BankingAliasId.mdx';
+
+import PhpViewBankingAlias from '/snippets/code/php-view-banking-alias.mdx';
+import NodeViewBankingAlias from '/snippets/code/node-view-banking-alias.mdx';
+import RubyViewBankingAlias from '/snippets/code/ruby-view-banking-alias.mdx';
+import JavaViewBankingAlias from '/snippets/code/java-view-banking-alias.mdx';
+
+### Query parameters  
+
+<BankingAliasId />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200 - FR">  
+
+<OwnerName1Response />  
+
+<IBAN2Response />  
+
+<BIC2Response />  
+
+<CreditedUserId3Response />  
+
+<Country5Response />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<Active1Response />  
+
+<Type10Response />  
+
+<IdResponse />  
+
+<WalletId1Response />
+
+</Accordion>
+
+<Accordion title="200 - GB">  
+
+<OwnerName1Response />  
+
+<IBAN2Response />  
+
+<BIC2Response />
+
+<LocalAccountDetailsResponse />
+
+<CreditedUserId3Response />  
+
+<Country5Response />  
+
+<Tag2Response />  
+
+<CreationDateResponse />  
+
+<Active1Response />  
+
+<Type10Response />  
+
+<IdResponse />  
+
+<WalletId1Response />
+
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - FR
+{
+    "OwnerName": "Alex Smith",
+    "IBAN": "FR7674521100005657670994474",
+    "BIC": "MPAYFRP1PIN",
+    "CreditedUserId": "user_m_01HSB23417BFG7YXR7E371JSEA",
+    "Country": "FR",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1710846581,
+    "Active": true,
+    "Type": "IBAN",
+    "Id": "wltbank_m_01HSB6E769Y3ZBYDJACSP3THGA",
+    "WalletId": "wlt_m_01HSB6DE1YT1EMTH0K7ASYPG96"
+}
+```
+```json 200 - GB
+{
+    "OwnerName": "Alex Smith",
+    "IBAN": "GB31SAPY60838220867460",
+    "BIC": null,
+    "LocalAccountDetails": {
+        "SortCode": "608382",
+        "AccountNumber": "20867460"
+    },
+    "CreditedUserId": "user_m_01HSB23417BFG7YXR7E371JSEA",
+    "Country": "GB",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1710846887,
+    "Active": true,
+    "Type": "IBAN",
+    "Id": "wltbank_m_01HSB6QHHC7GCY43EDX5EBSJCT",
+    "WalletId": "wlt_m_01HSB4RBCEN0T7ER16A8BKBSH8"
+}
+```
+</ResponseExample>  
+
+<RequestExample>  
+  <PhpViewBankingAlias />
+  <NodeViewBankingAlias />
+  <RubyViewBankingAlias />
+  <JavaViewBankingAlias />
+</RequestExample>

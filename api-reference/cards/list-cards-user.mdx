@@ -1,0 +1,83 @@
+---
+title: 'List Cards for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/cards'  
+---
+
+import Array_CardsResponse from '/snippets/p-response/Array_CardsResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+import Active1 from '/snippets/p-query/Active1.mdx';
+  
+import PhpListCardsUser from '/snippets/code/list-cards-user-php.mdx';
+import NodeListCardsUser from '/snippets/code/node-list-cards-user.mdx';
+import RubyListCardsUser from '/snippets/code/ruby-list-cards-user.mdx';
+import JavaListUserCards from '/snippets/code/java-list-user-cards.mdx';
+import PythonListUserCards from '/snippets/code/python-list-user-cards.mdx';
+
+### Query parameters  
+
+<Active1 />  
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_CardsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+[
+    {
+        "ExpirationDate": "1229",
+        "Alias": "497010XXXXXX8183",
+        "CardType": "CB_VISA_MASTERCARD",
+        "CardProvider": "VISA",
+        "Country": "FRA",
+        "Product": "I",
+        "BankCode": "unknown",
+        "Active": true,
+        "Currency": "EUR",
+        "Validity": "UNKNOWN",
+        "UserId": "user_m_01HWWPNMR93ASQYJEH6XVDW44T",
+        "Id": "card_m_01HXVD91R8QEDY7MYC8TX9R9M8",
+        "Tag": null,
+        "CreationDate": 1715685590,
+        "Fingerprint": "48d63bbcfc2c47fcbc19df35e47b2f8d",
+        "CardHolderName": "Alex Smith"
+    },
+    {
+        "ExpirationDate": "0626",
+        "Alias": "497010XXXXXX1119",
+        "CardType": "CB_VISA_MASTERCARD",
+        "CardProvider": "VISA",
+        "Country": "FRA",
+        "Product": "I",
+        "BankCode": "unknown",
+        "Active": true,
+        "Currency": "EUR",
+        "Validity": "UNKNOWN",
+        "UserId": "user_m_01HWWPNMR93ASQYJEH6XVDW44T",
+        "Id": "card_m_01HXVF4VAM59ZT3FT42T1ZH35Y",
+        "Tag": null,
+        "CreationDate": 1715687550,
+        "Fingerprint": "36c74d2e60ba474eab6d6f6d46a642b0",
+        "CardHolderName": "Jody Smith"
+    }
+]
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+
+    <PhpListCardsUser />
+    <NodeListCardsUser />
+    <RubyListCardsUser />
+    <JavaListUserCards />
+    <PythonListUserCards />
+
+</RequestExample>

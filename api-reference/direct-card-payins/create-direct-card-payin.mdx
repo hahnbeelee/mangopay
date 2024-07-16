@@ -1,0 +1,323 @@
+---
+title: 'Create a Direct Card PayIn'  
+api: 'POST /v2.01/{ClientId}/payins/card/direct'
+---
+
+import CardInfoResponse from '/snippets/p-response/CardInfoResponse.mdx';
+import PreferredCardNetworkResponse from '/snippets/p-response/PreferredCardNetworkResponse.mdx';
+import RecurringPayinRegistrationIdResponse from '/snippets/p-response/RecurringPayinRegistrationIdResponse.mdx';
+import Applied3DSVersionResponse from '/snippets/p-response/Applied3DSVersionResponse.mdx';
+import Requested3DSVersionResponse from '/snippets/p-response/Requested3DSVersionResponse.mdx';
+import Shipping2Response from '/snippets/p-response/Shipping2Response.mdx';
+import Billing1Response from '/snippets/p-response/Billing1Response.mdx';
+import IpAddressResponse from '/snippets/p-response/IpAddressResponse.mdx';
+import BrowserInfoResponse from '/snippets/p-response/BrowserInfoResponse.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import SecurityInfoResponse from '/snippets/p-response/SecurityInfoResponse.mdx';
+import Culture6Response from '/snippets/p-response/Culture6Response.mdx';
+import SecureModeNeededResponse from '/snippets/p-response/SecureModeNeededResponse.mdx';
+import SecureModeRedirectURLResponse from '/snippets/p-response/SecureModeRedirectURLResponse.mdx';
+import SecureModeReturnURLResponse from '/snippets/p-response/SecureModeReturnURLResponse.mdx';
+import CardId1Response from '/snippets/p-response/CardId1Response.mdx';
+import SecureModeResponse from '/snippets/p-response/SecureModeResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import DebitedWalletId1Response from '/snippets/p-response/DebitedWalletId1Response.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees12Response from '/snippets/p-response/Fees12Response.mdx';
+import CreditedFunds9Response from '/snippets/p-response/CreditedFunds9Response.mdx';
+import DebitedFunds11Response from '/snippets/p-response/DebitedFunds11Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import ProfilingAttemptReference from '/snippets/p-body/ProfilingAttemptReference.mdx';
+import PreferredCardNetwork from '/snippets/p-body/PreferredCardNetwork.mdx';
+import Shipping2 from '/snippets/p-body/Shipping2.mdx';
+import Billing2 from '/snippets/p-body/Billing2.mdx';
+import IpAddress from '/snippets/p-body/IpAddress.mdx';
+import BrowserInfo from '/snippets/p-body/BrowserInfo.mdx';
+import StatementDescriptor from '/snippets/p-body/StatementDescriptor.mdx';
+import Culture3 from '/snippets/p-body/Culture3.mdx';
+import SecureModeReturnURL from '/snippets/p-body/SecureModeReturnURL.mdx';
+import CardId from '/snippets/p-body/CardId.mdx';
+import SecureMode from '/snippets/p-body/SecureMode.mdx';
+import CreditedWalletId from '/snippets/p-body/CreditedWalletId.mdx';
+import Fees9 from '/snippets/p-body/Fees9.mdx';
+import DebitedFunds9 from '/snippets/p-body/DebitedFunds9.mdx';
+import CreditedUserId from '/snippets/p-body/CreditedUserId.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+import PaymentCategory from '/snippets/p-body/PaymentCategory.mdx';
+import PaymentCategoryResponse from '/snippets/p-response/PaymentCategoryResponse.mdx';
+
+import RestCreateDirectCardPayin from '/snippets/code/rest-create-direct-card-payin.mdx';
+import PhpCreateDirectCardPayin from '/snippets/code/php-create-direct-card-payin.mdx';
+import NodeCreateCardDirectPayin from '/snippets/code/node-create-card-direct-payin.mdx';
+import RubyCreateDirectCardPayin from '/snippets/code/ruby-create-direct-card-payin.mdx';
+import JavaCreateDirectCardPayin from '/snippets/code/java-create-direct-card-payin.mdx';
+import PythonCreateDirectCardPayin from '/snippets/code/python-create-direct-card-payin.mdx';
+
+[Read more about the Direct Card PayIn object →](/api-reference/direct-card-payins/direct-card-payin-object)
+
+### Body parameters  
+
+<Tag />  
+
+<AuthorId />  
+
+<CreditedUserId />  
+
+<DebitedFunds9 />  
+
+<Fees9 />  
+
+<CreditedWalletId />  
+
+<SecureMode />  
+
+<CardId />  
+
+<SecureModeReturnURL />  
+
+<Culture3 />  
+
+<StatementDescriptor />  
+
+<BrowserInfo />  
+
+<IpAddress />  
+
+<Billing2 />  
+
+<Shipping2 />  
+
+<PreferredCardNetwork />  
+
+<PaymentCategory />  
+
+<ProfilingAttemptReference />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<DebitedFunds11Response />  
+
+<CreditedFunds9Response />  
+
+<Fees12Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<DebitedWalletId1Response />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<SecureModeResponse />  
+
+<CardId1Response />  
+
+<SecureModeReturnURLResponse />  
+
+<SecureModeRedirectURLResponse />  
+
+<SecureModeNeededResponse />  
+
+<Culture6Response />  
+
+<SecurityInfoResponse />  
+
+<StatementDescriptorResponse />  
+
+<BrowserInfoResponse />  
+
+<IpAddressResponse />  
+
+<Billing1Response />  
+
+<Shipping2Response />  
+
+<Requested3DSVersionResponse />  
+
+<Applied3DSVersionResponse />  
+
+<RecurringPayinRegistrationIdResponse />  
+
+<PreferredCardNetworkResponse />  
+
+<PaymentCategoryResponse />  
+
+<CardInfoResponse />
+
+</Accordion>
+
+</AccordionGroup>
+<AccordionGroup>
+
+<Accordion title="400 - DebitedFunds Currency must match card currency">
+```json 
+{
+    "Message": "Error: multi-currency usage is not authorized",
+    "Type": "currency_incompatibility",
+    "Id": "e384d310-ab19-4455-bf27-f54822361bd3",
+    "Date": 1700045351.0,
+    "errors": {
+        "currency": "The card's currency GBP and the debitedAmount's currency EUR must be the same"
+    }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - DebitedFunds Currency must match credited wallet currency">
+```json 
+{
+    "Message": "Error: multi-currency usage is not authorized",
+    "Type": "currency_incompatibility",
+    "Id": "1f29b2ff-cf01-4185-9cfd-c0545f6cbd0c",
+    "Date": 1700044992.0,
+    "errors": {
+        "currency": "The Wallet's currency GBP and the DebitedFunds's currency EUR must be the same"
+    }
+}  
+ ``` 
+</Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "Id": "209160523",
+    "Tag": "Created using Mangopay API Postman Collection",
+    "CreationDate": 1700210889,
+    "AuthorId": "204069570",
+    "CreditedUserId": "204069570",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 57842
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 48965
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 8877
+    },
+    "Status": "CREATED",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "ExecutionDate": null,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "204069727",
+    "DebitedWalletId": null,
+    "PaymentType": "CARD",
+    "ExecutionType": "DIRECT",
+    "SecureMode": "DEFAULT",
+    "CardId": "209160226",
+    "SecureModeReturnURL": "https://mangopay.com/docs/please-ignore?transactionId=209160523",
+    "SecureModeRedirectURL": "https://api.sandbox.mangopay.com:443/Redirect/ACSWithValidation?token=39265d841d7044a98e44253fbda2870c&mgpsecureid=39265d841d7044a98e44253fbda2870c",
+    "SecureModeNeeded": true,
+    "Culture": "EN",
+    "SecurityInfo": {
+        "AVSResult": "NO_CHECK"
+    },
+    "StatementDescriptor": "Mangopay",
+    "BrowserInfo": {
+        "AcceptHeader": "text/html, application/xhtml+xml, application/xml;q=0.9, /;q=0.8",
+        "JavaEnabled": true,
+        "Language": "en",
+        "ColorDepth": 4,
+        "ScreenHeight": 1800,
+        "ScreenWidth": 400,
+        "TimeZoneOffset": 60,
+        "UserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+        "JavascriptEnabled": true
+    },
+    "IpAddress": "658e:1b88:7f7a:a60b:32af:0b7f:56e1:2e9a",
+    "Billing": {
+        "FirstName": "Alex",
+        "LastName": "Smith",
+        "Address": {
+            "AddressLine1": "6 rue de la Cité",
+            "AddressLine2": "Appartement 3",
+            "City": "Paris",
+            "Region": "Ile-de-France",
+            "PostalCode": "75001",
+            "Country": "FR"
+        }
+    },
+    "Shipping": {
+        "FirstName": "Alex",
+        "LastName": "Smith",
+        "Address": {
+            "AddressLine1": "6 rue de la Cité",
+            "AddressLine2": "Appartement 3",
+            "City": "Paris",
+            "Region": "Ile-de-France",
+            "PostalCode": "75001",
+            "Country": "FR"
+        }
+    },
+    "Requested3DSVersion": null,
+    "Applied3DSVersion": "V2_1",
+    "RecurringPayinRegistrationId": null,
+    "PreferredCardNetwork": null,
+    "PaymentCategory": "ECommerce",
+    "CardInfo": {
+        "BIN": "497010",
+        "IssuingBank": "LA BANQUE POSTALE",
+        "IssuerCountryCode": "MA",
+        "Type": "CREDIT",
+        "Brand": "VISA",
+        "SubType": null
+    }
+}  
+```
+
+</ResponseExample>  
+
+<RequestExample>  
+  <RestCreateDirectCardPayin />
+  <PhpCreateDirectCardPayin />
+  <NodeCreateCardDirectPayin />
+  <RubyCreateDirectCardPayin />
+  <JavaCreateDirectCardPayin />
+  <PythonCreateDirectCardPayin />  
+</RequestExample>

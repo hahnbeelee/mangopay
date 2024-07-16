@@ -1,0 +1,51 @@
+---
+title: 'List Documents for a Dispute'  
+api: 'GET /v2.01/{ClientId}/dispute/{DisputeId}/documents'  
+---
+
+import Array_DisputedocumentsResponse from '/snippets/p-response/Array_DisputedocumentsResponse.mdx';
+import DisputeId from '/snippets/p-path/DisputeId.mdx';
+
+import PhpListDocumentsDispute from '/snippets/code/php-list-documents-dispute.mdx';
+import NodeListDocumentsDispute from '/snippets/code/node-list-documents-dispute.mdx';
+import RubyListDocumentsDispute from '/snippets/code/ruby-list-documents-dispute.mdx';
+import ListDisputeDocumentsPython from '/snippets/code/list-dispute-documents-python.mdx';
+
+### Path parameters  
+
+<DisputeId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_DisputedocumentsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "DisputeId": "159102965",
+        "Type": "DELIVERY_PROOF",
+        "Id": "159188418",
+        "Tag": null,
+        "CreationDate": 1672655973,
+        "ProcessedDate": null,
+        "Status": "VALIDATION_ASKED",
+        "RefusedReasonType": null,
+        "RefusedReasonMessage": null
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  <PhpListDocumentsDispute />
+  <NodeListDocumentsDispute />
+  <RubyListDocumentsDispute />
+  <ListDisputeDocumentsPython />
+</RequestExample>

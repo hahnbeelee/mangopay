@@ -1,0 +1,78 @@
+---
+title: 'List Cards for a Fingerprint'  
+api: 'GET /v2.01/{ClientId}/cards/fingerprints/{Fingerprint}'  
+---
+
+import Array_CardsResponse from '/snippets/p-response/Array_CardsResponse.mdx';
+import Fingerprint from '/snippets/p-path/Fingerprint.mdx';
+
+import PhpListCardsFingerprint from '/snippets/code/php-list-cards-fingerprint.mdx';
+import NodeListCardsFingerprint from '/snippets/code/node-list-cards-fingerprint.mdx';
+import RubyListCardsFingerprint from '/snippets/code/ruby-list-cards-fingerprint.mdx';
+import PythonListFingerprintCards from '/snippets/code/python-list-fingerprint-cards.mdx';
+
+This call returns all the cards with the same `Fingerprint` value. This can be useful to detect abnormal or fraudulent behavior.  
+
+<a href="/guides/payment-methods/card/fingerprint" target="_blank" class="btn Tertiary normal">Learn more about card fingerprint &rarr;</a>  
+
+### Path parameters  
+
+<Fingerprint />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_CardsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+[
+    {
+        "ExpirationDate": "1229",
+        "Alias": "497010XXXXXX8183",
+        "CardType": "CB_VISA_MASTERCARD",
+        "CardProvider": "VISA",
+        "Country": "FRA",
+        "Product": "I",
+        "BankCode": "unknown",
+        "Active": true,
+        "Currency": "EUR",
+        "Validity": "UNKNOWN",
+        "UserId": "user_m_01HWQ0VWBTFSWCPF29SR3E7PK9",
+        "Id": "card_m_01HXVF29TMRSTBRE11RY6EY6PT",
+        "Tag": null,
+        "CreationDate": 1715687466,
+        "Fingerprint": "48d63bbcfc2c47fcbc19df35e47b2f8d",
+        "CardHolderName": "Jody Smith"
+    },
+    {
+        "ExpirationDate": "1229",
+        "Alias": "497010XXXXXX8183",
+        "CardType": "CB_VISA_MASTERCARD",
+        "CardProvider": "VISA",
+        "Country": "FRA",
+        "Product": "I",
+        "BankCode": "unknown",
+        "Active": true,
+        "Currency": "EUR",
+        "Validity": "UNKNOWN",
+        "UserId": "user_m_01HWWPNMR93ASQYJEH6XVDW44T",
+        "Id": "card_m_01HXVD91R8QEDY7MYC8TX9R9M8",
+        "Tag": null,
+        "CreationDate": 1715685590,
+        "Fingerprint": "48d63bbcfc2c47fcbc19df35e47b2f8d",
+        "CardHolderName": "Alex Smith"
+    }
+]
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListCardsFingerprint />
+    <NodeListCardsFingerprint />
+    <RubyListCardsFingerprint />
+    <PythonListFingerprintCards />
+</RequestExample>

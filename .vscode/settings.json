@@ -1,0 +1,38 @@
+{
+  "cSpell.words": [
+    "Bancontact",
+    "BCMC",
+    "blik",
+    "BNPL",
+    "chargeback",
+    "chargebacks",
+    "desynchronization",
+    "Giropay",
+    "IBAN",
+    "idempotency",
+    "klarna",
+    "Mangopay",
+    "mirakl",
+    "Multibanco",
+    "Nethone",
+    "payin",
+    "payins",
+    "preauth",
+    "preauthorization",
+    "Preauthorizations",
+    "Preauthorize",
+    "preauthorized",
+    "preauthorizing",
+    "quickstart",
+    "recategorized",
+    "satispay",
+    "SEPA",
+    "Sofort",
+    "Soletrader",
+    "tokenizes"
+  ],
+  "cSpell.language": "en,en-US",
+  "cSpell.enableFiletypes": [
+    "mdx"
+  ]
+}

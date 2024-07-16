@@ -1,0 +1,221 @@
+---
+title: 'Create a Deposit Preauthorization'  
+api: 'POST /v2.01/{ClientId}/deposit-preauthorizations/card/direct'  
+---
+
+import CardInfoResponse from '/snippets/p-response/CardInfoResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import Applied3DSVersionResponse from '/snippets/p-response/Applied3DSVersionResponse.mdx';
+import Requested3DSVersionResponse from '/snippets/p-response/Requested3DSVersionResponse.mdx';
+import Shipping2Response from '/snippets/p-response/Shipping2Response.mdx';
+import Billing1Response from '/snippets/p-response/Billing1Response.mdx';
+import IpAddressResponse from '/snippets/p-response/IpAddressResponse.mdx';
+import BrowserInfoResponse from '/snippets/p-response/BrowserInfoResponse.mdx';
+import Culture2Response from '/snippets/p-response/Culture2Response.mdx';
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType2Response from '/snippets/p-response/PaymentType2Response.mdx';
+import SecureModeNeededResponse from '/snippets/p-response/SecureModeNeededResponse.mdx';
+import SecureModeRedirectURLResponse from '/snippets/p-response/SecureModeRedirectURLResponse.mdx';
+import SecureModeReturnURLResponse from '/snippets/p-response/SecureModeReturnURLResponse.mdx';
+import PreferredCardNetworkResponse from '/snippets/p-response/PreferredCardNetworkResponse.mdx';
+import CardId1Response from '/snippets/p-response/CardId1Response.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import PayinsLinked1Response from '/snippets/p-response/PayinsLinked1Response.mdx';
+import PaymentStatusResponse from '/snippets/p-response/PaymentStatusResponse.mdx';
+import Status10Response from '/snippets/p-response/Status10Response.mdx';
+import DebitedFunds12Response from '/snippets/p-response/DebitedFunds12Response.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import ExpirationDate2Response from '/snippets/p-response/ExpirationDate2Response.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Id2Response from '/snippets/p-response/Id2Response.mdx';
+import ProfilingAttemptReference from '/snippets/p-body/ProfilingAttemptReference.mdx';
+import Tag from '/snippets/p-body/Tag.mdx';
+import Shipping2 from '/snippets/p-body/Shipping2.mdx';
+import Billing2 from '/snippets/p-body/Billing2.mdx';
+import IpAddress from '/snippets/p-body/IpAddress.mdx';
+import BrowserInfo from '/snippets/p-body/BrowserInfo.mdx';
+import Culture2 from '/snippets/p-body/Culture2.mdx';
+import StatementDescriptor from '/snippets/p-body/StatementDescriptor.mdx';
+import SecureModeReturnURL from '/snippets/p-body/SecureModeReturnURL.mdx';
+import PreferredCardNetwork from '/snippets/p-body/PreferredCardNetwork.mdx';
+import CardId from '/snippets/p-body/CardId.mdx';
+import DebitedFunds10 from '/snippets/p-body/DebitedFunds10.mdx';
+import AuthorId from '/snippets/p-body/AuthorId.mdx';
+
+import RestCreateDepositPreauthorization from '/snippets/code/rest-create-deposit-preauthorization.mdx';
+import PythonCreateDepositPreauthorization from '/snippets/code/python-create-deposit-preauthorization.mdx';
+
+### Body parameters  
+
+<AuthorId />  
+
+<DebitedFunds10 />  
+
+<CardId />  
+
+<PreferredCardNetwork />  
+
+<SecureModeReturnURL />  
+
+<StatementDescriptor />  
+
+<Culture2 />  
+
+<BrowserInfo />  
+
+<IpAddress />  
+
+<Billing2 />  
+
+<Shipping2 />  
+
+<Tag />  
+
+<ProfilingAttemptReference />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Id2Response />  
+
+<CreationDateResponse />  
+
+<ExpirationDate2Response />  
+
+<AuthorIdResponse />  
+
+<DebitedFunds12Response />  
+
+<Status10Response />  
+
+<PaymentStatusResponse />  
+
+<PayinsLinked1Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<CardId1Response />  
+
+<PreferredCardNetworkResponse />  
+
+<SecureModeReturnURLResponse />  
+
+<SecureModeRedirectURLResponse />  
+
+<SecureModeNeededResponse />  
+
+<PaymentType2Response />  
+
+<ExecutionTypeResponse />  
+
+<StatementDescriptorResponse />  
+
+<Culture2Response />  
+
+<BrowserInfoResponse />  
+
+<IpAddressResponse />  
+
+<Billing1Response />  
+
+<Shipping2Response />  
+
+<Requested3DSVersionResponse />  
+
+<Applied3DSVersionResponse />  
+
+<TagResponse />  
+
+<CardInfoResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+{
+   "Id": "524a7e9c-cad9-4df7-9fe3-03b8948930fe",
+   "CreationDate": 1669137219,
+   "ExpirationDate": 1671729219,
+   "AuthorId": "156671912",
+   "DebitedFunds": {
+       "Currency": "EUR",
+       "Amount": 500
+   },
+   "Status": "CREATED",
+   "PaymentStatus": "WAITING",
+   "PayinsLinked": {
+       "PayinCaptureId": null,
+       "PayinComplementId": null
+   },
+   "ResultCode": null,
+   "ResultMessage": null,
+   "CardId": "156674899",
+   "PreferredCardNetwork": null,
+   "SecureModeReturnURL": "https://docs.mangopay.com/please-ignore?depositId=524a7e9c-cad9-4df7-9fe3-03b8948930fe",
+   "SecureModeRedirectURL": "https://api.sandbox.mangopay.com/deposit-preauthorizations/Acs/Redirect?secureSessionToken=8bf75b26-01c1-4745-8f82-727e8a047dcb",
+   "SecureModeNeeded": true,
+   "PaymentType": "CARD",
+   "ExecutionType": "DIRECT",
+   "StatementDescriptor": null,
+   "Culture": "EN",
+   "BrowserInfo": {
+       "AcceptHeader": "text/html, application/xhtml+xml, application/xml;q=0.9, /;q=0.8",
+       "JavaEnabled": true,
+       "Language": "FR-FR",
+       "ColorDepth": 4,
+       "ScreenHeight": 1800,
+       "ScreenWidth": 400,
+       "TimeZoneOffset": 60,
+       "UserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+       "JavascriptEnabled": true
+   },
+   "IpAddress": "80.236.38.245",
+   "Billing": {
+       "FirstName": "Joe",
+       "LastName": "Bloggs",
+       "Address": {
+           "AddressLine1": null,
+           "AddressLine2": null,
+           "City": null,
+           "Region": null,
+           "PostalCode": null,
+           "Country": null
+       }
+   },
+   "Shipping": {
+       "FirstName": "Joe",
+       "LastName": "Bloggs",
+       "Address": {
+           "AddressLine1": null,
+           "AddressLine2": null,
+           "City": null,
+           "Region": null,
+           "PostalCode": null,
+           "Country": null
+       }
+   },
+   "Requested3DSVersion": null,
+   "Applied3DSVersion": "V2_1",
+   "Tag": "Custom meta",
+   "CardInfo": {
+        "BIN": "497010",
+        "IssuingBank": "LA BANQUE POSTALE",
+        "IssuerCountryCode": "MA",
+        "Type": "CREDIT",
+        "Brand": "VISA",
+        "SubType": null
+    }
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCreateDepositPreauthorization />
+    <PythonCreateDepositPreauthorization />
+</RequestExample>

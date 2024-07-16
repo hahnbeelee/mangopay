@@ -1,0 +1,132 @@
+---
+title: 'List all Reports'  
+api: 'GET /v2.01/{ClientId}/reports'  
+---
+
+import Array_ReportsResponse from '/snippets/p-response/Array_ReportsResponse.mdx';
+import AfterDate3 from '/snippets/p-query/AfterDate3.mdx';
+import BeforeDate3 from '/snippets/p-query/BeforeDate3.mdx';
+
+import PhpListReports from '/snippets/code/php-list-reports.mdx';
+import NodeListReports from '/snippets/code/node-list-reports.mdx';
+import RubyListReports from '/snippets/code/ruby-list-reports.mdx';
+import ListReportsPython from '/snippets/code/list-reports-python.mdx';
+
+### Query parameters  
+
+<BeforeDate3 />  
+
+<AfterDate3 />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_ReportsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+{
+    "Id": "146642145",
+    "CreationDate": 1658317704,
+    "Tag": "test doc july 2022",
+    "ReportDate": null,
+    "Status": "PENDING",
+    "DownloadFormat": "CSV",
+    "DownloadURL": null,
+    "CallbackURL": null,
+    "ReportType": "TRANSACTIONS",
+    "Sort": "CreationDate:ASC",
+    "Preview": false,
+    "Filters": {
+        "BeforeDate": 1658317644,
+        "AfterDate": 1655725644,
+        "Type": [],
+        "ResultCode": [],
+        "Status": [],
+        "Nature": [],
+        "WalletId": null,
+        "AuthorId": null,
+        "MinDebitedFundsAmount": null,
+        "MinDebitedFundsCurrency": null,
+        "MaxDebitedFundsAmount": null,
+        "MaxDebitedFundsCurrency": null,
+        "MinFeesAmount": null,
+        "MinFeesCurrency": null,
+        "MaxFeesAmount": null,
+        "MaxFeesCurrency": null
+   },
+    "Columns": [
+        "Id",
+        "Tag",
+        "CreationDate",
+        "ExecutionDate",
+        "AuthorId",
+        "CreditedUserId",
+        "DebitedFundsAmount",
+        "DebitedFundsCurrency",
+        "CreditedFundsAmount",
+        "CreditedFundsCurrency",
+        "FeesAmount",
+        "FeesCurrency",
+        "Status",
+        "ResultCode",
+        "ResultMessage",
+        "Type",
+        "Nature",
+        "CreditedWalletId",
+        "DebitedWalletId"
+    ],
+    "ResultCode": null,
+    "ResultMessage": null
+}
+{
+    "Id": "147284953",
+    "CreationDate": 1658838991,
+    "Tag": "This is my tag",
+    "ReportDate": null,
+    "Status": "PENDING",
+    "DownloadFormat": "CSV",
+    "DownloadURL": null,
+    "CallbackURL": null,
+    "ReportType": "WALLETS",
+    "Sort": "CreationDate:ASC",
+    "Preview": false,
+    "Filters": {
+        "BeforeDate": 1658838931,
+        "AfterDate": 1656246931,
+        "OwnerId": null,
+        "Currency": null,
+        "MinBalanceAmount": null,
+        "MinBalanceCurrency": null,
+        "MaxBalanceAmount": null,
+        "MaxBalanceCurrency": null
+    },
+    "Columns": [
+        "Id",
+        "Tag",
+        "CreationDate",
+        "Owners",
+        "Description",
+        "BalanceAmount",
+        "BalanceCurrency",
+        "Currency",
+        "FundsType"
+    ],
+    "ResultCode": null,
+}
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListReports />
+    <NodeListReports />
+    <RubyListReports />
+    <ListReportsPython />
+</RequestExample>

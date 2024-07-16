@@ -1,0 +1,88 @@
+---
+title: 'List Refunds for a Transfer'  
+api: 'GET /v2.01/{ClientId}/transfers/{TransferId}/refunds'  
+---
+
+import Array_RefundsResponse from '/snippets/p-response/Array_RefundsResponse.mdx';
+import TransferId from '/snippets/p-path/TransferId.mdx';
+import AfterDate1 from '/snippets/p-query/AfterDate1.mdx';
+import BeforeDate1 from '/snippets/p-query/BeforeDate1.mdx';
+import ResultCode from '/snippets/p-query/ResultCode.mdx';
+import Status from '/snippets/p-query/Status.mdx';
+
+import PhpListRefundsTransfer from '/snippets/code/php-list-refunds-transfer.mdx';
+import NodeRefundRefundTransfer from '/snippets/code/node-refund-refund-transfer.mdx';
+import RubyListRefundsTransfer from '/snippets/code/ruby-list-refunds-transfer.mdx';
+import PythonListTransferRefunds from '/snippets/code/python-list-transfer-refunds.mdx';
+
+### Query parameters  
+
+<Status />  
+
+<ResultCode />  
+
+<BeforeDate1 />  
+
+<AfterDate1 />  
+
+### Path parameters  
+
+<TransferId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_RefundsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+
+[
+    {
+        "Id":"155586343",
+        "Tag":"custom meta",
+        "CreationDate":1667916816,
+        "AuthorId":"146476890",
+        "CreditedUserId":null,
+        "DebitedFunds":{
+            "Currency":"EUR",
+            "Amount":1100
+        },
+        "CreditedFunds":{
+            "Currency":"EUR",
+            "Amount":1120
+        },
+        "Fees":{
+            "Currency":"EUR",
+            "Amount":-20
+        },
+        "Status":"SUCCEEDED",
+        "ResultCode":"000000",
+        "ResultMessage":"Success",
+        "ExecutionDate":1667916816,
+        "Type":"TRANSFER",
+        "Nature":"REFUND",
+        "InitialTransactionId":"155585643",
+        "InitialTransactionType":"TRANSFER",
+        "InitialTransactionNature":"REGULAR",
+        "DebitedWalletId":"152161320",
+        "CreditedWalletId":"148968396",
+        "RefundReason":{
+            "RefundReasonMessage":null,
+            "RefundReasonType":"OTHER"
+        }
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpListRefundsTransfer />
+    <NodeRefundRefundTransfer />
+    <RubyListRefundsTransfer />
+    <PythonListTransferRefunds />
+</RequestExample>

@@ -1,0 +1,74 @@
+---
+title: 'List Wallets for a User'  
+api: 'GET /v2.01/{ClientId}/users/{UserId}/wallets'  
+---
+
+import Array_WalletsResponse from '/snippets/p-response/Array_WalletsResponse.mdx';
+import UserId from '/snippets/p-path/UserId.mdx';
+  
+
+import PhpListWallet from '/snippets/code/php-list-wallet.mdx';
+import NodeListWalletsUser from '/snippets/code/node-list-wallets-user.mdx';
+import RubyListWalletsUser from '/snippets/code/ruby-list-wallets-user.mdx';
+import JavaListUserWallets from '/snippets/code/list-user-wallets-java.mdx';
+import PythonListUserWallets from '/snippets/code/python-list-user-wallets.mdx';
+
+### Path parameters  
+
+<UserId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200">  
+
+<Array_WalletsResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+[
+    {
+        "Description": "Customer wallet",
+        "Owners": [
+            "142036728"
+        ],
+        "Balance": {
+            "Currency": "EUR",
+            "Amount": 72281
+        },
+        "Currency": "EUR",
+        "FundsType": "DEFAULT",
+        "Id": "145389978",
+        "Tag": "End user: 456-TSt",
+        "CreationDate": 1657095351
+    },
+    {
+        "Description": "Wallet GBP",
+        "Owners": [
+            "142036728"
+        ],
+        "Balance": {
+            "Currency": "GBP",
+            "Amount": 0
+        },
+        "Currency": "GBP",
+        "FundsType": "DEFAULT",
+        "Id": "150014739",
+        "Tag": "",
+        "CreationDate": 1661494782
+    }
+]  
+
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+  
+    <PhpListWallet />
+    <NodeListWalletsUser />
+    <RubyListWalletsUser />
+    <JavaListUserWallets />
+    <PythonListUserWallets />
+  
+</RequestExample>

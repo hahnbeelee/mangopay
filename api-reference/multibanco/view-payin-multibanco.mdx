@@ -1,0 +1,134 @@
+---
+title: 'View a PayIn (Multibanco)'  
+api: 'GET /v2.01/{ClientId}/payins/{PayInId}'  
+---
+
+import StatementDescriptorResponse from '/snippets/p-response/StatementDescriptorResponse.mdx';
+import RedirectURL1Response from '/snippets/p-response/RedirectURL1Response.mdx';
+import ReturnURL1Response from '/snippets/p-response/ReturnURL1Response.mdx';
+import ExecutionTypeResponse from '/snippets/p-response/ExecutionTypeResponse.mdx';
+import PaymentType1Response from '/snippets/p-response/PaymentType1Response.mdx';
+import CreditedUserIdResponse from '/snippets/p-response/CreditedUserIdResponse.mdx';
+import CreditedWalletIdResponse from '/snippets/p-response/CreditedWalletIdResponse.mdx';
+import NatureResponse from '/snippets/p-response/NatureResponse.mdx';
+import TypeResponse from '/snippets/p-response/TypeResponse.mdx';
+import ExecutionDateResponse from '/snippets/p-response/ExecutionDateResponse.mdx';
+import ResultMessageResponse from '/snippets/p-response/ResultMessageResponse.mdx';
+import ResultCodeResponse from '/snippets/p-response/ResultCodeResponse.mdx';
+import Status2Response from '/snippets/p-response/Status2Response.mdx';
+import Fees1Response from '/snippets/p-response/Fees1Response.mdx';
+import CreditedFunds2Response from '/snippets/p-response/CreditedFunds2Response.mdx';
+import DebitedFunds2Response from '/snippets/p-response/DebitedFunds2Response.mdx';
+import AuthorIdResponse from '/snippets/p-response/AuthorIdResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import TagResponse from '/snippets/p-response/TagResponse.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import PayInId from '/snippets/p-path/PayInId.mdx';
+
+import PhpViewPayin from '/snippets/code/php-view-payin.mdx';
+import NodeViewPayin from '/snippets/code/node-view-payin.mdx';
+import RubyViewPayin from '/snippets/code/ruby-view-payin.mdx';
+import ViewPayinPython from '/snippets/code/view-payin-python.mdx';
+  
+
+<Note>
+**Note – Pay-in data retained for 13 months**
+
+An API call to retrieve a pay-in whose `CreationDate` is older than 13 months may return 404 Not Found.
+
+For more information, see the <a href="/api-reference/overview/data-availability-periods">Data availability periods</a> article.
+</Note>
+
+### Path parameters  
+
+<PayInId />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Succeeded">  
+
+<IdResponse />  
+
+<TagResponse />  
+
+<CreationDateResponse />  
+
+<AuthorIdResponse />  
+
+<DebitedFunds2Response />  
+
+<CreditedFunds2Response />  
+
+<Fees1Response />  
+
+<Status2Response />  
+
+<ResultCodeResponse />  
+
+<ResultMessageResponse />  
+
+<ExecutionDateResponse />  
+
+<TypeResponse />  
+
+<NatureResponse />  
+
+<CreditedWalletIdResponse />  
+
+<CreditedUserIdResponse />  
+
+<PaymentType1Response />  
+
+<ExecutionTypeResponse />  
+
+<ReturnURL1Response />  
+
+<RedirectURL1Response />  
+
+<StatementDescriptorResponse /></Accordion></AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Succeeded  
+
+{
+    "Id": "wt_6a417de9-5f14-4fed-a8f5-abd7faab21a1",
+    "Tag": "Created using the Mangopay API Postman collection",
+    "CreationDate": 1696942514,
+    "AuthorId": "204068024",
+    "DebitedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "CreditedFunds": {
+        "Currency": "EUR",
+        "Amount": 1000
+    },
+    "Fees": {
+        "Currency": "EUR",
+        "Amount": 0
+    },
+    "Status": "SUCCEEDED",
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "ExecutionDate": 1696942536,
+    "Type": "PAYIN",
+    "Nature": "REGULAR",
+    "CreditedWalletId": "204089031",
+    "CreditedUserId": "204068024",
+    "PaymentType": "MULTIBANCO",
+    "ExecutionType": "WEB",
+    "ReturnURL": "http://www.mangopay.com/docs/please-ignore?transactionId=wt_6a417de9-5f14-4fed-a8f5-abd7faab21a1",
+    "RedirectURL": "https://r3.girogate.de/ti/dumbdummy?tx=2137942516&rs=gsc5nItfY1gGGgcNnp1DsiioN90OC23j&cs=198796349738e9ee004aa2e45f3a0e3ee1b49f83927253c15080e8ac1120c207",
+    "StatementDescriptor": "Mangopay"
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    <PhpViewPayin />
+    <NodeViewPayin />
+    <RubyViewPayin />
+    <ViewPayinPython />
+</RequestExample>

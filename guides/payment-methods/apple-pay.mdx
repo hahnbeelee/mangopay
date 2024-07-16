@@ -1,0 +1,125 @@
+---
+title: Overview
+sidebarTitle: Overview
+'og:title': 'Apple Pay - Mangopay docs'
+"og:description": "How users can securely make using cards saved with Apple Pay on iOS apps and websites."
+---
+
+## About
+
+Apple Pay allows users to pay securely using cards saved to their Apple Pay Wallet, in iOS apps and on websites.
+
+<table>
+    <tbody>
+        <tr>
+            <th class="header">Region</th>
+            <td class="table-content">
+                International
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Currencies</th>
+            <td class="table-content">
+                See the <a href="/guides/currencies">currencies</a> page for details 
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Refunds](/guides/refunds)</th>
+            <td class="table-content">
+                Yes
+            </td>
+            </tr>
+        <tr>
+            <th class="header">[Disputes](/guides/disputes)</th>
+            <td class="table-content">
+                Yes
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Preauthorization</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+        <tr>
+            <th class="header">Recurring payments</th>
+            <td class="table-content">
+                No
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+## How it works
+
+The overall flow of an Apple Pay payment is given in the diagram below.
+
+<div>
+  <iframe 
+    width="100%" 
+    height="480" 
+    src="https://cdn.swimlanes.io/dist/embeded.html#ZY9BDoIwEEX3PcU/gMQ9CxOiC1kYiXCBKqMSocV2SOPOO3hDTyLUEKiu/3vz/xQV1xQjaduakMkH3s8XttqhYjhtblYIbUoyHsESjo62YlogqyWftWkW2El10W2vJlkqRIAhWs1O93mMA907soxeaEgxRJAj+hrTicHgzqiBGISNZPlfMq6JkZMqA3aMBmw+NUa2zwusDUn2/amCq/gayHPBb5uKplm9aFlyZ4Ouny/8Lt3xSTf0AQ==#ZY9Q"
+  >
+  </iframe>
+</div>
+
+{/* 
+
+https://swimlanes.io/u/hxUh2TJav
+
+Title: Apple Pay – How it works
+
+order: App / website, Platform, Mangopay API
+
+App / website -> Apple Pay API: Request payment 
+Apple Pay API --> App / website: Return PaymentData
+App / website -> Platform: Send PaymentData
+Platform -> Mangopay API: POST Create PayIn with PaymentData
+Mangopay API --> Platform: Return PayIn status
+Platform -> App / website: Send outcome
+
+*/}
+
+1. The user selects Apple Pay at the checkout on your app or website and confirms payment
+2. Your app or website makes the payment request to Apple Pay
+3. Apple Pay returns the encrypted payment data token, which includes details about the purchase
+4. Your app or website passes the payment data to your platform’s backend
+5. Your platform includes the payment data in it’s pay-in request to Mangopay
+6. Mangopay returns the transaction result
+7. Your platform confirms the outcome to the user
+
+<Note>
+    **Note - 3DS redirection not required for Apple Pay** 
+    
+    With Apple Pay, SCA-compliant authentication is handled by the user’s device (iPhone or
+    Mac), meaning that the payment data received from Apple Pay is already
+    authenticated and no 3DS redirection is required.
+</Note>
+
+### Outcome
+
+The transaction is complete when the pay-in status changes from `CREATED` to `SUCCEEDED` or `FAILED`, indicating the outcome.
+
+You should also set up [hook notifications](/webhooks) for the relevant [event types](/webhooks/event-types):
+-   PAYIN_NORMAL_SUCCEEDED
+-   PAYIN_NORMAL_FAILED
+
+
+## Activation
+Apple Pay requires certification from Apple Pay and activation by Mangopay before it can be used. See <a href="/guides/payment-methods/apple-pay/how-to">How to process an Apple Pay payment</a> for more information.
+
+## Related resources
+
+<CardGroup col={2}> 
+    <Card title="How to" href="/guides/payment-methods/apple-pay/how-to">
+    Learn how to process an Apple Pay payment
+    </Card>
+
+    <Card title="Endpoint" href="/api-reference/apple-pay/apple-pay-payin-object">
+    The Apple Pay PayIn object
+    </Card>
+
+    <Card title="Testing" href="/testing/payment-methods#apple-pay">
+    Learn about testing Apple Pay
+    </Card>
+</CardGroup>

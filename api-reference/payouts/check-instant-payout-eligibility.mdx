@@ -1,0 +1,100 @@
+---
+title: 'Check Instant Payout eligibility'  
+api: 'POST /v2.01/{ClientId}/payouts/reachability'  
+---
+
+import UnreachableReasonResponse from '/snippets/p-response/UnreachableReasonResponse.mdx';
+import IsReachableResponse from '/snippets/p-response/IsReachableResponse.mdx';
+import BankWireRef from '/snippets/p-body/BankWireRef.mdx';
+import BankAccountId from '/snippets/p-body/BankAccountId.mdx';
+import DebitedWalletId from '/snippets/p-body/DebitedWalletId.mdx';
+import Fees2 from '/snippets/p-body/Fees2.mdx';
+import DebitedFunds3 from '/snippets/p-body/DebitedFunds3.mdx';
+import AuthorId1 from '/snippets/p-body/AuthorId1.mdx';
+import PayoutModeRequested1 from '/snippets/p-body/PayoutModeRequested1.mdx';
+
+import RestCheckInstantPayoutEligibility from '/snippets/code/rest-check-instant-payout-eligibility.mdx';
+import RubyCheckReachibility from '/snippets/code/ruby-check-reachibility.mdx';
+
+This call is used to check whether or not the destination bank is eligible for instant payout.  
+
+### Body parameters  
+
+<PayoutModeRequested1 />  
+
+<AuthorId1 />  
+
+<DebitedFunds3 />  
+
+<Fees2 />  
+
+<DebitedWalletId />  
+
+<BankAccountId />  
+
+<BankWireRef />  
+
+### Responses  
+
+<AccordionGroup><Accordion title="200 - Bank is reachable">  
+
+<IsReachableResponse />  
+
+<UnreachableReasonResponse /></Accordion>
+
+<Accordion title="200 - Bank is unreachable">  
+
+<IsReachableResponse />  
+
+<UnreachableReasonResponse /></Accordion>
+
+</AccordionGroup>  
+<AccordionGroup>  
+
+<Accordion title="400 - Instant payment disabled ">
+```json
+{
+    "Message":"One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type":"param_error",
+    "Id":"33e27bba-bb56-4d64-8574-cc1916a684c7#1661933575",
+    "Date":1661933576.0,
+    "errors":{
+        "PayoutModeRequested":"InstantPayment is disabled"
+    }
+}  
+ ```  
+ </Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200 - Bank is reachable  
+{
+    "InstantPayout": {
+        "IsReachable": true,
+        "UnreachableReason": null
+    }
+}  
+ ```  
+
+```json 200 - Bank is unreachable  
+{
+    "InstantPayout":{
+        "IsReachable":false,
+        "UnreachableReason":{
+            "Code":"130010",
+            "Message":"Generic operation error"
+        }
+    }
+}  
+ ```  
+
+
+
+</ResponseExample>  
+
+<RequestExample>  
+    <RestCheckInstantPayoutEligibility />
+    <RubyCheckReachibility />
+</RequestExample>

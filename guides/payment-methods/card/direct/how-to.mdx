@@ -1,0 +1,519 @@
+---
+title: 'How to process a card payment'
+sidebarTitle: 'How to'
+description: 'Make a card payment to get funds into a Mangopay wallet'
+'og:description': 'Step-by-step guide to processing one-time card payments, including 3DS redirection, and a flow diagram overview.'
+---
+{/* 
+Note: This how-to guide is linked on the home page and written with the quickstart use case in mind. E.g. only 1 prerequisite, discussion of sandbox / production throughout.
+*/}
+
+import RestCreateNaturalUser from '/snippets/code/rest-create-natural-user.mdx';
+import PhpCreateNaturalUser from '/snippets/code/php-create-natural-user.mdx';
+import NodeCreateNaturalUser from '/snippets/code/node-create-natural-user.mdx';
+import RubyCreateNaturalUser from '/snippets/code/ruby-create-natural-user.mdx';
+import JavaCreateNaturalUser from '/snippets/code/java-create-natural-user.mdx';
+import PythonCreateNaturalUser from '/snippets/code/python-create-natural-user.mdx';
+
+import RestCreateWallet from '/snippets/code/rest-create-wallet.mdx';
+import PhpCreateWallet from '/snippets/code/php-create-wallet.mdx';
+import NodeCreateWallet from '/snippets/code/node-create-wallet.mdx';
+import RubyCreateWallet from '/snippets/code/ruby-create-wallet.mdx';
+import CreateWalletJava from '/snippets/code/create-wallet-java.mdx';
+import PythonCreateWallet from '/snippets/code/python-create-wallet.mdx';
+
+import RestCreateCardRegistration from '/snippets/code/rest-create-card-registration.mdx';
+import PhpCreateCardRegistration from '/snippets/code/php-create-card-registration.mdx';
+import NodeCreateCardRegistration from '/snippets/code/node-create-card-registration.mdx';
+import RubyCreateCardRegistration from '/snippets/code/ruby-create-card-registration.mdx';
+import PythonCreateCardRegistration from '/snippets/code/python-create-card-registration.mdx';
+
+import RestUpdateCardRegistration from '/snippets/code/rest-update-card-registration.mdx';
+import PhpUpdateCardRegistration from '/snippets/code/php-update-card-registration.mdx';
+import NodeUpdateCardRegistration from '/snippets/code/node-update-card-registration.mdx';
+import RubyUpdateCardRegistration from '/snippets/code/ruby-update-card-registration.mdx';
+import PythonUpdateCardRegistration from '/snippets/code/python-update-card-registration.mdx';
+
+import RestCreateDirectCardPayin from '/snippets/code/rest-create-direct-card-payin.mdx';
+import PhpCreateDirectCardPayin from '/snippets/code/php-create-direct-card-payin.mdx';
+import NodeCreateCardDirectPayin from '/snippets/code/node-create-card-direct-payin.mdx';
+import RubyCreateDirectCardPayin from '/snippets/code/ruby-create-direct-card-payin.mdx';
+import PythonCreateDirectCardPayin from '/snippets/code/python-create-direct-card-payin.mdx';
+
+import RestDeactivateCard from '/snippets/code/rest-deactivate-card.mdx';
+import PhpDeactivateCard from '/snippets/code/php-deactivate-card.mdx';
+import NodeDeactivateCard from '/snippets/code/node-deactivate-card.mdx';
+import RubyDeactivateCard from '/snippets/code/ruby-deactivate-card.mdx';
+import PythonDeactivateCard from '/snippets/code/python-deactivate-card.mdx';
+
+## Introduction  
+
+This how-to guide will take you through the steps to successfully simulate a payment by card in the Sandbox testing environment.
+
+<Info>
+**Prerequisites**
+
+- A `ClientId` and an API key – you can create these in the <a href="https://hub.mangopay.com/" target="_blank">Mangopay Hub</a> (or else <a href="https://mangopay.com/contact" target="_blank">contact Sales</a> to get started)
+</Info>
+
+<Note>
+**Note – Postman collection contains this flow**
+
+The public Mangopay API Postman collection contains a dedicated folder with the endpoints for this how-to guide.
+
+<a href="/postman" target="_blank">Get started &rarr;</a>
+</Note>
+
+## 1. Create a user
+
+In this guide, we'll register a natural user to represent a private individual who just needs to make a payment on your platform.
+
+Payers only need to provide a first name, last name, and email (see the <a href="/guides/users/categories" target="_blank">user categories</a> for more information).
+
+> [**POST** /V2.01/&lcub;ClientId&rcub;/users/natural](/api-reference/users/create-natural-user)
+
+<CodeGroup>
+    <RestCreateNaturalUser />
+    <PhpCreateNaturalUser />
+    <NodeCreateNaturalUser />
+    <RubyCreateNaturalUser />
+    <JavaCreateNaturalUser />
+    <PythonCreateNaturalUser />
+</CodeGroup>
+
+In response, the API returns an `Id` for the user, which you'll need for the next step.
+```json
+{
+    "Id": "user_m_01J18HZSACR1EMYNY1TBS8KTJD"
+}
+```
+
+## 2. Create a wallet for the user
+
+All users need a wallet to which they can pay funds, even it it is immediately transfered to another wallet (for example, to a marketplace seller).
+
+Use the `Id` of the user as the owner of the wallet: 
+
+> [**POST** /V2.01/&lcub;ClientId&rcub;/wallets](/api-reference/wallets/create-wallet)
+
+<CodeGroup>
+    <RestCreateWallet />
+    <PhpCreateWallet />
+    <NodeCreateWallet />
+    <RubyCreateWallet />
+    <CreateWalletJava />
+    <PythonCreateWallet />
+</CodeGroup>
+
+In response, the API returns an `Id` for the wallet, which you'll need to request the payment.
+```json
+{
+    "Id": "wlt_m_01J18J1SQGG6KXNM3F8GD674TP"
+}
+```
+
+## 3. Create a card registration  
+
+The tokenization process enables your platform to handle sensitive card details with Mangopay. 
+
+Create a Card Registration object to start this process, using the `Id` of the user as the `UserId`.
+
+You also need to define the currency and type of the card at this stage.  
+
+> [**POST** /v2.01/&lcub;ClientId&rcub;/cardregistrations](/api-reference/card-registrations/create-card-registration)
+
+<CodeGroup>
+    <RestCreateCardRegistration />
+    <PhpCreateCardRegistration />
+    <NodeCreateCardRegistration />
+    <RubyCreateCardRegistration />
+    <PythonCreateCardRegistration />
+</CodeGroup>
+
+In response, the API returns the card registration object:
+
+```json
+{
+    "Id": "cardreg_m_01J18JJA7VH1Q38V3Z3F2C059D",
+    "Tag": null,
+    "CreationDate": 1719348570,
+    "UserId": "user_m_01J18HZSACR1EMYNY1TBS8KTJD",
+    "AccessKey": "1X0m87dmM2LiwFgxPLBJ",
+    "PreregistrationData": "ObMObfSdwRfyE4QClGtUc1GGKTRAkntk_O93wafMNRiNkMGlbaUXBaLbPahxf7VD2ddFLVXdicolcUIkv_kKEA",
+    "RegistrationData": null,
+    "CardId": null,
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardRegistrationURL": "https://homologation-webpayment.payline.com/webpayment/getToken",
+    "ResultCode": null,
+    "ResultMessage": null,
+    "Currency": "EUR",
+    "Status": "CREATED"
+}
+```  
+
+From this response, you will need the following values for the next step:  
+- `AccessKey`  
+- `PreregistrationData`  
+- `CardRegistrationURL`  
+
+## 4. Send data to the tokenization server  
+
+The dedicated tokenization server allows your platform to process sensitive card data without exposing you or your end users to any security risk.
+
+<Tip>  
+**Best practice - Use Mangopay's card SDKs** 
+  
+Mangopay's <a href="/sdks/checkout">Checkout SDK</a> and <a href="/sdks/vault/web">Vault SDK</a> take care of the tokenization steps (Steps 2 & 3) for you, and generate a `CardId`.
+
+Simplify your integration on web, iOS, and Android.
+</Tip>  
+
+Make a request to the `CardRegistrationURL` using the previously saved `AccessKey` and `PreregistrationData`:
+- Use `AccessKey` data for the `accessKeyRef` parameter  
+- Use `PreregistrationData` data for the `data` parameter  
+
+You also need the end user’s card details entered on the payment page:
+
+<table>
+    <thead>
+        <tr>
+            <th class="header">Property</th>
+            <th class="header">Type</th>
+            <th class="header">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="table-content">`cardNumber `</td>
+            <td class="table-content">string</td>
+            <td class="table-content">The card number to be tokenized, without any separators.</td>
+        </tr>
+        <tr>
+            <td class="table-content">`cardExpirationDate `</td>
+            <td class="table-content">string (Format: “MMYY”)</td>
+            <td class="table-content">The expiration date of the card.</td>
+        </tr>
+        <tr>
+            <td class="table-content">`cardCvx `</td>
+            <td class="table-content">string</td>
+            <td class="table-content">The card verification code (on the back of the card, usually 3 digits).</td>
+        </tr>
+    </tbody>
+</table>
+
+<Warning>  
+**Warning - Card details must never pass via your server** 
+  
+For security reasons, it is strictly forbidden to send the card details to your own server. You must rely on the dedicated PCI-DSS compliant tokenization server as described below.  
+</Warning>  
+
+The content-type for this call is "application/x-www-form-urlencoded".
+
+> [**POST** &lcub;CardRegistrationURL&rcub;](/api-reference/card-registrations/tokenize-card)
+
+<CodeGroup>  
+
+```json REST
+{
+    "accessKey": "1X0m87dmM2LiwFgxPLBJ",
+    "data": "ObMObfSdwRfyE4QClGtUc1GGKTRAkntk_O93wafMNRiNkMGlbaUXBaLbPahxf7VD2ddFLVXdicolcUIkv_kKEA",
+    "cardNumber": "4970105181818183",
+    "cardExpirationDate": "1229",
+    "cardCvx": "123"
+}
+```  
+
+```javascript NodeJS
+const cardInfoObject = {
+  cardNumber: '4970105181818183',
+  cardExpirationDate: '1229',
+  cardCvx: '123',
+};
+
+const preregistrationData = {
+  id: createCardRegistrationResult.Id,
+  cardRegistrationURL: createCardRegistrationResult.CardRegistrationURL,
+  accessKeyRef: createCardRegistrationResult.AccessKey,
+  data: createCardRegistrationResult.PreregistrationData,
+};
+```  
+
+```kotlin 
+// Define the callback to receive tokenization result
+private fun tokenizeCallbacks() = object: Mangopay.TokenizeCardResultCallback{
+        override fun success(result: CardRegistration?) {
+            // You can use result.cardId to process payments from your backend
+        }
+        override fun error(exception: MangopayException) {
+           // An error has occured
+        }
+}
+// Invoke tokenizeCard method
+MangopayVaultSdk.tokenizeCard(card, cardRegistration, this, tokenizeCallbacks())
+```  
+
+```swift 
+MangopayVault.tokenizeCard(
+  card: card,
+  cardRegistration: cardRegistration) { card, error in
+      guard let _ = card else {
+          self.showLoader(false)
+          self.showAlert(with: error?.localizedDescription ?? "",title: "Failed ❌")
+          return
+      }
+      self.showLoader(false)
+      self.showAlert(with: "",title: "Successful 🎉")
+  }
+```  
+</CodeGroup> 
+
+In response, the API returns an encoded data string:
+ 
+```json
+data=qc_ShKapgXF-A2t_OC72Ko0o568aiaCttReld3UFN6czA9d3uGhyoKRez0uSm5xbV52qH2pQE2MInBd_End2fZvHB1ZEXCpfiSAoeP1mpcuMSPVhQbki1iMJJFqJ1t8r0ftIYwFxOdfmDQ5GtM_cIg
+```  
+
+You'll need this string for the next step.
+
+## 5. Update the card registration with tokenization data  
+
+Update the Card Registration object by sending the data token returned by the tokenization server as the `RegistrationData`. 
+
+You should also provide the cardholder's name at this stage, which will be added to the Card object.
+
+> [**PUT** /v2.01/&lcub;ClientId&rcub;/cardregistrations/CardRegistrationId](/api-reference/card-registrations/update-card-registration)
+
+
+<CodeGroup>
+    <RestUpdateCardRegistration />
+    <PhpUpdateCardRegistration />
+    <NodeUpdateCardRegistration />
+    <RubyUpdateCardRegistration />
+    <PythonUpdateCardRegistration />
+</CodeGroup>
+
+In response, the API returns the Card Registration object.
+
+```json
+{
+    "Id": "cardreg_m_01J18JJA7VH1Q38V3Z3F2C059D",
+    "Tag": null,
+    "CreationDate": 1719348570,
+    "UserId": "user_m_01J18HZSACR1EMYNY1TBS8KTJD",
+    "AccessKey": "1X0m87dmM2LiwFgxPLBJ",
+    "PreregistrationData": "ObMObfSdwRfyE4QClGtUc1GGKTRAkntk_O93wafMNRiNkMGlbaUXBaLbPahxf7VD2ddFLVXdicolcUIkv_kKEA",
+    "RegistrationData": "data=qc_ShKapgXF-A2t_OC72Ko0o568aiaCttReld3UFN6czA9d3uGhyoKRez0uSm5xbV52qH2pQE2MInBd_End2fZvHB1ZEXCpfiSAoeP1mpcuMSPVhQbki1iMJJFqJ1t8r0ftIYwFxOdfmDQ5GtM_cIg",
+    "CardId": "card_m_01J18JJSZTKET9SX9V0W69M8H8",
+    "CardType": "CB_VISA_MASTERCARD",
+    "CardRegistrationURL": "https://homologation-webpayment.payline.com/webpayment/getToken",
+    "ResultCode": "000000",
+    "ResultMessage": "Success",
+    "Currency": "EUR",
+    "Status": "VALIDATED"
+}
+```  
+The `CardId` is the tokenized version of the card that you can use in the next step to request the payment.
+
+## 6. Get the end user's session data  
+
+In your integration, you'll also need to capture information from your end user’s browsing session to be able to request the payment.
+
+In Sandbox, you can use dummy data.
+
+### IP address  
+
+You need to send the end user’s IP address in IPV4 or IPV6 format. You can collect this when the user requests the payment, or else use an IP lookup service such as Cloudfare or ipify.  
+
+### Browser information  
+
+You also need to collect data about the end user’s browser.  
+- On a website, this data can be obtained from the browser.  
+- In a mobile app, you need to open a webview to fetch data from the browser (in the same way as for a website).  
+
+```javascript Browser information - JavaScript example
+let browserInfo = {
+  acceptedHeader: navigator.languages,
+  javaEnabled: navigator.javaEnabled(),
+  language: navigator.language,
+  colorDepth: window.screen.colorDepth,
+  screenHeight: window.screen.height,
+  screenWidth: window.screen.width,
+  timeZoneOffset: new Date().getTimezoneOffset(),
+  userAgent: navigator.userAgent,
+  javascriptEnabled: true
+}
+
+console.log(browserInfo);
+```
+
+<Accordion
+  title="See parameter details"
+>
+<table>
+    <thead>
+        <tr>
+            <th class="header">API child parameter</th>
+            <th class="header">Type</th>
+            <th class="header">Description</th>
+            <th class="header">JavaScript example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="table-content">`AcceptHeader`</td>
+            <td class="table-content">string</td>
+            <td class="table-content">The exact content of the HTTP accept headers as sent to the platform from the end user’s browser.</td>
+            <td class="table-content">None, collected server-side</td>
+        </tr>
+        <tr>
+            <td class="table-content">`JavaEnabled`</td>
+            <td class="table-content">boolean</td>
+            <td class="table-content">Whether or not the end user’s browser has the ability to execute Java.</td>
+            <td class="table-content">`navigator.javaEnabled()`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`Language`</td>
+            <td class="table-content">string (Max. length: 6 characters)</td>
+            <td class="table-content">The browser language, made up of the language code and the country (e.g., “en-US”).</td>
+            <td class="table-content">`navigator.language` or `navigator.userLanguage`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`ColorDepth`</td>
+            <td class="table-content">integer (Allowed values: 1, 4, 8, 15, 16, 24, 30, 32, 48)</td>
+            <td class="table-content">The value representing the depth of the screen’s color palette for displaying images, in bits per pixel.</td>
+            <td class="table-content">`window.screen.colorDepth`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`ScreenHeight`</td>
+            <td class="table-content">integer (Max. length: 6 characters)</td>
+            <td class="table-content">The height of the screen in pixels.</td>
+            <td class="table-content">`window.screen.height`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`ScreenWidth`</td>
+            <td class="table-content">integer (Max. length: 6 characters)</td>
+            <td class="table-content">The width of the screen in pixels.</td>
+            <td class="table-content">`window.screen.width`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`TimeZoneOffset`</td>
+            <td class="table-content">integer</td>
+            <td class="table-content">The difference in minutes between the browser’s timezone and UTC.</td>
+            <td class="table-content">`new Date().getTimezoneOffset()`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`UserAgent`</td>
+            <td class="table-content">string (Max. length: 255 characters)</td>
+            <td class="table-content">The exact content of the HTTP User-Agent header. Max. length: 255 characters.</td>
+            <td class="table-content">`navigator.userAgent`</td>
+        </tr>
+        <tr>
+            <td class="table-content">`JavascriptEnabled`</td>
+            <td class="table-content">boolean</td>
+            <td class="table-content">Whether or not the end user’s browser has the ability to execute JavaScript.</td>
+            <td class="table-content">`true`</td>
+        </tr>
+    </tbody>
+</table>
+</Accordion>
+
+## 7. Request the payment (Direct Card PayIn)  
+
+Now that you have a `CardId`, you can request the payment to the wallet using the <a href="/api-reference/direct-card-payins">Direct Card PayIn</a> object.
+
+<Note>  
+**Note - Recurring card payments and preauthorizations require other endpoints** 
+
+The Direct Card PayIn object represents a one-time payment with a registered card.  
+
+For subscriptions and other recurring card payments, use the <a href="/api-reference/recurring-card-payins">Recurring PayIn Registration</a> object.
+
+To reserve funds on a card for capture later, use the <a href="/api-reference/preauthorizations">Preauthorization</a> and <a href="/api-reference/deposit-preauthorizations">Deposit Preauthorization</a> objects.
+</Note>  
+
+Create the pay-in request using:  
+- The `CardId`  
+- The IP address and browser information  
+- The `Id` of the User as the `AuthorId`  
+- The `Id` of the user’s Wallet as the `CreditedWalletId`  
+
+In your integration, when you make the payment request you also need to:
+- Be ready to handle 3DS authentication (Step 6)  
+- Specify the page to which the user will be returned after payment (Step 7)  
+
+Read these steps before continuing with the payment request:
+
+> [**POST** /v2.01/&lcub;ClientId&rcub;/payins/card/direct](/api-reference/direct-card-payins/create-direct-card-payin)
+
+<CodeGroup>
+  <RestCreateDirectCardPayin />
+  <PhpCreateDirectCardPayin />
+  <NodeCreateCardDirectPayin />
+  <RubyCreateDirectCardPayin />
+  <PythonCreateDirectCardPayin /> 
+</CodeGroup>
+
+## 8. Redirect the user to 3DS protocol (if required)  
+
+Redirect the user to the `SecureModeRedirectURL` value to complete strong customer authentication with the <a href="/guides/payment-methods/card/3ds">3DS protocol</a>, unless it is `null`. If `SecureModeRedirectURL` is `null`, this means that 3DS is not required and no redirection is needed.  
+
+You can also use the `SecureModeNeeded` boolean to determine this redirection behavior.  
+
+In Sandbox, follow the link returned in the `SecureModeRedirectURL` to access the authentication simulator.
+
+## 9. Return the user after payment
+
+After the payment, whether it includes 3DS or not and whatever the outcome, the end user is returned to the `SecureModeReturnURL` which you defined.  
+
+The Mangopay API returns your `SecureModeReturnURL` with the `Id` of the pay-in transaction attached as a query parameter in the following format:
+
+> https<span>://www</span>.example.com?transactionId=`Id`
+
+Mangopay updates the `Status` of the pay-in to indicate a successful or failed payment depending on the outcome of the end user's authentication.  
+
+You should  set up [hook notifications](/webhooks) for the following [event types](/webhooks/event-types) to be notified of the outcome:
+- PAYIN_NORMAL_SUCCEEDED  
+- PAYIN_NORMAL_FAILED  
+
+Once your system receives a webhook, call the <a href="/api-reference/direct-card-payins/view-payin-direct-card">GET View a PayIn</a> endpoint (using its `Id`) to confirm the result of the transaction. This allows you to customize the end user’s experience after the payment.  
+
+If the pay-in is successful, the card's `Validity` parameter is set to `Valid` and it can be used for other payments at a later stage.   
+
+## 10. Deactivate the card (if required) 
+
+<Warning>  
+**Warning - End user's approval needed to save card details** 
+  
+Under no circumstances should card information be kept without the end user's approval.   
+
+If you don’t have the end user’s approval, you need to deactivate the card systematically after use in your implementation.  
+</Warning>   
+
+Once the pay-in is successful, if the end user did not request to save their card for later, set the card’s `Active` parameter to false to deactivate the card. This action is irreversible.  
+
+<Note>  
+**Note - The card can be registered multiple times** 
+  
+Deactivating the card will not prevent the end user from making a payment with the same card in future. You will need to go through the card registration process again.  
+</Note>  
+
+> [**PUT** /v2.01/&lcub;ClientId&rcub;/cards/&lcub;CardId&rcub;](/api-reference/cards/deactivate-edit-card)
+
+<CodeGroup>
+    <RestDeactivateCard />
+    <PhpDeactivateCard />
+    <NodeDeactivateCard />
+    <RubyDeactivateCard />
+    <PythonDeactivateCard />
+</CodeGroup>
+
+
+## Related resources  
+
+<CardGroup col={2}> 
+    <Card title="Guide" href="/guides/payment-methods/card/3ds">Learn more about 3DS</Card>  
+
+    <Card title="Guide" href="/guides/payment-methods/card/recurring">Learn more about Recurring card payments</Card>  
+
+    <Card title="Guide" href="/guides/payment-methods/card/preauthorization">Learn more about Preauthorized card payments</Card>
+</CardGroup>

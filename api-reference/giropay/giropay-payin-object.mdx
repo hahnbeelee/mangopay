@@ -1,0 +1,94 @@
+---
+title: 'The Giropay PayIn object'
+---
+
+import ProfilingAttemptReference from '/snippets/object-attributes/ProfilingAttemptReference.mdx';
+import StatementDescriptor from '/snippets/object-attributes/StatementDescriptor.mdx';
+import ReturnURL1 from '/snippets/object-attributes/ReturnURL1.mdx';
+import RedirectURL from '/snippets/object-attributes/RedirectURL.mdx';
+import PaymentType4 from '/snippets/object-attributes/PaymentType4.mdx';
+import CreditedUserId from '/snippets/object-attributes/CreditedUserId.mdx';
+import CreditedWalletId1 from '/snippets/object-attributes/CreditedWalletId1.mdx';
+import Nature from '/snippets/object-attributes/Nature.mdx';
+import Type from '/snippets/object-attributes/Type.mdx';
+import ExecutionDate from '/snippets/object-attributes/ExecutionDate.mdx';
+import ResultMessage from '/snippets/object-attributes/ResultMessage.mdx';
+import ResultCode from '/snippets/object-attributes/ResultCode.mdx';
+import Status1 from '/snippets/object-attributes/Status1.mdx';
+import Fees1 from '/snippets/object-attributes/Fees1.mdx';
+import CreditedFunds2 from '/snippets/object-attributes/CreditedFunds2.mdx';
+import DebitedFunds2 from '/snippets/object-attributes/DebitedFunds2.mdx';
+import AuthorId1 from '/snippets/object-attributes/AuthorId1.mdx';
+import CreationDate from '/snippets/object-attributes/CreationDate.mdx';
+import Tag1 from '/snippets/object-attributes/Tag1.mdx';
+import Id from '/snippets/object-attributes/Id.mdx';
+  
+### Description
+
+<Warning>
+**Warning – Giropay no longer available after June 30, 2024**
+
+Giropay’s operator Paydirekt has decided to cease the payment method’s services at the end of June, without providing a direct alternative. This decision by Paydirekt impacts the entire industry and is beyond our control.
+
+Effective July 1, 2024: 
+- Pay-ins will fail with the <a href="/errors/codes/101101">101101</a> error
+- Refunds will be possible for one year 
+
+This change affects both the <a href="/api-reference/giropay">new</a> and <a href="/api-reference/web-direct-debit-payins">legacy</a> integrations.
+
+Our team is ready to assist you with your integration of alternatives like <a href="/guides/payment-methods/klarna">Klarna</a>, <a href="/guides/payment-methods/paypal">PayPal</a>, or <a href="/guides/payment-methods/banking/virtual-iban">virtual IBANs</a> for the German market. Please reach out <a href="https://hub.mangopay.com/">via the Hub</a>. 
+</Warning>
+
+The Giropay PayIn object allows platforms to process payments made with the Giropay payment method.  
+
+<Note>  
+**Note – Activation required** 
+  
+To activate Giropay for your platform (including Sandbox), contact Mangopay <a href="https://hub.mangopay.com/" target="_blank">via the Hub</a>.  
+</Note>
+
+### Attributes  
+
+<Id />  
+
+<Tag1 />  
+
+<CreationDate />  
+
+<AuthorId1 />  
+
+<DebitedFunds2 />  
+
+<CreditedFunds2 />  
+
+<Fees1 />  
+
+<Status1 />  
+
+<ResultCode />  
+
+<ResultMessage />  
+
+<ExecutionDate />  
+
+<Type />  
+
+<Nature />  
+
+<CreditedWalletId1 />  
+
+<CreditedUserId />  
+
+<PaymentType4 />  
+
+<RedirectURL />  
+
+<ReturnURL1 />  
+
+<StatementDescriptor />  
+
+<ProfilingAttemptReference />
+
+### Related resources
+
+<Card title="Guide" href="/guides/payment-methods/giropay">Learn more about Giropay</Card>

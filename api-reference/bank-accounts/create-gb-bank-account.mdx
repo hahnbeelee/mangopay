@@ -1,0 +1,182 @@
+---
+title: 'Create a GB Bank Account'  
+api: 'POST /v2.01/{ClientId}/users/{UserId}/bankaccounts/gb'  
+---
+
+import ActiveResponse from '/snippets/p-response/ActiveResponse.mdx';
+import CreationDateResponse from '/snippets/p-response/CreationDateResponse.mdx';
+import Tag4Response from '/snippets/p-response/Tag4Response.mdx';
+import IdResponse from '/snippets/p-response/IdResponse.mdx';
+import Type5Response from '/snippets/p-response/Type5Response.mdx';
+import OwnerNameResponse from '/snippets/p-response/OwnerNameResponse.mdx';
+import UserId1Response from '/snippets/p-response/UserId1Response.mdx';
+import SortCodeResponse from '/snippets/p-response/SortCodeResponse.mdx';
+import AccountNumber1Response from '/snippets/p-response/AccountNumber1Response.mdx';
+import OwnerAddressResponse from '/snippets/p-response/OwnerAddressResponse.mdx';
+import Tag4 from '/snippets/p-body/Tag4.mdx';
+import OwnerName from '/snippets/p-body/OwnerName.mdx';
+import SortCode from '/snippets/p-body/SortCode.mdx';
+import AccountNumber1 from '/snippets/p-body/AccountNumber1.mdx';
+import OwnerAddress from '/snippets/p-body/OwnerAddress.mdx';
+import UserId1 from '/snippets/p-path/UserId1.mdx';
+  
+import RestCreateGbBankAccount from '/snippets/code/rest-create-gb-bank-account.mdx';
+import PhpCreateGbBankAccount from '/snippets/code/php-create-gb-bank-account.mdx';
+import NodeCreateGbBankAccount from '/snippets/code/node-create-gb-bank-account.mdx';
+import RubyCreateGbBankAccount from '/snippets/code/ruby-create-gb-bank-account.mdx';
+import JavaCreateGbBankAccount from '/snippets/code/java-create-gb-bank-account.mdx';
+import PythonCreateGbBankAccount from '/snippets/code/python-create-gb-bank-account.mdx'; 
+
+### Path parameters  
+
+<UserId1 />  
+
+### Body parameters  
+
+<OwnerAddress />  
+
+<AccountNumber1 />  
+
+<SortCode />  
+
+<OwnerName />  
+
+<Tag4 />  
+
+### Responses  
+
+<AccordionGroup>
+
+<Accordion title="200">  
+
+<OwnerAddressResponse />  
+
+<AccountNumber1Response />  
+
+<SortCodeResponse />  
+
+<UserId1Response />  
+
+<OwnerNameResponse />  
+
+<Type5Response />  
+
+<IdResponse />  
+
+<Tag4Response />  
+
+<CreationDateResponse />  
+
+<ActiveResponse /></Accordion>
+
+</AccordionGroup>
+<AccordionGroup>
+
+<Accordion title="400 - Blocked bank account">
+```json
+{
+    "Message":"One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type":"param_error",
+    "Id":"9d4feea4-353f-416d-b8d6-8053471785ea#1677146902",
+    "Date":1677146903,
+    "errors":{
+        "GB":"The GB account is blocked by Fraud Policy"
+    }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - AccountNumber format not accepted">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "6977ee65-e865-4fdb-8a4b-835f47fff41f",
+    "Date": 1698756883.0,
+    "errors": {
+        "AccountNumber": "The field AccountNumber must match the regular expression '\\d{8}'."
+    }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - SortCode format not accepted">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect. An incorrect resource ID also raises this kind of error.",
+    "Type": "param_error",
+    "Id": "9b1dd701-a274-4be8-aabf-872a1557c9e9",
+    "Date": 1698756987.0,
+    "errors": {
+        "SortCode": "The field SortCode must match the regular expression '\\d{6}'."
+    }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - SortCode invalid">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect",
+    "Type": "bankaccount_error",
+    "Id": "c2cea07c-4403-4f5d-b80e-806c1cc60112",
+    "Date": 1698757035.0,
+    "errors": {
+        "SortCode": "SortCode is invalid"
+    }
+}  
+ ```  
+</Accordion>
+
+<Accordion title="400 - AccountNumber and SortCode combination not valid">
+```json
+{
+    "Message": "One or several required parameters are missing or incorrect",
+    "Type": "bankaccount_error",
+    "Id": "55ed90cb-cbc5-438b-ba5d-3207ef27d341",
+    "Date": 1698757180.0,
+    "errors": {
+        "AccountNumber": "AccountNumber is invalid or is not applicable for this SortCode"
+    }
+}  
+ ``` 
+ </Accordion>
+
+</AccordionGroup>  
+
+<ResponseExample>  
+
+```json 200  
+{
+    "OwnerAddress":{
+        "AddressLine1":"The Oasis",
+        "AddressLine2":"Rue des Plantes",
+        "City":"Paris",
+        "Region":"Ile de France",
+        "PostalCode":"75001",
+        "Country":"FR"
+    },
+    "AccountNumber":"11696419",
+    "SortCode":"010039",
+    "UserId":"142036728",
+    "OwnerName":"Joe Blogs",
+    "Type":"GB",
+    "Id":"150297947",
+    "Tag":null,
+    "CreationDate":1661866223,
+    "Active":true
+}  
+ ```  
+
+</ResponseExample>  
+
+<RequestExample>  
+    
+    <RestCreateGbBankAccount />
+    <PhpCreateGbBankAccount />
+    <NodeCreateGbBankAccount />
+    <RubyCreateGbBankAccount />
+    <JavaCreateGbBankAccount />
+    <PythonCreateGbBankAccount />
+    
+</RequestExample>
